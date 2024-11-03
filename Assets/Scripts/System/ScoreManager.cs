@@ -14,4 +14,9 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
         killCount.Value++;
     }
 
+    //Š¿šƒŒƒR[ƒh
+    private ReactiveCollection<AnswerState> answerStates = new ReactiveCollection<AnswerState>();
+    public IReadOnlyReactiveCollection<AnswerState> AnswerStatesReactiveCollection { get { return answerStates; } }
+    public void AddAnswerState(AnswerState answerState) { answerStates.Add(answerState); }
+
 }

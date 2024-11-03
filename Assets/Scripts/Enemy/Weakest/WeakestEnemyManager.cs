@@ -27,13 +27,13 @@ public class WeakestEnemyManager : EnemyManager
         
         //攻撃アニメーション
         if (animator) { animator.SetTrigger("Attack"); }
-
-        //ほんで消えたりなんだり
-        AfterGiveDamage();
     }
 
     protected override void AfterGiveDamage()
     {
+        //レコードの追加
+        ScoreManager.Instance.AddAnswerState(new AnswerState { questionData = questionData, isCorrect = false });
+
         //アニメーションがない時の消滅と与ダメ
         if (!animator) 
         {
@@ -96,6 +96,9 @@ public class WeakestEnemyManager : EnemyManager
     public void GiveDamageTrigger()
     {
         playerStatus.SetHP(playerStatus.HP.Value - KanjiStatus.Value.Attack.Value);
+
+        //ほんで消えたりなんだり
+        AfterGiveDamage();
     }
 
     /// <summary>

@@ -20,6 +20,7 @@ public abstract class EnemyManager : MonoBehaviour, IEnemy, IDamager
     {
         if(hp <= 0)
         {
+            ScoreManager.Instance.AddAnswerState(new AnswerState { questionData = questionData, isCorrect = true });
             ScoreManager.Instance.IncrementKillCount(); //ƒLƒ‹”‚ðƒvƒ‰ƒX
             OnDeath();
         }
