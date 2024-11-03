@@ -14,6 +14,15 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
         killCount.Value++;
     }
 
+    //経過時間
+    ReactiveProperty<float> timeCount = new ReactiveProperty<float>();
+    public float TimeCount { set { timeCount.Value = value; } } 
+    public IReadOnlyReactiveProperty<float> TimeCountreactiveProperty { get { return timeCount; } }
+    public void AddTime(float value) 
+    {
+        timeCount.Value += value;
+    }
+
     //漢字レコード
     private ReactiveCollection<AnswerState> answerStates = new ReactiveCollection<AnswerState>();
     public IReadOnlyReactiveCollection<AnswerState> AnswerStatesReactiveCollection { get { return answerStates; } }

@@ -39,6 +39,7 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
 
         //ƒXƒRƒA‚Ì‰Šú‰»
         ScoreManager.Instance.KillCount = 0;
+        ScoreManager.Instance.TimeCount = 0;
     }
 
     /// <summary>

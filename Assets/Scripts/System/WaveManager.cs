@@ -102,6 +102,7 @@ public class WaveManager : MonoBehaviour
         //ŽžŠÔ‚Ì‰ÁŽZ
         time += Time.deltaTime;
         intervalCount += Time.deltaTime;
+        ScoreManager.Instance.AddTime(Time.deltaTime);
 
         //“G‚ðƒXƒ|[ƒ“‚³‚¹‚é
         if (intervalCount > spawnInterval) 

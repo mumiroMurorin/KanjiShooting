@@ -9,6 +9,7 @@ public class MainUIPresenter : MonoBehaviour
     [SerializeField] PlayerHPTextView playerHPTextView;
     [SerializeField] BulletReloadGageView bulletReloadGageView;
     [SerializeField] KillCountTextView killCountTextView;
+    [SerializeField] TimerTextView timerTextView;
     [SerializeField] DamageEffectView damageEffectView;
     [SerializeField] AnswerBoxSpawner[] answerBoxSpawners;
 
@@ -29,34 +30,39 @@ public class MainUIPresenter : MonoBehaviour
 
     private void Bind()
     {
-        //プレイヤーHP → HPバー
+        // プレイヤーHP → HPバー
         playerStatus_model.Value.HPNormalized
             .Subscribe(playerHPBarView.OnChangeHP)
             .AddTo(this.gameObject);
 
-        //プレイヤーHP → ダメージ時画面効果
+        // プレイヤーHP → ダメージ時画面効果
         playerStatus_model.Value.HPNormalized
             .Pairwise()
             .Where(pair => pair.Current < pair.Previous) // 減少しているときのみ
             .Subscribe(pair => damageEffectView.OnDamage(pair.Previous - pair.Current))
             .AddTo(this.gameObject);
 
-        //プレイヤーHP → HPテキスト
+        // プレイヤーHP → HPテキスト
         playerStatus_model.Value.HP
             .Subscribe(playerHPTextView.OnChangeHP)
             .AddTo(this.gameObject);
 
-        //弾リロード時間 → リロードUI
+        // 弾リロード時間 → リロードUI
         gunManager_model.ReloadValue
             .Subscribe(bulletReloadGageView.OnChangeReloadValue)
             .AddTo(this.gameObject);
 
-        //キルカウントスコア → キルカウントテキスト
+        // キルカウントスコア → キルカウントテキスト
         scoreManager_model.KillCountReactiveProperty
             .Subscribe(killCountTextView.OnChangeKillCount)
             .AddTo(this.gameObject);
 
-        //回答 → 解答ログ
+        // 経過時間 → タイマーテキスト
+        scoreManager_model.TimeCountreactiveProperty
+            .Subscribe(timerTextView.OnChangeTimeCount)
+            .AddTo(this.gameObject);
+
+        // 回答 → 解答ログ
         scoreManager_model.AnswerStatesReactiveCollection
             .ObserveAdd().Subscribe(addState => SpawnAnswerBox(addState.Value))
             .AddTo(this);
