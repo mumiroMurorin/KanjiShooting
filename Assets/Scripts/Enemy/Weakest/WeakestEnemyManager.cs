@@ -17,6 +17,11 @@ public class WeakestEnemyManager : EnemyManager
     bool isMoving = false;
     IStatus playerStatus;
 
+    private void Start()
+    {
+        Move?.Value.SetActive(false);
+    }
+
     public override void GiveDamage(IStatus status)
     {
         //プレイヤーかチェック
@@ -79,7 +84,17 @@ public class WeakestEnemyManager : EnemyManager
     /// </summary>
     public void PermitMoveTrigger()
     {
+        Move?.Value.SetActive(true);
         isMoving = true;
+    }
+
+    /// <summary>
+    /// 移動禁止させるトリガー
+    /// </summary>
+    public void ProhibitMoveTrigger()
+    {
+        Move?.Value.SetActive(false);
+        isMoving = false;
     }
 
     /// <summary>

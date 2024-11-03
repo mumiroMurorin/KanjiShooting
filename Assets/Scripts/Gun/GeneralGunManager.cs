@@ -5,6 +5,7 @@ public class GeneralGunManager : GunManager
 {
     [Header("•œŠˆŠÔŠu(•b)")]
     [SerializeField] float reviveInterval;
+    [SerializeField] InputManager inputManager;
 
     public override void Shoot()
     {
@@ -17,6 +18,7 @@ public class GeneralGunManager : GunManager
         Spawn();
 
         //ƒŠƒ[ƒh
+        inputManager.ClearInput();
         currentReloadValue.Value = 0;
     }
 

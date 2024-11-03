@@ -53,7 +53,6 @@ public class InputManager : MonoBehaviour
     private void Bind()
     {
         onPushBackSpace.AddListener(japaneseInputHandler.BackSpace);
-        onPushEnter.AddListener(japaneseInputHandler.Clear);
     }
 
     private void Update()
@@ -75,6 +74,14 @@ public class InputManager : MonoBehaviour
 
         //Debug.Log("現在の入力: " + japaneseInputHandler.GetResult());
         onChangeAnswer.Invoke(japaneseInputHandler.GetResult());
+    }
+
+    /// <summary>
+    /// 入力日本語のリセット
+    /// </summary>
+    public void ClearInput()
+    {
+        japaneseInputHandler.Clear();
     }
 
     private void OnDestroy()

@@ -21,5 +21,7 @@ public interface IMovable
 
 public interface IForceAddable
 {
+    public void SetActive(bool isActive);
+
     public void AddForce(Vector3 vec);
 }
