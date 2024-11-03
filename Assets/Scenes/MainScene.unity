@@ -3138,7 +3138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 30
-  spawnInterval: 4
+  spawnInterval: 0.5
   waveStatuses:
   - spawner: {fileID: 309780532}
     curve:
@@ -6667,7 +6667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2017233491440769960, guid: 15db460422ede234ab9af14d93d11a67, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2017233491440769960, guid: 15db460422ede234ab9af14d93d11a67, type: 3}
       propertyPath: m_AnchorMin.x
@@ -6675,11 +6675,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2017233491440769960, guid: 15db460422ede234ab9af14d93d11a67, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2017233491440769960, guid: 15db460422ede234ab9af14d93d11a67, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 380
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2017233491440769960, guid: 15db460422ede234ab9af14d93d11a67, type: 3}
       propertyPath: m_SizeDelta.y
@@ -6715,11 +6715,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2017233491440769960, guid: 15db460422ede234ab9af14d93d11a67, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 190
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2017233491440769960, guid: 15db460422ede234ab9af14d93d11a67, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -70
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2017233491440769960, guid: 15db460422ede234ab9af14d93d11a67, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

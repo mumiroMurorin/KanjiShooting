@@ -12,6 +12,11 @@ public abstract class AnswerBoxView : MonoBehaviour
     [SerializeField] TextMeshProUGUI answerTmp;
     [SerializeField] int maxAnswerStringLength = 12;
 
+    private void Start()
+    {
+        AfterSpawn();
+    }
+
     /// <summary>
     /// 答えのセット
     /// </summary>
@@ -37,9 +42,9 @@ public abstract class AnswerBoxView : MonoBehaviour
         {
             //最大文字数をはみ出るようであれば出る
             if (answerText.Length + answers[i].Length > maxAnswerStringLength) { break; }
+            answerText += answers[i];
             //最後の要素じゃなければ分割
             if (i < answers.Length - 1) { answerText += ", "; }
-            answerText += answers[i];
         }
         return answerText;
     }
@@ -48,4 +53,9 @@ public abstract class AnswerBoxView : MonoBehaviour
     /// 生成後の挙動
     /// </summary>
     protected abstract void AfterSpawn();
+
+    public void DestroyTrigger()
+    {
+        Destroy(this.gameObject);
+    }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 190301925921877857}
   - component: {fileID: 9157411274327242918}
   - component: {fileID: 1611162847680642015}
+  - component: {fileID: 198464982}
   m_Layer: 5
   m_Name: LogBack
   m_TagString: Untagged
@@ -78,6 +79,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &198464982
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392810765314373219}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2017233490586422443
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2017233491440769960}
   - component: {fileID: 2017233490586422444}
+  - component: {fileID: 2045359170}
   m_Layer: 5
   m_Name: AnswerBoxCorrect
   m_TagString: Untagged
@@ -131,6 +145,28 @@ MonoBehaviour:
   kanjiTmp: {fileID: 2017233491698198400}
   answerTmp: {fileID: 2017233491430873991}
   maxAnswerStringLength: 12
+  displayDuration: 1.5
+  anim: {fileID: 2045359170}
+--- !u!95 &2045359170
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017233490586422443}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6fbbd89d9254a8c4086bc867111c8240, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2017233491430873989
 GameObject:
   m_ObjectHideFlags: 0
