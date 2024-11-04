@@ -304,6 +304,60 @@ PlayableDirector:
     value: {fileID: 2124137150}
   m_ExposedReferences:
     m_References: []
+--- !u!1 &210482845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 210482847}
+  - component: {fileID: 210482846}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &210482846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210482845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abd7f32b69c44d4aa21edad6f40bd79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffectMax: 5
+  soundEffectInitialVolume: 0.5
+  soundMusicInitialVolume: 0.5
+  soundMusicFadeInTime: 0
+  soundMusicFadeOutTime: 3
+  soundMusicIntervalTime: 0
+  audioMixerGroupSe: {fileID: -59416016782203603, guid: 7a5d34a712bac5a4fa3d9c26eaf33bf0, type: 2}
+  audioMixerGroupBgm: {fileID: -2204507439614916650, guid: 7a5d34a712bac5a4fa3d9c26eaf33bf0, type: 2}
+  soundEffectClip: []
+  soundMusicClip: []
+--- !u!4 &210482847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210482845}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &293538974
 GameObject:
   m_ObjectHideFlags: 0
@@ -3707,7 +3761,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1218609927
 MonoBehaviour:
@@ -6240,40 +6294,8 @@ PrefabInstance:
       propertyPath: inputManager
       value: 
       objectReference: {fileID: 1625760092}
-    - target: {fileID: 3947252399708275984, guid: da01f39aa4af0324c8e5a13a4e5cf7e1, type: 3}
-      propertyPath: reviveInterval
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3947252399708275991, guid: da01f39aa4af0324c8e5a13a4e5cf7e1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da01f39aa4af0324c8e5a13a4e5cf7e1, type: 3}
---- !u!1 &3947252399617252741 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3947252399911162969, guid: da01f39aa4af0324c8e5a13a4e5cf7e1, type: 3}
-  m_PrefabInstance: {fileID: 3947252399617252740}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3947252399617252742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3947252399617252741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 950cef00c3295d747947e7749ac84607, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraObj: {fileID: 3947252399617252741}
-  status:
-    obj: {fileID: 1966082538}
-  duration: 0.5
-  strength: 1
-  vibrato: 10
-  randomness: 90
 --- !u!1001 &4160207661268639124
 PrefabInstance:
   m_ObjectHideFlags: 0
