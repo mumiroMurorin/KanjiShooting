@@ -30,6 +30,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] WaveStatus[] waveStatuses;
     [SerializeField] Transform[] spawnPoints;
     [SerializeField] QuestionFilter questionFilter;
+    [SerializeField] Sound.BGM_Type bgmType;
 
     //WAVE終了時のコールバック
     private Subject<Unit> onEndWaveSubject = new Subject<Unit>();
@@ -81,6 +82,7 @@ public class WaveManager : MonoBehaviour
     public void StartWave() 
     {
         isWorking = true;
+        Sound.SoundManager.Instance.PlayBGM(bgmType); //BGMの再生
     }
 
     /// <summary>
@@ -148,6 +150,8 @@ public class WaveManager : MonoBehaviour
     {
         //コールバック発火
         onEndWaveSubject.OnNext(Unit.Default);
+        //再生停止
+        Sound.SoundManager.Instance.StopBGM(true);
     }
 
     /// <summary>

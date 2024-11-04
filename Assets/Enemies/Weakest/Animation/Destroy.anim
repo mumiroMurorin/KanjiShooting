@@ -614,6 +614,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0
+    functionName: PlayOnShot
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: c0a5167e331bdbd418ebc409f792c147, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.98333335
     functionName: DestroyTrigger
     data: 

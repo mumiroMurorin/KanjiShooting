@@ -757,6 +757,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0
+    functionName: PlayOnShot
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: d38e9510ac8b78f4b99f6ce26a32ccf5, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1
     functionName: PlayParticle
     data: 
@@ -776,6 +783,13 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0.5
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: PlayOnShot
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: beb3f711d8da0534db761ec59f3e3f90, type: 3}
+    floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1.5

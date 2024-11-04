@@ -313,7 +313,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 210482847}
-  - component: {fileID: 210482846}
+  - component: {fileID: 210482848}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -321,28 +321,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &210482846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 210482845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4abd7f32b69c44d4aa21edad6f40bd79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundEffectMax: 5
-  soundEffectInitialVolume: 0.5
-  soundMusicInitialVolume: 0.5
-  soundMusicFadeInTime: 0
-  soundMusicFadeOutTime: 3
-  soundMusicIntervalTime: 0
-  audioMixerGroupSe: {fileID: -59416016782203603, guid: 7a5d34a712bac5a4fa3d9c26eaf33bf0, type: 2}
-  audioMixerGroupBgm: {fileID: -2204507439614916650, guid: 7a5d34a712bac5a4fa3d9c26eaf33bf0, type: 2}
-  soundEffectClip: []
-  soundMusicClip: []
 --- !u!4 &210482847
 Transform:
   m_ObjectHideFlags: 0
@@ -358,6 +336,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &210482848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210482845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f89c36a2e7e2454bb3cfadcd5b905a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BGM_Volume: 1
+  SE_Volume: 1
+  BGMFadeInDuration: 0
+  BGMFadeOutDuration: 3
+  BGMCrossFadeDuration: 2
+  Mute: 0
+  bgmClips:
+  - type: 100
+    clip: {fileID: 8300000, guid: 88fb815b48fa17d48bf3335c08e87ade, type: 3}
+  - type: 101
+    clip: {fileID: 8300000, guid: d11939d50f2f46d4f81cd681561f19a4, type: 3}
+  - type: 102
+    clip: {fileID: 8300000, guid: 0be335f63188b1b4caabf45569c8fbfa, type: 3}
+  seClips: []
+  audioMixerGroupSE: {fileID: 0}
+  audioMixerGroupBGM: {fileID: 0}
 --- !u!1 &293538974
 GameObject:
   m_ObjectHideFlags: 0
@@ -2674,7 +2680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 30
-  spawnInterval: 0.5
+  spawnInterval: 2
   waveStatuses:
   - spawner: {fileID: 309780532}
     curve:
@@ -2719,6 +2725,7 @@ MonoBehaviour:
   - {fileID: 44724833}
   - {fileID: 1019345496}
   questionFilter: {fileID: 0}
+  bgmType: 101
 --- !u!4 &832095745
 Transform:
   m_ObjectHideFlags: 0
@@ -3417,6 +3424,7 @@ MonoBehaviour:
   - {fileID: 44724833}
   - {fileID: 1019345496}
   questionFilter: {fileID: 0}
+  bgmType: 100
 --- !u!114 &1133433994 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3947252398550960398, guid: da01f39aa4af0324c8e5a13a4e5cf7e1, type: 3}
