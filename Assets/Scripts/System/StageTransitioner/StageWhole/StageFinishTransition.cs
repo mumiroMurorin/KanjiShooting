@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
-using UniRx;
+using UnityEngine.Playables;
 
-public class StageFailedStartTransition : IStagePhaseTransitioner
+public class StageFinishTransition : IStagePhaseTransitioner
 {
-    public StageFailedStartTransition()
+    public StageFinishTransition()
     {
-       
     }
 
     public async UniTask ExecuteAsync(CancellationToken token)
     {
-        Debug.Log("【System】GameOver処理開始");
         ScoreManager.Instance.RecordSurvivalTimeScoreForUnityRoom();
 
-        await UniTask.Delay(1, cancellationToken: token);
+        //ステージ終了まで待ち
+        await UniTask.WaitForSeconds(0.1f, cancellationToken: token);
+        Debug.Log("【System】ステージ終了");
     }
 }

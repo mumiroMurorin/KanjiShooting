@@ -66,6 +66,8 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
             stagePhaseTransitioners.Add(new WaveFinishEffectTransition(timelineManager.GetWaveFinishPlayableDirector()));
         }
 
+        //ステージ終了
+        stagePhaseTransitioners.Add(new StageFinishTransition());
         //ステージ終了演出
         stagePhaseTransitioners.Add(new StageFinishEffectTransition(timelineManager.GetStageFinishPlayableDirector()));
 

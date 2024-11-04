@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using unityroom.Api;
 
 public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 {
@@ -21,6 +22,11 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
     public void AddTime(float value) 
     {
         timeCount.Value += value;
+    }
+    public void RecordSurvivalTimeScoreForUnityRoom()
+    {
+        Debug.Log("【System】UnityRoomにスコア送信");
+        UnityroomApiClient.Instance.SendScore(1, timeCount.Value, ScoreboardWriteMode.HighScoreAsc);
     }
 
     //漢字レコード
