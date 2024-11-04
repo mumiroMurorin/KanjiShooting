@@ -5,22 +5,24 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine.Playables;
 
-public class StageFinishEffectTransition : IStagePhaseTransitioner
+public class StageStartEffectTransition : IStagePhaseTransitioner
 {
-    PlayableDirector finishEffectDirector;
+    PlayableDirector startEffectDirector;
 
-    public StageFinishEffectTransition(PlayableDirector director)
+    public StageStartEffectTransition(PlayableDirector director)
     {
-        finishEffectDirector = director;
+        startEffectDirector = director;
     }
 
     public async UniTask ExecuteAsync(CancellationToken token)
     {
-        //ステージ終了演出
-        finishEffectDirector.Play();
+        //ステージ開始演出
+        startEffectDirector.Play();
 
         //ステージ開始演出終了まで待ち
-        await UniTask.WaitUntil(() => finishEffectDirector.state != PlayState.Playing, cancellationToken: token);
-        Debug.Log("【System】ステージ終了演出終了");
+        await UniTask.WaitUntil(() => startEffectDirector.state != PlayState.Playing, cancellationToken: token);
+        StageManager.Instance.ChangeStageStatus(StageStatus.Battling);
+
+        Debug.Log("【System】ステージ開始演出終了");
     }
 }

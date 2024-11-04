@@ -9,6 +9,7 @@ public class MainUIPresenter : MonoBehaviour
     [SerializeField] PlayerHPTextView playerHPTextView;
     [SerializeField] BulletReloadGageView bulletReloadGageView;
     [SerializeField] KillCountTextView killCountTextView;
+    [SerializeField] WaveTextView waveTextView;
     [SerializeField] TimerTextView timerTextView;
     [SerializeField] DamageEffectView damageEffectView;
     [SerializeField] AnswerBoxSpawner[] answerBoxSpawners;
@@ -55,6 +56,11 @@ public class MainUIPresenter : MonoBehaviour
         // キルカウントスコア → キルカウントテキスト
         scoreManager_model.KillCountReactiveProperty
             .Subscribe(killCountTextView.OnChangeKillCount)
+            .AddTo(this.gameObject);
+
+        // Waveカウント → 経過Waveテキスト
+        scoreManager_model.WaveCountReactiveProperty
+            .Subscribe(waveTextView.OnChangeWaveCount)
             .AddTo(this.gameObject);
 
         // 経過時間 → タイマーテキスト

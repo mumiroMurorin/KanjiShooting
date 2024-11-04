@@ -3,25 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using Cysharp.Threading.Tasks;
+using System;
 using System.Threading;
 
 public class StageManager : SingletonMonoBehaviour<StageManager>
 {
     const StageSceneTag FIRST_STAGESCENE = StageSceneTag.Fighting;
+    const StageStatus FIRST_STAGESTATUS = StageStatus.Loading;
 
     [SerializeField] Transform playerTransform;
     [SerializeField] WaveManager[] waves;
-    [SerializeField] KanjiObjectSpawner kanjiSpawner;
-    [SerializeField] SerializeInterface<IQuestionSelector> questionSelector;
     [SerializeField] TimelineManager timelineManager;
 
+    //シーンステータス変更時のコールバック登録
+    public IReactiveProperty<StageStatus> CurrentStageStatusreactiveproperty { get { return currentStageStatus; } }
+
     StageSceneTransitionManager sceneTransitionManager;
+    ReactiveProperty<StageStatus> currentStageStatus;
 
     private void Start()
     {
         Initialize();
         SetPhaseTransitioner();
-        StageStart();
+        StartStage();
+    }
+
+    new private void Awake()
+    {
+        //オブザーバーの初期化
+        currentStageStatus = new ReactiveProperty<StageStatus>(FIRST_STAGESTATUS);
     }
 
     /// <summary>
@@ -34,12 +44,13 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
         //各ウェーブの初期化
         foreach (WaveManager w in waves)
         {
-            w.Initialize(playerTransform, kanjiSpawner, questionSelector.Value);
+            w.Initialize(playerTransform);
         }
 
         //スコアの初期化
         ScoreManager.Instance.KillCount = 0;
         ScoreManager.Instance.TimeCount = 0;
+        ScoreManager.Instance.WaveCount = 0;
     }
 
     /// <summary>
@@ -110,15 +121,28 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     /// ステージの開始
     /// </summary>
     /// <param name="token"></param>
-    private void StageStart()
+    private void StartStage()
     {
         sceneTransitionManager.ExecuteStageScene(FIRST_STAGESCENE);
     }
 
+    /// <summary>
+    /// ステージシーンの遷移処理
+    /// </summary>
+    /// <param name="tag"></param>
     public void ChangeStageScene(StageSceneTag tag)
     {
         Debug.Log($"【System】シーン遷移: {tag}");
         sceneTransitionManager.ExecuteStageScene(tag);
+    }
+
+    /// <summary>
+    /// ステージステータスの変更
+    /// </summary>
+    public void ChangeStageStatus(StageStatus status)
+    {
+        Debug.Log($"【System】ステータス変更: {status}");
+        currentStageStatus.Value = status; 
     }
 
     private void OnDestroy()
@@ -131,6 +155,13 @@ public enum StageSceneTag
 {
     Fighting,
     StageFailed
+}
+
+public enum StageStatus
+{
+    Loading,
+    Battling,
+    StageFinish,
 }
 
 /// <summary>

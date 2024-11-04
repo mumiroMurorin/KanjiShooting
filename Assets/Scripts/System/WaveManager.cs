@@ -29,6 +29,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] float spawnInterval;
     [SerializeField] WaveStatus[] waveStatuses;
     [SerializeField] Transform[] spawnPoints;
+    [SerializeField] KanjiObjectSpawner kanjiSpawner;
+    [SerializeField] SerializeInterface<IQuestionSelector> questionSelector;
     [SerializeField] QuestionFilter questionFilter;
     [SerializeField] Sound.BGM_Type bgmType;
 
@@ -46,21 +48,17 @@ public class WaveManager : MonoBehaviour
     float time;
     float intervalCount;
     Transform playerTransform;
-    KanjiObjectSpawner kanjiSpawner;
-    IQuestionSelector questionSelector;
     Vector3[] spawnPositions;
 
     /// <summary>
     /// 初期化
     /// </summary>
-    public void Initialize(Transform playerTransform, KanjiObjectSpawner kanjiSpawner, IQuestionSelector questionSelector)
+    public void Initialize(Transform playerTransform)
     {
         time = 0;
         intervalCount = float.MaxValue;
 
         this.playerTransform = playerTransform;
-        this.kanjiSpawner = kanjiSpawner;
-        this.questionSelector = questionSelector;
 
         //スポーンポイントの設定
         spawnPositions = new Vector3[spawnPoints.Length];
@@ -134,7 +132,7 @@ public class WaveManager : MonoBehaviour
             for (int spawnNum = 0; spawnNum < wave.GetSpawnNum(TimeRatio); spawnNum++)
             {
                 //問題の選定
-                QuestionData data = questionSelector.GetQuestionData(questionFilter);
+                QuestionData data = questionSelector.Value.GetQuestionData(questionFilter);
                 //漢字の生成
                 GameObject kanjiObject = kanjiSpawner.SpawnKanji(data);
                 //スポーン

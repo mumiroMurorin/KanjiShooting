@@ -971,6 +971,7 @@ GameObject:
   - component: {fileID: 435783813}
   - component: {fileID: 435783815}
   - component: {fileID: 435783814}
+  - component: {fileID: 435783816}
   m_Layer: 5
   m_Name: WaveNumber
   m_TagString: Untagged
@@ -1095,6 +1096,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435783812}
   m_CullTransparentMesh: 1
+--- !u!114 &435783816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435783812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be17cd3b3cec7d44bc92d9b19b365c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmp: {fileID: 435783814}
 --- !u!1 &437227774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,9 +1416,6 @@ MonoBehaviour:
   - {fileID: 1108513689}
   - {fileID: 832095744}
   - {fileID: 2131112253}
-  kanjiSpawner: {fileID: 1378339576}
-  questionSelector:
-    obj: {fileID: 680484481}
   timelineManager: {fileID: 1657689352}
 --- !u!4 &555023128
 Transform:
@@ -2755,7 +2766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 30
-  spawnInterval: 3
+  spawnInterval: 4
   waveStatuses:
   - spawner: {fileID: 309780532}
     curve:
@@ -2808,6 +2819,9 @@ MonoBehaviour:
   - {fileID: 1646287151}
   - {fileID: 44724833}
   - {fileID: 1019345496}
+  kanjiSpawner: {fileID: 1378339576}
+  questionSelector:
+    obj: {fileID: 680484481}
   questionFilter: {fileID: 0}
   bgmType: 101
 --- !u!4 &832095745
@@ -3463,7 +3477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 30
-  spawnInterval: 4
+  spawnInterval: 5
   waveStatuses:
   - spawner: {fileID: 1996353347}
     curve:
@@ -3507,6 +3521,9 @@ MonoBehaviour:
   - {fileID: 1646287151}
   - {fileID: 44724833}
   - {fileID: 1019345496}
+  kanjiSpawner: {fileID: 1378339576}
+  questionSelector:
+    obj: {fileID: 680484481}
   questionFilter: {fileID: 0}
   bgmType: 100
 --- !u!114 &1133433994 stripped
@@ -5355,6 +5372,7 @@ MonoBehaviour:
   playerHPTextView: {fileID: 613880613}
   bulletReloadGageView: {fileID: 1827270242}
   killCountTextView: {fileID: 393315263}
+  waveTextView: {fileID: 435783816}
   timerTextView: {fileID: 1779653639}
   damageEffectView: {fileID: 1554939472}
   answerBoxSpawners:
@@ -6317,7 +6335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 60
-  spawnInterval: 2
+  spawnInterval: 3
   waveStatuses:
   - spawner: {fileID: 663652416}
     curve:
@@ -6361,6 +6379,9 @@ MonoBehaviour:
   - {fileID: 1646287151}
   - {fileID: 44724833}
   - {fileID: 1019345496}
+  kanjiSpawner: {fileID: 1378339576}
+  questionSelector:
+    obj: {fileID: 680484481}
   questionFilter: {fileID: 0}
   bgmType: 102
 --- !u!1001 &1980485475153364769
@@ -6487,6 +6508,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3947252398724912232, guid: da01f39aa4af0324c8e5a13a4e5cf7e1, type: 3}
+      propertyPath: maxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3947252398724912232, guid: da01f39aa4af0324c8e5a13a4e5cf7e1, type: 3}
+      propertyPath: HPInit
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3947252398854640387, guid: da01f39aa4af0324c8e5a13a4e5cf7e1, type: 3}
       propertyPath: m_Name
       value: Player

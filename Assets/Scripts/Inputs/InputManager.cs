@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UniRx;
 
 public class InputManager : MonoBehaviour
 {
@@ -13,18 +14,25 @@ public class InputManager : MonoBehaviour
 
     JapaneseInputHandler japaneseInputHandler = new JapaneseInputHandler();
 
+    public bool CanInput { private get; set; } = true;
+    public bool CanInputJapanese { private get; set; } = true;
+
     private void OnMoveCursor(InputAction.CallbackContext context) 
     {
+        if (!CanInput) { return; }
         onMoveCursor?.Invoke(context.ReadValue<Vector2>());
     }
 
     private void OnPushEnter(InputAction.CallbackContext context)
     {
+        if (!CanInput) { return; }
         onPushEnter?.Invoke();
     }
 
     private void OnPushBackSpace(InputAction.CallbackContext context)
     {
+        if (!CanInput) { return; }
+        if (!CanInputJapanese) { return; }
         onPushBackSpace?.Invoke();
     }
 
@@ -53,15 +61,49 @@ public class InputManager : MonoBehaviour
     private void Bind()
     {
         onPushBackSpace.AddListener(japaneseInputHandler.BackSpace);
+
+        StageManager.Instance.CurrentStageStatusreactiveproperty
+            .Where(status => status == StageStatus.Loading)
+            .Subscribe(status =>
+            {
+                CanInput = false;
+                CanInputJapanese = false;
+            })
+            .AddTo(this.gameObject);
+
+        StageManager.Instance.CurrentStageStatusreactiveproperty
+            .Where(status => status == StageStatus.Battling)
+            .Subscribe(status =>
+            {
+                CanInput = true;
+                CanInputJapanese = true;
+            })
+            .AddTo(this.gameObject);
+
+        StageManager.Instance.CurrentStageStatusreactiveproperty
+            .Where(status => status == StageStatus.StageFinish)
+            .Subscribe(status =>
+            {
+                CanInput = false;
+                CanInputJapanese = false;
+            })
+            .AddTo(this.gameObject);
     }
 
     private void Update()
     {
+        //日本語入力処理
         InputKeyBoard();
     }
 
+    /// <summary>
+    /// 日本語入力
+    /// </summary>
     private void InputKeyBoard()
     {
+        if (!CanInput) { return; }
+        if(!CanInputJapanese) { return; }
+
         // キー入力を取得
         if (!Input.anyKeyDown) { return; }
         

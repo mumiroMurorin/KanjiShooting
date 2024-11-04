@@ -15,6 +15,8 @@ public class StageFinishTransition : IStagePhaseTransitioner
     {
         ScoreManager.Instance.RecordSurvivalTimeScoreForUnityRoom();
 
+        StageManager.Instance.ChangeStageStatus(StageStatus.StageFinish);
+
         //ステージ終了まで待ち
         await UniTask.WaitForSeconds(0.1f, cancellationToken: token);
         Debug.Log("【System】ステージ終了");

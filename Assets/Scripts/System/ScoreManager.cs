@@ -6,6 +6,15 @@ using unityroom.Api;
 
 public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 {
+    //Waveêî
+    ReactiveProperty<int> waveCount = new ReactiveProperty<int>();
+    public int WaveCount { set { waveCount.Value = value; } }
+    public IReadOnlyReactiveProperty<int> WaveCountReactiveProperty { get { return waveCount; } }
+    public void IncrementWaveCount()
+    {
+        waveCount.Value++;
+    }
+
     //åÇîjêî
     ReactiveProperty<int> killCount = new ReactiveProperty<int>();
     public int KillCount { set { killCount.Value = value; } }
