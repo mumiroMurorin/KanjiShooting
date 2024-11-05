@@ -62,6 +62,7 @@ public class InputManager : MonoBehaviour
     {
         onPushBackSpace.AddListener(japaneseInputHandler.BackSpace);
 
+        //ローディング中のとき入力を受け付けない
         StageManager.Instance.CurrentStageStatusreactiveproperty
             .Where(status => status == StageStatus.Loading)
             .Subscribe(status =>
@@ -71,6 +72,7 @@ public class InputManager : MonoBehaviour
             })
             .AddTo(this.gameObject);
 
+        //バトル中のとき入力を受け付ける
         StageManager.Instance.CurrentStageStatusreactiveproperty
             .Where(status => status == StageStatus.Battling)
             .Subscribe(status =>
@@ -80,6 +82,7 @@ public class InputManager : MonoBehaviour
             })
             .AddTo(this.gameObject);
 
+        //ステージ終了時入力を受け付けない
         StageManager.Instance.CurrentStageStatusreactiveproperty
             .Where(status => status == StageStatus.StageFinish)
             .Subscribe(status =>

@@ -351,7 +351,7 @@ MonoBehaviour:
   BGM_Volume: 1
   SE_Volume: 1
   BGMFadeInDuration: 0
-  BGMFadeOutDuration: 3
+  BGMFadeOutDuration: 2
   BGMCrossFadeDuration: 2
   Mute: 0
   bgmClips:
@@ -1414,7 +1414,7 @@ MonoBehaviour:
   playerTransform: {fileID: 368886819}
   waves:
   - {fileID: 1108513689}
-  - {fileID: 832095744}
+  - {fileID: 832095746}
   - {fileID: 2131112253}
   timelineManager: {fileID: 1657689352}
 --- !u!4 &555023128
@@ -1432,7 +1432,6 @@ Transform:
   - {fileID: 1108513688}
   - {fileID: 832095745}
   - {fileID: 2131112252}
-  - {fileID: 2043100956}
   - {fileID: 680484482}
   - {fileID: 1378339577}
   - {fileID: 1657689350}
@@ -2011,7 +2010,7 @@ GameObject:
   - component: {fileID: 680484482}
   - component: {fileID: 680484483}
   m_Layer: 0
-  m_Name: QuestionSelector2
+  m_Name: QuestionSelector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2030,7 +2029,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 555023128}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &680484483
 MonoBehaviour:
@@ -2745,7 +2744,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 832095745}
-  - component: {fileID: 832095744}
+  - component: {fileID: 832095746}
   m_Layer: 0
   m_Name: Wave2
   m_TagString: Untagged
@@ -2753,77 +2752,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &832095744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832095743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed04fe00e9887804e8db0eeb520b01a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxTime: 30
-  spawnInterval: 4
-  waveStatuses:
-  - spawner: {fileID: 309780532}
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.5
-        value: 2
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1
-        value: 2
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 0
-  spawnPoints:
-  - {fileID: 1624998232}
-  - {fileID: 837383187}
-  - {fileID: 1149201446}
-  - {fileID: 1372694183}
-  - {fileID: 1624998232}
-  - {fileID: 837383187}
-  - {fileID: 1149201446}
-  - {fileID: 1372694183}
-  - {fileID: 437227775}
-  - {fileID: 1333971703}
-  - {fileID: 797646593}
-  - {fileID: 2128825295}
-  - {fileID: 1296241524}
-  - {fileID: 1646287151}
-  - {fileID: 44724833}
-  - {fileID: 1019345496}
-  kanjiSpawner: {fileID: 1378339576}
-  questionSelector:
-    obj: {fileID: 680484481}
-  questionFilter: {fileID: 0}
-  bgmType: 101
 --- !u!4 &832095745
 Transform:
   m_ObjectHideFlags: 0
@@ -2840,6 +2768,64 @@ Transform:
   m_Father: {fileID: 555023128}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &832095746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832095743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591f828c1b1ef3044bf1720ed5d8de9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 30
+  spawnPoints:
+  - {fileID: 1624998232}
+  - {fileID: 837383187}
+  - {fileID: 1149201446}
+  - {fileID: 1372694183}
+  - {fileID: 437227775}
+  - {fileID: 1333971703}
+  - {fileID: 797646593}
+  - {fileID: 2128825295}
+  - {fileID: 1296241524}
+  - {fileID: 1646287151}
+  - {fileID: 44724833}
+  - {fileID: 1019345496}
+  spawnInterval: 4
+  waveStatuses:
+  - spawner: {fileID: 309780532}
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+  questionFilter: {fileID: 0}
+  kanjiSpawner: {fileID: 1378339576}
+  questionSelector:
+    obj: {fileID: 680484481}
+  bgmType: 101
 --- !u!1 &837383186
 GameObject:
   m_ObjectHideFlags: 0
@@ -3473,10 +3459,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1108513687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed04fe00e9887804e8db0eeb520b01a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 591f828c1b1ef3044bf1720ed5d8de9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 30
+  maxTime: 10
+  spawnPoints:
+  - {fileID: 1624998232}
+  - {fileID: 837383187}
+  - {fileID: 1149201446}
+  - {fileID: 1372694183}
+  - {fileID: 437227775}
+  - {fileID: 1333971703}
+  - {fileID: 797646593}
+  - {fileID: 2128825295}
+  - {fileID: 1296241524}
+  - {fileID: 1646287151}
+  - {fileID: 44724833}
+  - {fileID: 1019345496}
   spawnInterval: 5
   waveStatuses:
   - spawner: {fileID: 1996353347}
@@ -3504,27 +3503,10 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-  spawnPoints:
-  - {fileID: 1624998232}
-  - {fileID: 837383187}
-  - {fileID: 1149201446}
-  - {fileID: 1372694183}
-  - {fileID: 1624998232}
-  - {fileID: 837383187}
-  - {fileID: 1149201446}
-  - {fileID: 1372694183}
-  - {fileID: 437227775}
-  - {fileID: 1333971703}
-  - {fileID: 797646593}
-  - {fileID: 2128825295}
-  - {fileID: 1296241524}
-  - {fileID: 1646287151}
-  - {fileID: 44724833}
-  - {fileID: 1019345496}
+  questionFilter: {fileID: 0}
   kanjiSpawner: {fileID: 1378339576}
   questionSelector:
     obj: {fileID: 680484481}
-  questionFilter: {fileID: 0}
   bgmType: 100
 --- !u!114 &1133433994 stripped
 MonoBehaviour:
@@ -4594,7 +4576,7 @@ Transform:
   m_Children:
   - {fileID: 1037490239}
   m_Father: {fileID: 555023128}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1405546161
 GameObject:
@@ -5101,7 +5083,7 @@ Transform:
   - {fileID: 340853429}
   - {fileID: 506457974}
   m_Father: {fileID: 555023128}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1657689352
 MonoBehaviour:
@@ -5863,50 +5845,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 960, y: 540}
   m_Pivot: {x: 1, y: 0}
---- !u!1 &2043100955
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2043100956}
-  - component: {fileID: 2043100957}
-  m_Layer: 0
-  m_Name: QuestionSelector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2043100956
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2043100955}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 555023128}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2043100957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2043100955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e60d2130699a10c44bced5238a521187, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2045359167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6331,42 +6269,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2131112251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed04fe00e9887804e8db0eeb520b01a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 591f828c1b1ef3044bf1720ed5d8de9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 60
-  spawnInterval: 3
-  waveStatuses:
-  - spawner: {fileID: 663652416}
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 2
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1
-        value: 4
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 0
   spawnPoints:
-  - {fileID: 1624998232}
-  - {fileID: 837383187}
-  - {fileID: 1149201446}
-  - {fileID: 1372694183}
   - {fileID: 1624998232}
   - {fileID: 837383187}
   - {fileID: 1149201446}
@@ -6379,10 +6286,37 @@ MonoBehaviour:
   - {fileID: 1646287151}
   - {fileID: 44724833}
   - {fileID: 1019345496}
+  spawnInterval: 3
+  waveStatuses:
+  - spawner: {fileID: 663652416}
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+  questionFilter: {fileID: 0}
   kanjiSpawner: {fileID: 1378339576}
   questionSelector:
     obj: {fileID: 680484481}
-  questionFilter: {fileID: 0}
   bgmType: 102
 --- !u!1001 &1980485475153364769
 PrefabInstance:

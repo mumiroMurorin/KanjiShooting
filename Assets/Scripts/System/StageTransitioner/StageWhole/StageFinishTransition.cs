@@ -13,8 +13,10 @@ public class StageFinishTransition : IStagePhaseTransitioner
 
     public async UniTask ExecuteAsync(CancellationToken token)
     {
+        //レコードの記録
         ScoreManager.Instance.RecordSurvivalTimeScoreForUnityRoom();
 
+        //ステージステータスの変更
         StageManager.Instance.ChangeStageStatus(StageStatus.StageFinish);
 
         //ステージ終了まで待ち

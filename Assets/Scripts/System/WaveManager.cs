@@ -4,35 +4,10 @@ using System;
 using UnityEngine;
 using UniRx;
 
-[System.Serializable]
-class WaveStatus
+public abstract class WaveManager : MonoBehaviour
 {
-    [SerializeField] EnemySpawner spawner;
-    [SerializeField] AnimationCurve curve;
-
-    public float GetSpawnNum(float timeRatio) { return curve.Evaluate(timeRatio); }
-
-    public void Initialize()
-    {
-        spawner.Initialize();
-    }
-
-    public void SpawnEnemy(EnemyInitializationData enemyInitializationData) 
-    { 
-        spawner.SpawnEnemy(enemyInitializationData); 
-    }
-}
-
-public class WaveManager : MonoBehaviour
-{
-    [SerializeField] float maxTime = 30f;
-    [SerializeField] float spawnInterval;
-    [SerializeField] WaveStatus[] waveStatuses;
-    [SerializeField] Transform[] spawnPoints;
-    [SerializeField] KanjiObjectSpawner kanjiSpawner;
-    [SerializeField] SerializeInterface<IQuestionSelector> questionSelector;
-    [SerializeField] QuestionFilter questionFilter;
-    [SerializeField] Sound.BGM_Type bgmType;
+    [SerializeField] protected float maxTime = 30f;
+    [SerializeField] protected Transform[] spawnPoints;
 
     //WAVE終了時のコールバック
     private Subject<Unit> onEndWaveSubject = new Subject<Unit>();
@@ -43,12 +18,11 @@ public class WaveManager : MonoBehaviour
     public IObservable<Unit> OnEndWaveFinishingAsObservable => onEndWaveFinishingSubject;
 
     //各種ステータス
-    float TimeRatio => time / maxTime;
-    bool isWorking = false;
-    float time;
-    float intervalCount;
-    Transform playerTransform;
-    Vector3[] spawnPositions;
+    protected float TimeRatio => time / maxTime;
+    protected Transform PlayerTransform;
+    protected bool isWorking = false;
+    protected float time;
+    protected float intervalCount;
 
     /// <summary>
     /// 初期化
@@ -57,45 +31,47 @@ public class WaveManager : MonoBehaviour
     {
         time = 0;
         intervalCount = float.MaxValue;
+        this.PlayerTransform = playerTransform;
 
-        this.playerTransform = playerTransform;
+        Bind();
+        AfterInitialize();
+    }
 
-        //スポーンポイントの設定
-        spawnPositions = new Vector3[spawnPoints.Length];
-        for (int i = 0; i < spawnPoints.Length; i++)
-        {
-            spawnPositions[i] = spawnPoints[i].position;
-        }
+    protected abstract void AfterInitialize();
 
-        //スポナーの初期化
-        foreach (WaveStatus w in waveStatuses)
-        {
-            w.Initialize();
-        }
+    private void Bind()
+    {
+        //ステージが終了したときWaveを停止する
+        StageManager.Instance.CurrentStageStatusreactiveproperty
+            .Where(status => status == StageStatus.StageFinish)
+            .Subscribe(status => { isWorking = false; })
+            .AddTo(this.gameObject);
     }
 
     /// <summary>
-    /// Wave開始
+    /// Wave開始時の処理
     /// </summary>
-    public void StartWave() 
-    {
-        isWorking = true;
-        Sound.SoundManager.Instance.PlayBGM(bgmType); //BGMの再生
-    }
+    public abstract void StartWave();
 
     /// <summary>
-    /// Wave終了
+    /// Wave終了時の処理
     /// </summary>
-    public void FinishWave()
-    {
-        isWorking = false;
-        EndOfWaveFinish();
-    }
+    public abstract void FinishWave();
+
+    /// <summary>
+    /// 敵のスポーン
+    /// </summary>
+    protected abstract void SpawnEnemy();
+
+    /// <summary>
+    /// アップデート後の処理
+    /// </summary>
+    protected abstract void AfterUpdate();
 
     /// <summary>
     /// 時間の更新に伴う処理
     /// </summary>
-    private void Update()
+    protected virtual void Update()
     {
         if (!isWorking) { return; }
 
@@ -104,78 +80,25 @@ public class WaveManager : MonoBehaviour
         intervalCount += Time.deltaTime;
         ScoreManager.Instance.AddTime(Time.deltaTime);
 
-        //敵をスポーンさせる
-        if (intervalCount > spawnInterval) 
-        {
-            intervalCount = 0;
-            SpawnEnemy();
-        }
-
-        //Wave終了
-        if (time > maxTime)
-        {
-            EndOfWave();
-        }
-    }
-
-    /// <summary>
-    /// 敵のスポーン
-    /// </summary>
-    private void SpawnEnemy()
-    {
-        if (questionSelector == null) { return; }
-
-        for (int i = 0; i < waveStatuses.Length; i++)
-        {
-            //ウェーブ内の敵の数毎
-            WaveStatus wave = waveStatuses[i];
-            for (int spawnNum = 0; spawnNum < wave.GetSpawnNum(TimeRatio); spawnNum++)
-            {
-                //問題の選定
-                QuestionData data = questionSelector.Value.GetQuestionData(questionFilter);
-                //漢字の生成
-                GameObject kanjiObject = kanjiSpawner.SpawnKanji(data);
-                //スポーン
-                wave.SpawnEnemy(GenerateEnemyInitializationData(kanjiObject, data));
-            }
-        }
+        //それぞれの処理へ
+        AfterUpdate();
     }
 
     /// <summary>
     /// WAVE終了時
     /// </summary>
-    private void EndOfWave()
+    protected void EndOfWave()
     {
         //コールバック発火
         onEndWaveSubject.OnNext(Unit.Default);
-        //再生停止
-        Sound.SoundManager.Instance.StopBGM(true);
     }
 
     /// <summary>
     /// WAVE終了処理完了時
     /// </summary>
-    private void EndOfWaveFinish()
+    protected void EndOfWaveFinish()
     {
         //コールバック発火
         onEndWaveFinishingSubject.OnNext(Unit.Default);
-    }
-
-    private EnemyInitializationData GenerateEnemyInitializationData(GameObject kanjiObject, QuestionData questionData)
-    {
-        EnemyInitializationData enemyInitializationData = new EnemyInitializationData
-        {
-            spawnPoint = SelectionSpawnpoint(),
-            target = playerTransform,
-            kanjiObject = kanjiObject,
-            questionData = questionData
-        };
-
-        return enemyInitializationData;
-    }
-
-    private Transform SelectionSpawnpoint()
-    {
-        return spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
     }
 }

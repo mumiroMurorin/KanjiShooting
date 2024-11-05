@@ -6,5 +6,5 @@ public interface IEnemy
 {
     public abstract void Initialize(EnemyInitializationData initialData);
 
-    //public GameObject gameObject { get; }
+    public abstract void Despawn();
 }

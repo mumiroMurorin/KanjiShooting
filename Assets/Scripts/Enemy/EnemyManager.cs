@@ -52,6 +52,14 @@ public abstract class EnemyManager : MonoBehaviour, IEnemy, IDamager
     }
 
     /// <summary>
+    /// デスポーン(消失)
+    /// </summary>
+    public virtual void Despawn() 
+    {
+        Destroy(this.gameObject);
+    }
+
+    /// <summary>
     /// プレイヤーにダメージを与える
     /// </summary>
     /// <param name="status"></param>

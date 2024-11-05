@@ -60,6 +60,13 @@ public class WeakestEnemyManager : EnemyManager
         else { Destroy(this.gameObject); }
     }
 
+    public override void Despawn()
+    {
+        //デスポーンアニメーション
+        if (animator) { animator.SetTrigger("Despawn"); }
+        else { Destroy(this.gameObject); }
+    }
+
     private void SetOutline()
     {
         Outline outline = kanjiObject.AddComponent<Outline>();
