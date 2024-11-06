@@ -7,6 +7,7 @@ public class GeneralBulletController : BulletController
     public override void Shoot()
     {
         isShooted = true;
+        rb.isKinematic = false;
         rb.AddForce(this.transform.forward * KanjiStatus.Value.Speed.Value, ForceMode.Acceleration);
     }
 }

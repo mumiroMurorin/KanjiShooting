@@ -14,6 +14,11 @@ public abstract class BulletController : MonoBehaviour, IDamager
 
     public abstract void Shoot();
 
+    protected virtual void Start()
+    {
+        rb.isKinematic = true;
+    }
+
     /// <summary>
     /// 漢字オブジェクトにダメージを与える
     /// </summary>

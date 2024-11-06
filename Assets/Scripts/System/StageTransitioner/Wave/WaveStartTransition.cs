@@ -17,8 +17,6 @@ public class WaveStartTransition : IStagePhaseTransitioner
     public async UniTask ExecuteAsync(CancellationToken token)
     {
         Debug.Log("【System】Wave開始");
-        //Waveカウントを更新
-        ScoreManager.Instance.IncrementWaveCount();
 
         //WAVE終了時のコールバックを購読
         bool isEndOfWave = false;

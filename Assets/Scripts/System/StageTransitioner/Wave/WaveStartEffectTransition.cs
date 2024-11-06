@@ -17,6 +17,9 @@ public class WaveStartEffectTransition : IStagePhaseTransitioner
 
     public async UniTask ExecuteAsync(CancellationToken token)
     {
+        //Waveカウントを更新
+        ScoreManager.Instance.IncrementWaveCount();
+
         //ウェーブ開始演出
         waveStartDirector.Play();
 

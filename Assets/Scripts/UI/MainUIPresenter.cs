@@ -12,6 +12,8 @@ public class MainUIPresenter : MonoBehaviour
     [SerializeField] WaveTextView waveTextView;
     [SerializeField] TimerTextView timerTextView;
     [SerializeField] DamageEffectView damageEffectView;
+    [SerializeField] PreviousWaveView previousWaveView;
+    [SerializeField] NextWaveView nextWaveView;
     [SerializeField] AnswerBoxSpawner[] answerBoxSpawners;
 
     [SerializeField] SerializeInterface<IStatus> playerStatus_model;
@@ -61,6 +63,14 @@ public class MainUIPresenter : MonoBehaviour
         // Waveカウント → 経過Waveテキスト
         scoreManager_model.WaveCountReactiveProperty
             .Subscribe(waveTextView.OnChangeWaveCount)
+            .AddTo(this.gameObject);
+
+        scoreManager_model.WaveCountReactiveProperty
+            .Subscribe(count => 
+            {
+                previousWaveView.OnChangePreviousWave(count);
+                nextWaveView.OnChangePreviousWave(count);
+            })
             .AddTo(this.gameObject);
 
         // 経過時間 → タイマーテキスト
