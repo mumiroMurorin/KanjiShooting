@@ -5,62 +5,44 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UniRx;
 
-public class InputManager : MonoBehaviour
+public class InputManager : MonoBehaviour, ICanInput
 {
-    [SerializeField] UnityEvent<Vector2> onMoveCursor;
-    [SerializeField] UnityEvent onPushEnter;
-    [SerializeField] UnityEvent onPushBackSpace;
-    [SerializeField] UnityEvent<string> onChangeAnswer;
+    [SerializeReference, SubclassSelector] IInputHandler[] inputHandlers;
 
-    JapaneseInputHandler japaneseInputHandler = new JapaneseInputHandler();
-
-    public bool CanInput { private get; set; } = true;
-    public bool CanInputJapanese { private get; set; } = true;
-
-    private void OnMoveCursor(InputAction.CallbackContext context) 
-    {
-        if (!CanInput) { return; }
-        onMoveCursor?.Invoke(context.ReadValue<Vector2>());
-    }
-
-    private void OnPushEnter(InputAction.CallbackContext context)
-    {
-        if (!CanInput) { return; }
-        onPushEnter?.Invoke();
-    }
-
-    private void OnPushBackSpace(InputAction.CallbackContext context)
-    {
-        if (!CanInput) { return; }
-        if (!CanInputJapanese) { return; }
-        onPushBackSpace?.Invoke();
-    }
+    public bool CanInput { get; set; } = true;
+    public bool CanInputJapanese { get; set; } = true;
 
     private PlayerInputs gameInputs;
 
     private void Awake()
     {
+        Initialze();
         Bind();
+    }
+
+    private void Initialze()
+    {
+        gameInputs = new PlayerInputs();
+
+        // 各種ハンドラーの初期化
+        foreach (IInputHandler handler in inputHandlers)
+        {
+            handler.Initialize(this);
+        }
 
         //カーソルの非表示化
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-        gameInputs = new PlayerInputs();
-
-        gameInputs.Player.Move.started += OnMoveCursor;
-        gameInputs.Player.Move.performed += OnMoveCursor;
-
-        gameInputs.Player.Attack.started += OnPushEnter;
-
-        gameInputs.Player.BackSpace.started += OnPushBackSpace;
 
         gameInputs.Enable();
     }
 
     private void Bind()
     {
-        onPushBackSpace.AddListener(japaneseInputHandler.BackSpace);
+        foreach (IInputHandler handler in inputHandlers)
+        {
+            handler.Bind(gameInputs);
+        }
 
         //ローディング中のとき入力を受け付けない
         StageManager.Instance.CurrentStageStatusreactiveproperty
@@ -93,45 +75,164 @@ public class InputManager : MonoBehaviour
             .AddTo(this.gameObject);
     }
 
-    private void Update()
-    {
-        //日本語入力処理
-        InputKeyBoard();
-    }
-
-    /// <summary>
-    /// 日本語入力
-    /// </summary>
-    private void InputKeyBoard()
-    {
-        if (!CanInput) { return; }
-        if(!CanInputJapanese) { return; }
-
-        // キー入力を取得
-        if (!Input.anyKeyDown) { return; }
-        
-        foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
-        {
-            if (!Input.GetKeyDown(keyCode)) { continue; }
-
-            japaneseInputHandler.OnKeyInput(keyCode);
-        }
-
-        //Debug.Log("現在の入力: " + japaneseInputHandler.GetResult());
-        onChangeAnswer.Invoke(japaneseInputHandler.GetResult());
-    }
-
-    /// <summary>
-    /// 入力日本語のリセット
-    /// </summary>
-    public void ClearInput()
-    {
-        japaneseInputHandler.Clear();
-    }
-
     private void OnDestroy()
     {
         gameInputs?.Dispose();
     }
 
+}
+
+public interface ICanInput
+{
+    public bool CanInput { get; }
+    public bool CanInputJapanese { get; }
+}
+
+
+/// <summary>
+/// 入力に対するコールバックを実装
+/// </summary>
+public interface IInputHandler
+{
+    void Initialize(ICanInput handler);
+
+    void Bind(PlayerInputs inputs);
+}
+
+public class PlayerRotateHandler : IInputHandler
+{
+    [SerializeField] UnityEvent<Vector2> onInput;
+    ICanInput permit;
+
+    public void Initialize(ICanInput handler)
+    {
+        permit = handler;
+    }
+
+    public void Bind(PlayerInputs inputs)
+    {
+        inputs.Player.Rotate.started += OnAction;
+    }
+
+    private void OnAction(InputAction.CallbackContext context)
+    {
+        if (!permit.CanInput) { return; }
+
+        // このままだと縦横が逆になってしまうので反転
+        Vector2 vector2 = context.ReadValue<Vector2>();
+        onInput?.Invoke(new Vector2(-vector2.y, vector2.x));
+    }
+}
+
+public class AttackHandler : IInputHandler
+{
+    [SerializeField] UnityEvent onInput;
+    ICanInput permit;
+
+    public void Initialize(ICanInput handler)
+    {
+        permit = handler;
+    }
+
+    public void Bind(PlayerInputs inputs)
+    {
+        inputs.Player.Attack.started += OnAction;
+    }
+
+    private void OnAction(InputAction.CallbackContext context)
+    {
+        if (!permit.CanInput) { return; }
+
+        onInput?.Invoke();
+    }
+}
+
+public class BackSpaceHandler : IInputHandler
+{
+    [SerializeField] UnityEvent onInput;
+    ICanInput permit;
+
+    public void Initialize(ICanInput handler)
+    {
+        permit = handler;
+    }
+
+    public void Bind(PlayerInputs inputs)
+    {
+        inputs.Player.BackSpace.started += OnAction;
+    }
+
+    private void OnAction(InputAction.CallbackContext context)
+    {
+        if (!permit.CanInput) { return; }
+        if (!permit.CanInputJapanese) { return; }
+
+        onInput?.Invoke();
+    }
+}
+
+public class RotatePermitHandler : IInputHandler
+{
+    [SerializeField] UnityEvent onStarted;
+    [SerializeField] UnityEvent onCanceled;
+    ICanInput permit;
+
+    public void Initialize(ICanInput handler)
+    {
+        permit = handler;
+    }
+
+    public void Bind(PlayerInputs inputs)
+    {
+        inputs.Player.RotatePermit.started += OnStarted;
+        inputs.Player.RotatePermit.canceled += OnCanceled;
+    }
+
+    private void OnStarted(InputAction.CallbackContext context)
+    {
+        if (!permit.CanInput) { return; }
+
+        onStarted?.Invoke();
+    }
+
+    private void OnCanceled(InputAction.CallbackContext context)
+    {
+        if (!permit.CanInput) { return; }
+
+        onCanceled?.Invoke();
+    }
+}
+
+public class PlayerRotateByKeyInputHandler : IInputHandler
+{
+    [SerializeField] UnityEvent<Vector2> onInput;
+    ICanInput permit;
+
+    public void Initialize(ICanInput handler)
+    {
+        permit = handler;
+    }
+
+    public void Bind(PlayerInputs inputs)
+    {
+        inputs.Player.RotateFromKey.performed += OnPerformed;
+        inputs.Player.RotateFromKey.canceled += OnCanceled;
+    }
+
+    private void OnPerformed(InputAction.CallbackContext context)
+    {
+        if (!permit.CanInput) { return; }
+        if (permit.CanInputJapanese) { return; }
+
+        Vector2 vector2 = context.ReadValue<Vector2>();
+        onInput?.Invoke(new Vector2(-vector2.y, vector2.x));
+    }
+
+    private void OnCanceled(InputAction.CallbackContext context)
+    {
+        if (!permit.CanInput) { return; }
+        if (permit.CanInputJapanese) { return; }
+
+        onInput?.Invoke(Vector2.zero);
+    }
 }

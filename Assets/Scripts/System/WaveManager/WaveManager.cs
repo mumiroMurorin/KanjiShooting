@@ -101,4 +101,30 @@ public abstract class WaveManager : MonoBehaviour
         //コールバック発火
         onEndWaveFinishingSubject.OnNext(Unit.Default);
     }
+
+    /// <summary>
+    /// エネミーの初期化データを生成
+    /// </summary>
+    /// <param name="kanjiObject"></param>
+    /// <param name="questionData"></param>
+    /// <returns></returns>
+    protected EnemyInitializationData GenerateEnemyInitializationData()
+    {
+        EnemyInitializationData enemyInitializationData = new EnemyInitializationData
+        {
+            spawnPoint = SelectionSpawnpoint(),
+            target = PlayerTransform,
+        };
+
+        return enemyInitializationData;
+    }
+
+    /// <summary>
+    /// スポーンポイントのランダム選出 (別クラスにすべきだが一旦)
+    /// </summary>
+    /// <returns></returns>
+    private Transform SelectionSpawnpoint()
+    {
+        return spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
+    }
 }

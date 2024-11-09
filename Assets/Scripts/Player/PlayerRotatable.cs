@@ -14,26 +14,36 @@ public class PlayerRotatable : MonoBehaviour, IRotatable
 
     private Vector3 newAngle;
 
-    private void Start()
+    private void Update()
     {
-        newAngle = playerTransform.localEulerAngles;
+        newAngle = NormalizeAngle(playerTransform.localEulerAngles);
     }
 
     /// <summary>
     /// âÒì]èàóù
     /// </summary>
     /// <param name="rotate">âÒì]Ç≥ÇπÇÈäpìx</param>
-    public void Rotate(Vector3 rotation)
+    public void Rotate(Vector2 rotation)
     {
         rotation *= magnitude;
         newAngle.y += rotation.y * (isReverseHorizontal ? -1 : 1);
         newAngle.x += rotation.x * (isReverseVertical ? -1 : 1);
+        newAngle = NormalizeAngle(newAngle);
 
-        //Debug.Log($"angle{newAngle}");
         if (0 > newAngle.x && newAngle.x < verticalAngleMax) { newAngle.x = verticalAngleMax; }
         if (0 < newAngle.x && newAngle.x > verticalAngleMin) { newAngle.x = verticalAngleMin; }
 
+        //Debug.Log($"angle{newAngle}");
+
         playerTransform.localEulerAngles = newAngle;
         mapCameraTransform.localEulerAngles = new Vector3(mapCameraTransform.eulerAngles.x, newAngle.y, 0);
+    }
+
+    private static Vector3 NormalizeAngle(Vector3 angle)
+    {
+        angle.x = Mathf.Repeat(angle.x + 180f, 360f) - 180f;
+        angle.y = Mathf.Repeat(angle.y + 180f, 360f) - 180f;
+        angle.z = Mathf.Repeat(angle.z + 180f, 360f) - 180f;
+        return angle;
     }
 }

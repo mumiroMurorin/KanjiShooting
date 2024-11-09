@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using Kanji;
 
-public class QuestionSelectorTemporary2 : MonoBehaviour, IQuestionSelector
+public class QuestionSelectorTemporary2 : IQuestionSelector
 {
+    public void Initialize() { }
+
     public QuestionData GetQuestionData(QuestionFilter filter) 
     {
         QuestionData[] datas = new QuestionData[]

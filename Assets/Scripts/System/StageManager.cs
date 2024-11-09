@@ -12,11 +12,14 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     const StageStatus FIRST_STAGESTATUS = StageStatus.Loading;
 
     [SerializeField] Transform playerTransform;
-    [SerializeField] WaveManager[] waves;
     [SerializeField] TimelineManager timelineManager;
+    [SerializeField] TextAsset kanjiCsv;
+    [SerializeField] WaveManager[] waves;
 
-    //シーンステータス変更時のコールバック登録
+    // シーンステータス変更時のコールバック登録
     public IReactiveProperty<StageStatus> CurrentStageStatusreactiveproperty { get { return currentStageStatus; } }
+
+    public TextAsset KanjiCSV { get { return kanjiCsv; } }
 
     StageSceneTransitionManager sceneTransitionManager;
     ReactiveProperty<StageStatus> currentStageStatus;

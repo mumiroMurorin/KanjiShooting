@@ -5,7 +5,7 @@ public class GeneralGunManager : GunManager
 {
     [Header("•œŠˆŠÔŠu(•b)")]
     [SerializeField] float reviveInterval;
-    [SerializeField] InputManager inputManager;
+    [SerializeField] JapaneseInputManager inputManager;
 
     public override void Shoot()
     {

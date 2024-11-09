@@ -46,9 +46,27 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Move"",
+                    ""name"": ""Rotate"",
                     ""type"": ""Value"",
                     ""id"": ""90581a93-e935-4c8f-a9c6-5de6870f6ff6"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RotatePermit"",
+                    ""type"": ""Button"",
+                    ""id"": ""d88e709d-6a7a-4230-a974-ff41f0950838"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotateFromKey"",
+                    ""type"": ""Value"",
+                    ""id"": ""ac578646-1798-462c-bdcc-936a5a4bd671"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -74,7 +92,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -88,6 +106,72 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""action"": ""BackSpace"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d8d461da-c6c4-4be4-aa04-756d06786832"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotatePermit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""195456ba-8d6a-48bc-94b7-477924706928"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateFromKey"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""4cbb82e9-f366-4957-b9a4-f1c284429e7c"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateFromKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""00db33f4-fd57-436f-8a38-3eec29fbc5fe"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateFromKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""4470140e-1ce9-49d4-bfe0-aca4a0af9bed"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateFromKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""fc500c2b-9b72-4d78-b710-f18e868ef0a7"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateFromKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -98,7 +182,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_BackSpace = m_Player.FindAction("BackSpace", throwIfNotFound: true);
-        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_Rotate = m_Player.FindAction("Rotate", throwIfNotFound: true);
+        m_Player_RotatePermit = m_Player.FindAction("RotatePermit", throwIfNotFound: true);
+        m_Player_RotateFromKey = m_Player.FindAction("RotateFromKey", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -160,14 +246,18 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_BackSpace;
-    private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_Rotate;
+    private readonly InputAction m_Player_RotatePermit;
+    private readonly InputAction m_Player_RotateFromKey;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
         public PlayerActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @BackSpace => m_Wrapper.m_Player_BackSpace;
-        public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @Rotate => m_Wrapper.m_Player_Rotate;
+        public InputAction @RotatePermit => m_Wrapper.m_Player_RotatePermit;
+        public InputAction @RotateFromKey => m_Wrapper.m_Player_RotateFromKey;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -183,9 +273,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @BackSpace.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBackSpace;
                 @BackSpace.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBackSpace;
                 @BackSpace.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBackSpace;
-                @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Rotate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
+                @Rotate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
+                @Rotate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
+                @RotatePermit.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotatePermit;
+                @RotatePermit.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotatePermit;
+                @RotatePermit.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotatePermit;
+                @RotateFromKey.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateFromKey;
+                @RotateFromKey.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateFromKey;
+                @RotateFromKey.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateFromKey;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -196,9 +292,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @BackSpace.started += instance.OnBackSpace;
                 @BackSpace.performed += instance.OnBackSpace;
                 @BackSpace.canceled += instance.OnBackSpace;
-                @Move.started += instance.OnMove;
-                @Move.performed += instance.OnMove;
-                @Move.canceled += instance.OnMove;
+                @Rotate.started += instance.OnRotate;
+                @Rotate.performed += instance.OnRotate;
+                @Rotate.canceled += instance.OnRotate;
+                @RotatePermit.started += instance.OnRotatePermit;
+                @RotatePermit.performed += instance.OnRotatePermit;
+                @RotatePermit.canceled += instance.OnRotatePermit;
+                @RotateFromKey.started += instance.OnRotateFromKey;
+                @RotateFromKey.performed += instance.OnRotateFromKey;
+                @RotateFromKey.canceled += instance.OnRotateFromKey;
             }
         }
     }
@@ -207,6 +309,8 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     {
         void OnAttack(InputAction.CallbackContext context);
         void OnBackSpace(InputAction.CallbackContext context);
-        void OnMove(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
+        void OnRotatePermit(InputAction.CallbackContext context);
+        void OnRotateFromKey(InputAction.CallbackContext context);
     }
 }

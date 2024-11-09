@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Kanji;
 
 public abstract class EnemyManager : MonoBehaviour, IEnemy, IDamager
 {

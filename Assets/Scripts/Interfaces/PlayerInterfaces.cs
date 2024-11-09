@@ -8,7 +8,7 @@ using UniRx;
 /// </summary>
 public interface IRotatable
 {
-    public void Rotate(Vector3 rotation);
+    public void Rotate(Vector2 rotation);
 }
 
 /// <summary>
