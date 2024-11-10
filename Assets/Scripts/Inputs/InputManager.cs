@@ -203,7 +203,7 @@ public class RotatePermitHandler : IInputHandler
     }
 }
 
-public class PlayerRotateByKeyInputHandler : IInputHandler
+public class PlayerRotateFromKeyInputHandler : IInputHandler
 {
     [SerializeField] UnityEvent<Vector2> onInput;
     ICanInput permit;
@@ -232,6 +232,38 @@ public class PlayerRotateByKeyInputHandler : IInputHandler
     {
         if (!permit.CanInput) { return; }
         if (permit.CanInputJapanese) { return; }
+
+        onInput?.Invoke(Vector2.zero);
+    }
+}
+
+public class PlayerRotateFromArrawHandler : IInputHandler
+{
+    [SerializeField] UnityEvent<Vector2> onInput;
+    ICanInput permit;
+
+    public void Initialize(ICanInput handler)
+    {
+        permit = handler;
+    }
+
+    public void Bind(PlayerInputs inputs)
+    {
+        inputs.Player.RotateFromArraw.performed += OnPerformed;
+        inputs.Player.RotateFromArraw.canceled += OnCanceled;
+    }
+
+    private void OnPerformed(InputAction.CallbackContext context)
+    {
+        if (!permit.CanInput) { return; }
+
+        Vector2 vector2 = context.ReadValue<Vector2>();
+        onInput?.Invoke(new Vector2(-vector2.y, vector2.x));
+    }
+
+    private void OnCanceled(InputAction.CallbackContext context)
+    {
+        if (!permit.CanInput) { return; }
 
         onInput?.Invoke(Vector2.zero);
     }

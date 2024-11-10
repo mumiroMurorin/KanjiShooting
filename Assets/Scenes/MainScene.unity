@@ -3318,7 +3318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a47bebe8b15923478d688814c8b76ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 300
+  maxTime: 60
   spawnPoints:
   - {fileID: 1624998232}
   - {fileID: 837383187}
@@ -3332,7 +3332,7 @@ MonoBehaviour:
   - {fileID: 1646287151}
   - {fileID: 44724833}
   - {fileID: 1019345496}
-  spawnInterval: 200
+  spawnInterval: 4
   kanjiSpawner: {fileID: 1378339576}
   bgmType: 100
   questionSelector:
@@ -5377,7 +5377,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputHandlers:
   - rid: 2752144889838305281
-  - rid: 2752144889838305285
+  - rid: 2752144905479651328
+  - rid: 2752144905479651329
   - rid: 2752144889838305282
   - rid: 2752144889838305283
   - rid: 2752144889838305284
@@ -5483,8 +5484,26 @@ MonoBehaviour:
                 m_StringArgument: 
                 m_BoolArgument: 1
               m_CallState: 2
-    - rid: 2752144889838305285
-      type: {class: PlayerRotateByKeyInputHandler, ns: , asm: Assembly-CSharp}
+    - rid: 2752144905479651328
+      type: {class: PlayerRotateFromKeyInputHandler, ns: , asm: Assembly-CSharp}
+      data:
+        onInput:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 1585062260}
+              m_TargetAssemblyTypeName: PlayerRotatableHold, Assembly-CSharp
+              m_MethodName: Rotate
+              m_Mode: 0
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+    - rid: 2752144905479651329
+      type: {class: PlayerRotateFromArrawHandler, ns: , asm: Assembly-CSharp}
       data:
         onInput:
           m_PersistentCalls:
