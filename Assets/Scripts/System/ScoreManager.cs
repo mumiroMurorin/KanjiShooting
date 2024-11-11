@@ -6,7 +6,12 @@ using unityroom.Api;
 
 public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 {
-    //Wave数
+    // ステージデータ
+    ReactiveProperty<StageDetailData> stageData = new ReactiveProperty<StageDetailData>();
+    public StageDetailData StageData { set { stageData.Value = value; } }
+    public IReadOnlyReactiveProperty<StageDetailData> StageDataReactiveProperty { get { return stageData; } }
+
+    // Wave数
     ReactiveProperty<int> waveCount = new ReactiveProperty<int>();
     public int WaveCount { set { waveCount.Value = value; } }
     public IReadOnlyReactiveProperty<int> WaveCountReactiveProperty { get { return waveCount; } }
@@ -15,7 +20,7 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
         waveCount.Value++;
     }
 
-    //撃破数
+    // 撃破数
     ReactiveProperty<int> killCount = new ReactiveProperty<int>();
     public int KillCount { set { killCount.Value = value; } }
     public IReadOnlyReactiveProperty<int> KillCountReactiveProperty { get { return killCount; } }
@@ -24,7 +29,7 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
         killCount.Value++;
     }
 
-    //経過時間
+    // 経過時間
     ReactiveProperty<float> timeCount = new ReactiveProperty<float>();
     public float TimeCount { set { timeCount.Value = value; } } 
     public IReadOnlyReactiveProperty<float> TimeCountreactiveProperty { get { return timeCount; } }
@@ -38,7 +43,7 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
         UnityroomApiClient.Instance.SendScore(1, timeCount.Value, ScoreboardWriteMode.HighScoreAsc);
     }
 
-    //漢字レコード
+    // 漢字レコード
     private ReactiveCollection<AnswerState> answerStates = new ReactiveCollection<AnswerState>();
     public IReadOnlyReactiveCollection<AnswerState> AnswerStatesReactiveCollection { get { return answerStates; } }
     public void AddAnswerState(AnswerState answerState) { answerStates.Add(answerState); }
