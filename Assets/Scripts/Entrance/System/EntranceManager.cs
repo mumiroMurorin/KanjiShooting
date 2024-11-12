@@ -8,15 +8,19 @@ using System.Threading;
 
 public class EntranceManager : LocalSingletonMonoBehaviour<EntranceManager>
 {
-    const MenuStatus FIRST_MENU_STATUS = MenuStatus.GameDataLoad;
+    const MenuStatus FIRST_MENU_STATUS = MenuStatus.Title;
+
+    [SerializeField] EntranceUIController uiController;
 
     MenuTransitionManager menuTransitionManager = new MenuTransitionManager();
     ReactiveProperty<MenuStatus> currentStatus = new ReactiveProperty<MenuStatus>();
+    public IReadOnlyReactiveProperty<MenuStatus> CurentStatusReactiveProperty { get { return currentStatus; } }
     CancellationTokenSource cts;
 
     private new void Awake()
     {
         Initialize();
+        SetTransitioners();
         Bind();
         SetMenuStatus(FIRST_MENU_STATUS);
     }
@@ -29,11 +33,23 @@ public class EntranceManager : LocalSingletonMonoBehaviour<EntranceManager>
     private void Bind()
     {
         // ステータス変更 → 画面遷移
-        currentStatus.Subscribe(status =>
+        CurentStatusReactiveProperty.Subscribe(status => 
             {
                 menuTransitionManager.ExecuteAsync(status, cts.Token).Forget();
             })
             .AddTo(this.gameObject);
+    }
+
+    /// <summary>
+    /// 画面遷移イベントのセット
+    /// </summary>
+    private void SetTransitioners()
+    {
+        menuTransitionManager.AddTransition(MenuStatus.Title, new TitleTransition(uiController, null));
+        menuTransitionManager.AddTransition(MenuStatus.MainMenu, new MainMenuTransition(uiController));
+        menuTransitionManager.AddTransition(MenuStatus.Option, new OptionTransition(uiController));
+        menuTransitionManager.AddTransition(MenuStatus.StageSelect, new StageSelectTransition(uiController));
+        menuTransitionManager.AddTransition(MenuStatus.Sortie, new MainSceneTransition(uiController, null));
     }
 
     /// <summary>
@@ -45,4 +61,10 @@ public class EntranceManager : LocalSingletonMonoBehaviour<EntranceManager>
         currentStatus.Value = status;
     }
 
+
+    private void OnDestroy()
+    {
+        cts?.Cancel();
+        cts?.Dispose();
+    }
 }

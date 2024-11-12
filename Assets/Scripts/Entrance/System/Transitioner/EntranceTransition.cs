@@ -7,7 +7,7 @@ namespace EntranceTransition
 {
     public enum MenuStatus
     {
-        GameDataLoad,
+        //GameDataLoad,
         Title,
         MainMenu,
         StageSelect,
