@@ -155,9 +155,11 @@ MonoBehaviour:
   animator: {fileID: 3407043886784197692}
   outlineColor: {r: 1, g: 0.40251565, b: 0.40251565, a: 0.6666667}
   outlineWidth: 3
-  strength: 1
-  vibrato: 32
-  randomness: 90
+  shakeSettings:
+    duration: 0.5
+    strength: 1
+    vibrato: 32
+    randomness: 90
 --- !u!114 &8784005092686190402
 MonoBehaviour:
   m_ObjectHideFlags: 0

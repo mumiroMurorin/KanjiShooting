@@ -49,8 +49,8 @@ MonoBehaviour:
   magnitude: 0.1
   verticalAngleMin: 60
   verticalAngleMax: -60
-  isReverseVertical: 1
-  isReverseHorizontal: 1
+  isReverseVertical: 0
+  isReverseHorizontal: 0
 --- !u!1 &1585062258
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 3947252398550960386}
   mapCameraTransform: {fileID: 3947252399319393562}
-  magnitude: 1
+  magnitude: 3
   verticalAngleMin: 60
   verticalAngleMax: -60
   isReverseVertical: 0
@@ -557,10 +557,11 @@ MonoBehaviour:
   cameraObj: {fileID: 3947252399911162969}
   status:
     obj: {fileID: 3947252398724912238}
-  duration: 0.5
-  strength: 1
-  vibrato: 50
-  randomness: 90
+  shakeSettings:
+    duration: 0.5
+    strength: 1
+    vibrato: 50
+    randomness: 90
 --- !u!114 &3947252399617252743
 MonoBehaviour:
   m_ObjectHideFlags: 0

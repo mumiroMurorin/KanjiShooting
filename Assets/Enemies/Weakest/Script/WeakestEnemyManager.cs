@@ -9,10 +9,8 @@ public class WeakestEnemyManager : EnemyManager
     [SerializeField] Color outlineColor;
     [SerializeField] float outlineWidth;
 
-    [Header("アタック時の震えパラメータ")]
-    [SerializeField] float strength = 1f;
-    [SerializeField] int vibrato = 10;
-    [SerializeField] float randomness = 90f;
+    [Header("アタック時の震え")]
+    [SerializeField] ShakeSettings shakeSettings;
 
     bool isMoving = false;
     IStatus playerStatus;
@@ -126,8 +124,8 @@ public class WeakestEnemyManager : EnemyManager
     /// <summary>
     /// 攻撃時に体を震わせるトリガー
     /// </summary>
-    public void VibrateTrigger(float shakeDuration)
+    public void VibrateTrigger()
     {
-        transform.DOShakePosition(shakeDuration, strength, vibrato, randomness, false, true);
+        shakeSettings.ApplyShake(this.transform);
     }
 }

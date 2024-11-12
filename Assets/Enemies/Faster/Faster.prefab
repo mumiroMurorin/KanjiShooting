@@ -155,9 +155,11 @@ MonoBehaviour:
   animator: {fileID: 3407043886784197692}
   outlineColor: {r: 0.4039216, g: 0.8379279, b: 1, a: 0.6666667}
   outlineWidth: 3
-  strength: 1
-  vibrato: 32
-  randomness: 90
+  shakeSettings:
+    duration: 0.5
+    strength: 1
+    vibrato: 32
+    randomness: 90
 --- !u!114 &8784005092686190402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +175,7 @@ MonoBehaviour:
   particles:
   - {fileID: 6742164059117700796}
   - {fileID: 4805127836455164133}
-  - {fileID: 8991395761866957671}
+  - {fileID: 8167290123558840616}
   - {fileID: 8991395761866957671}
   - {fileID: 3680798868664388321}
 --- !u!114 &4333566998780830166
@@ -855,6 +857,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4efcd1f91b1baa943855f34f66c84c8d, type: 3}
+--- !u!198 &8167290123558840616 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1546103368635087446, guid: 4efcd1f91b1baa943855f34f66c84c8d, type: 3}
+  m_PrefabInstance: {fileID: 7218381565783479166}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8774137057491775018 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2156987691280104788, guid: 4efcd1f91b1baa943855f34f66c84c8d, type: 3}

@@ -1,19 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using System;
-using TMPro;
+using DG.Tweening;
 
 public class PlayerHPBarView : MonoBehaviour
 {
+    [Header("HPGage親オブジェクト")]
+    [SerializeField] Transform parentTransform;
+
     [Header("HPSlider")]
     [SerializeField] Slider slider;
 
-    //答えが変わったときのメソッド
+    [Header("揺れステータス")]
+    [SerializeField] ShakeSettings shakeSettings;
+
+    /// <summary>
+    /// HPが変わったとき
+    /// </summary>
+    /// <param name="value"></param>
     public void OnChangeHP(float value)
     {
+        // HPが減ったとき震わせる
+        if (slider.value > value)
+        {
+            shakeSettings.ApplyShake(parentTransform);
+        }
+
         slider.value = value;
     }
 }

@@ -17,7 +17,6 @@ public class MainUIPresenter : MonoBehaviour
     [SerializeField] AnswerBoxSpawner[] answerBoxSpawners;
 
     [SerializeField] SerializeInterface<IStatus> playerStatus_model;
-    [SerializeField] ScoreManager scoreManager_model;
     [SerializeField] GunManager gunManager_model;
 
     private void Start()
@@ -56,16 +55,16 @@ public class MainUIPresenter : MonoBehaviour
             .AddTo(this.gameObject);
 
         // キルカウントスコア → キルカウントテキスト
-        scoreManager_model.KillCountReactiveProperty
+        ScoreManager.Instance.KillCountReactiveProperty
             .Subscribe(killCountTextView.OnChangeKillCount)
             .AddTo(this.gameObject);
 
         // Waveカウント → 経過Waveテキスト
-        scoreManager_model.WaveCountReactiveProperty
+        ScoreManager.Instance.WaveCountReactiveProperty
             .Subscribe(waveTextView.OnChangeWaveCount)
             .AddTo(this.gameObject);
 
-        scoreManager_model.WaveCountReactiveProperty
+        ScoreManager.Instance.WaveCountReactiveProperty
             .Subscribe(count => 
             {
                 previousWaveView.OnChangePreviousWave(count);
@@ -74,12 +73,12 @@ public class MainUIPresenter : MonoBehaviour
             .AddTo(this.gameObject);
 
         // 経過時間 → タイマーテキスト
-        scoreManager_model.TimeCountreactiveProperty
+        ScoreManager.Instance.TimeCountreactiveProperty
             .Subscribe(timerTextView.OnChangeTimeCount)
             .AddTo(this.gameObject);
 
         // 回答 → 解答ログ
-        scoreManager_model.AnswerStatesReactiveCollection
+        ScoreManager.Instance.AnswerStatesReactiveCollection
             .ObserveAdd().Subscribe(addState => SpawnAnswerBox(addState.Value))
             .AddTo(this);
     }
