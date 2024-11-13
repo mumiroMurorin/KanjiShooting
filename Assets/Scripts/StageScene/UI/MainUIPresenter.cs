@@ -49,6 +49,11 @@ public class MainUIPresenter : MonoBehaviour
             .Subscribe(playerHPTextView.OnChangeHP)
             .AddTo(this.gameObject);
 
+        // プレイヤーHP → HPテキスト色
+        playerStatus_model.Value.HPNormalized
+            .Subscribe(playerHPTextView.OnChangeHP)
+            .AddTo(this.gameObject);
+
         // 弾リロード時間 → リロードUI
         gunManager_model.ReloadValue
             .Subscribe(bulletReloadGageView.OnChangeReloadValue)
