@@ -14,4 +14,12 @@ public class ParticleController : MonoBehaviour
 
         particles[index].Play();
     }
+
+    public void PlayParticle(int[] indexes)
+    {
+        foreach(int index in indexes)
+        {
+            PlayParticle(index);
+        }
+    }
 }

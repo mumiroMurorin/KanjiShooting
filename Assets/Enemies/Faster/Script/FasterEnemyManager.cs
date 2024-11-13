@@ -9,6 +9,10 @@ public class FasterEnemyManager : EnemyManager
     [SerializeField] Color outlineColor;
     [SerializeField] float outlineWidth;
 
+    [Header("タイヤ")]
+    [SerializeField] GameObject wheelRight;
+    [SerializeField] GameObject wheelLeft;
+
     [Header("アタック時の震え")]
     [SerializeField] ShakeSettings shakeSettings;
 
@@ -49,6 +53,7 @@ public class FasterEnemyManager : EnemyManager
     {
         this.gameObject.transform.LookAt(TargetTransform);
         SetOutline();
+        SetWheel();
     }
 
     protected override void OnDeath()
@@ -71,6 +76,18 @@ public class FasterEnemyManager : EnemyManager
         outline.OutlineColor = outlineColor;
         outline.OutlineWidth = outlineWidth;
         outline.OutlineMode = Outline.Mode.OutlineVisible;
+    }
+
+    /// <summary>
+    /// タイヤの位置を調整
+    /// </summary>
+    private void SetWheel()
+    {
+        float center = kanjiCollider.center.x;
+        float width = kanjiCollider.size.x;
+
+        wheelRight.transform.localPosition = new Vector3(center + width / 2f, wheelRight.transform.localPosition.y, wheelRight.transform.localPosition.z);
+        wheelLeft.transform.localPosition = new Vector3(center - width / 2f, wheelLeft.transform.localPosition.y, wheelLeft.transform.localPosition.z);
     }
 
     protected override void FixedUpdate()

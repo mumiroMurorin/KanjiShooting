@@ -10,6 +10,7 @@ public abstract class EnemyManager : MonoBehaviour, IEnemy, IDamager
     [SerializeField] protected Transform kanjiTransform;
     
     protected GameObject kanjiObject;
+    protected BoxCollider kanjiCollider;
     protected Transform TargetTransform;
     protected QuestionData questionData;
 
@@ -48,6 +49,7 @@ public abstract class EnemyManager : MonoBehaviour, IEnemy, IDamager
     private void SetKanjiObject(GameObject kanjiObject)
     {
         this.kanjiObject = kanjiObject;
+        kanjiCollider = kanjiObject.GetComponentInChildren<BoxCollider>();
         kanjiObject.transform.position = kanjiTransform.position;
         kanjiObject.transform.SetParent(kanjiTransform);
     }
