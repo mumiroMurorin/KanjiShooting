@@ -246,3 +246,11 @@ public interface IWaveStatus
 
     public void DespawnEnemy();
 }
+
+/// <summary>
+/// ƒXƒ|[ƒ“êŠ‚Ìî•ñ‚ğæ‚èˆµ‚¤
+/// </summary>
+public interface ISpawnpointSelector
+{
+    public Transform GetSpawnPoint();
+}

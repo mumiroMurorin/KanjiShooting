@@ -119,7 +119,7 @@ public class QuestionSelectorFromCSV : IQuestionSelector
         QuestionData data = new QuestionData();
         if (array.Length > KANJI_RAW) { data.kanji = array[KANJI_RAW]; }
         if (array.Length > FURIGANA_RAW) { data.furigana = array[FURIGANA_RAW]; }
-        if (array.Length > ANSWERS_RAW) { data.answers = array[ANSWERS_RAW].Split(","); }
+        if (array.Length > ANSWERS_RAW) { data.answers = array[ANSWERS_RAW].Split("A"); }
         if (array.Length > LEVEL_RAW) {
             try
             {

@@ -2025,7 +2025,7 @@ ParticleSystem:
     radial:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 55
+      scalar: 70
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -6913,7 +6913,7 @@ ParticleSystem:
     radial:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 80
+      scalar: 84
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -9818,7 +9818,7 @@ MonoBehaviour:
   bombCollider: {fileID: 7725871791671266884}
   status:
     obj: {fileID: 2350496408278928389}
-  bombSizeMax: 20
+  bombSizeMax: 25
   bombExtendDuration: 0.5
   bombDuration: 0.2
   killDuration: 3
@@ -9834,7 +9834,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -9911,7 +9911,7 @@ Transform:
   m_GameObject: {fileID: 5342371356621077274}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4945420569063504983}
@@ -10006,7 +10006,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7940075874645222325}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10268,7 +10268,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 8
+      scalar: 9
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10960,7 +10960,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 150
+        scalar: 160
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -11355,8 +11355,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 0.5882353}
-        key1: {r: 1, g: 1, b: 1, a: 0.5882353}
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 1, g: 1, b: 1, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -11372,7 +11372,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 54826
+        atime1: 41056
         atime2: 65535
         atime3: 0
         atime4: 0
@@ -12017,7 +12017,7 @@ ParticleSystem:
     radial:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 50
+      scalar: 72
       minScalar: 0
       maxCurve:
         serializedVersion: 2

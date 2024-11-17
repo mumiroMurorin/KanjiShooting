@@ -81,9 +81,11 @@ public class WaveManagerDetailed : WaveManager
 [System.Serializable]
 class WaveStatusGeneral : IWaveStatus
 {
+    [SerializeField] string statusName;
     [SerializeField] EnemySpawner spawner;
     [SerializeField] AnimationCurve curve;
     [SerializeField] QuestionFilter filter;
+    [SerializeField] SerializeInterface<ISpawnpointSelector> spawnSelector;
 
     IQuestionSelector questionSelector;
     KanjiObjectSpawner kanjiSpawner;
@@ -100,12 +102,15 @@ class WaveStatusGeneral : IWaveStatus
     {
         for (int spawnNum = 0; spawnNum < curve.Evaluate(timeRatio); spawnNum++)
         {
-            //問題の選定
+            // 問題の選定
             QuestionData data = questionSelector.GetQuestionData(filter);
             enemyInitializationData.questionData = data;
-            //漢字の生成
+            // 漢字の生成
             enemyInitializationData.kanjiObject = kanjiSpawner.SpawnKanji(data);
-            //スポーン
+            // スポーンポイントの設定
+            enemyInitializationData.spawnPoint = spawnSelector.Value.GetSpawnPoint();
+
+            // スポーン
             spawner.SpawnEnemy(enemyInitializationData);
         }
     }

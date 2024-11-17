@@ -6,7 +6,6 @@ using StageTransition;
 public abstract class WaveManager : MonoBehaviour
 {
     [SerializeField] protected float maxTime = 30f;
-    [SerializeField] protected Transform[] spawnPoints;
 
     //WAVE終了時のコールバック
     private Subject<Unit> onEndWaveSubject = new Subject<Unit>();
@@ -111,19 +110,9 @@ public abstract class WaveManager : MonoBehaviour
     {
         EnemyInitializationData enemyInitializationData = new EnemyInitializationData
         {
-            spawnPoint = SelectionSpawnpoint(),
             target = PlayerTransform,
         };
 
         return enemyInitializationData;
-    }
-
-    /// <summary>
-    /// スポーンポイントのランダム選出 (別クラスにすべきだが一旦)
-    /// </summary>
-    /// <returns></returns>
-    private Transform SelectionSpawnpoint()
-    {
-        return spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
     }
 }
