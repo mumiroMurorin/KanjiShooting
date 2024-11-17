@@ -156,6 +156,8 @@ MonoBehaviour:
   outlineColor: {r: 1, g: 0.40251565, b: 0.40251565, a: 0.6666667}
   outlineWidth: 3
   shakeSettings:
+    isLoop: 0
+    isFade: 1
     duration: 0.5
     strength: 1
     vibrato: 32
@@ -172,12 +174,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8947e6f312051e8469bc48a2ec5eeea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles:
-  - {fileID: 5551414607331292536}
-  - {fileID: 7031975732991404356}
-  - {fileID: 9215403213003678585}
-  - {fileID: 410392112901807921}
-  - {fileID: 351175035970676803}
+  particleGroups:
+  - name: Spawn
+    particles:
+    - {fileID: 5551414607331292536}
+  - name: BeforeAttack
+    particles:
+    - {fileID: 9215403213003678585}
+  - name: Attack
+    particles:
+    - {fileID: 410392112901807921}
+  - name: Despawn
+    particles:
+    - {fileID: 351175035970676803}
+  - name: Destroy
+    particles:
+    - {fileID: 7031975732991404356}
 --- !u!114 &4333566998780830166
 MonoBehaviour:
   m_ObjectHideFlags: 0

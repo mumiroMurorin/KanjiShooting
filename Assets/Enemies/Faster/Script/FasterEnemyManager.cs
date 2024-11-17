@@ -10,11 +10,14 @@ public class FasterEnemyManager : EnemyManager
     [SerializeField] float outlineWidth;
 
     [Header("タイヤ")]
-    [SerializeField] GameObject wheelRight;
-    [SerializeField] GameObject wheelLeft;
+    [SerializeField] GameObject[] wheelsRight;
+    [SerializeField] GameObject[] wheelsLeft;
 
     [Header("アタック時の震え")]
-    [SerializeField] ShakeSettings shakeSettings;
+    [SerializeField] ShakeSettings shakeSettingsOnAttack;
+
+    [Header("移動時車体の揺れ")]
+    [SerializeField] ShakeSettings shakeSettingsOnMove;
 
     bool isMoving = false;
     IStatus playerStatus;
@@ -31,7 +34,10 @@ public class FasterEnemyManager : EnemyManager
 
         //与ダメ前にアニメーション再生
         playerStatus = status;
-        
+
+        // 体の震えを止める
+        shakeSettingsOnMove.StopShake();
+
         //攻撃アニメーション
         if (animator) { animator.SetTrigger("Attack"); }
     }
@@ -58,13 +64,20 @@ public class FasterEnemyManager : EnemyManager
 
     protected override void OnDeath()
     {
+        // 体の震えを止める
+        shakeSettingsOnMove.StopShake();
+
         //死ぬアニメーション
+
         if (animator) { animator.SetTrigger("Destroy"); }
         else { Destroy(this.gameObject); }
     }
 
     public override void Despawn()
     {
+        // 体の震えを止める
+        shakeSettingsOnMove.StopShake();
+
         //デスポーンアニメーション
         if (animator) { animator.SetTrigger("Despawn"); }
         else { Destroy(this.gameObject); }
@@ -86,8 +99,15 @@ public class FasterEnemyManager : EnemyManager
         float center = kanjiCollider.center.x;
         float width = kanjiCollider.size.x;
 
-        wheelRight.transform.localPosition = new Vector3(center + width / 2f, wheelRight.transform.localPosition.y, wheelRight.transform.localPosition.z);
-        wheelLeft.transform.localPosition = new Vector3(center - width / 2f, wheelLeft.transform.localPosition.y, wheelLeft.transform.localPosition.z);
+        foreach(GameObject obj in wheelsRight)
+        {
+            obj.transform.localPosition = new Vector3(center + width / 2f, obj.transform.localPosition.y, obj.transform.localPosition.z);
+        }
+
+        foreach (GameObject obj in wheelsLeft)
+        {
+            obj.transform.localPosition = new Vector3(center - width / 2f, obj.transform.localPosition.y, obj.transform.localPosition.z);
+        }
     }
 
     protected override void FixedUpdate()
@@ -99,6 +119,12 @@ public class FasterEnemyManager : EnemyManager
         this.gameObject.transform.LookAt(TargetTransform);
     }
 
+    private void OnDestroy()
+    {
+        shakeSettingsOnAttack.StopShake();
+        shakeSettingsOnMove.StopShake();
+    }
+
     //----------------アニメーション----------------
 
     /// <summary>
@@ -108,6 +134,7 @@ public class FasterEnemyManager : EnemyManager
     {
         Move?.Value.SetActive(true);
         isMoving = true;
+        shakeSettingsOnMove.ApplyShake(kanjiTransform);
     }
 
     /// <summary>
@@ -143,6 +170,6 @@ public class FasterEnemyManager : EnemyManager
     /// </summary>
     public void VibrateTrigger()
     {
-        shakeSettings.ApplyShake(this.transform);
+        shakeSettingsOnAttack.ApplyShake(this.transform);
     }
 }

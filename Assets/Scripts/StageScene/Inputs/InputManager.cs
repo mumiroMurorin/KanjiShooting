@@ -46,7 +46,7 @@ public class InputManager : MonoBehaviour, ICanInput
             handler.Bind(gameInputs);
         }
 
-        //ローディング中のとき入力を受け付けない
+        // ローディング中のとき入力を受け付けない
         StageManager.Instance.CurrentStageStatusreactiveproperty
             .Where(status => status == StageStatus.Loading)
             .Subscribe(status =>
@@ -56,7 +56,7 @@ public class InputManager : MonoBehaviour, ICanInput
             })
             .AddTo(this.gameObject);
 
-        //バトル中のとき入力を受け付ける
+        // バトル中のとき入力を受け付ける
         StageManager.Instance.CurrentStageStatusreactiveproperty
             .Where(status => status == StageStatus.Fighting)
             .Subscribe(status =>
@@ -66,7 +66,7 @@ public class InputManager : MonoBehaviour, ICanInput
             })
             .AddTo(this.gameObject);
 
-        //ステージ終了時入力を受け付けない
+        // ステージ終了時入力を受け付けない
         StageManager.Instance.CurrentStageStatusreactiveproperty
             .Where(status => status == StageStatus.StageFinish)
             .Subscribe(status =>
@@ -146,6 +146,38 @@ public class AttackHandler : IInputHandler
         if (!permit.CanInput) { return; }
 
         onInput?.Invoke();
+    }
+}
+
+public class AttackHoldHandler : IInputHandler
+{
+    [SerializeField] UnityEvent onPerfomred;
+    [SerializeField] UnityEvent onCanceled;
+    ICanInput permit;
+
+    public void Initialize(ICanInput handler)
+    {
+        permit = handler;
+    }
+
+    public void Bind(PlayerInputs inputs)
+    {
+        inputs.Player.Attack.performed += OnPerformed;
+        inputs.Player.Attack.canceled += OnCanceled;
+    }
+
+    private void OnPerformed(InputAction.CallbackContext context)
+    {
+        if (!permit.CanInput) { return; }
+
+        onPerfomred?.Invoke();
+    }
+
+    private void OnCanceled(InputAction.CallbackContext context)
+    {
+        if (!permit.CanInput) { return; }
+
+        onCanceled?.Invoke();
     }
 }
 

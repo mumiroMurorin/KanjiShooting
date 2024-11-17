@@ -47,5 +47,4 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
     private ReactiveCollection<AnswerState> answerStates = new ReactiveCollection<AnswerState>();
     public IReadOnlyReactiveCollection<AnswerState> AnswerStatesReactiveCollection { get { return answerStates; } }
     public void AddAnswerState(AnswerState answerState) { answerStates.Add(answerState); }
-
 }

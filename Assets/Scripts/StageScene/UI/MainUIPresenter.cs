@@ -8,6 +8,7 @@ public class MainUIPresenter : MonoBehaviour
     [SerializeField] PlayerHPBarView playerHPBarView;
     [SerializeField] PlayerHPTextView playerHPTextView;
     [SerializeField] BulletReloadGageView bulletReloadGageView;
+    [SerializeField] SpecialChargeGaugeView specialChargeGaugeView;
     [SerializeField] KillCountTextView killCountTextView;
     [SerializeField] WaveTextView waveTextView;
     [SerializeField] TimerTextView timerTextView;
@@ -18,6 +19,7 @@ public class MainUIPresenter : MonoBehaviour
 
     [SerializeField] SerializeInterface<IStatus> playerStatus_model;
     [SerializeField] GunManager gunManager_model;
+    [SerializeField] ChargeGunManager chargeGunManager_model;
 
     private void Start()
     {
@@ -33,30 +35,35 @@ public class MainUIPresenter : MonoBehaviour
     private void Bind()
     {
         // プレイヤーHP → HPバー
-        playerStatus_model.Value.HPNormalized
+        playerStatus_model?.Value.HPNormalized
             .Subscribe(playerHPBarView.OnChangeHP)
             .AddTo(this.gameObject);
 
         // プレイヤーHP → ダメージ時画面効果
-        playerStatus_model.Value.HPNormalized
+        playerStatus_model?.Value.HPNormalized
             .Pairwise()
             .Where(pair => pair.Current < pair.Previous) // 減少しているときのみ
             .Subscribe(pair => damageEffectView.OnDamage(pair.Previous - pair.Current))
             .AddTo(this.gameObject);
 
         // プレイヤーHP → HPテキスト
-        playerStatus_model.Value.HP
+        playerStatus_model?.Value.HP
             .Subscribe(playerHPTextView.OnChangeHP)
             .AddTo(this.gameObject);
 
         // プレイヤーHP → HPテキスト色
-        playerStatus_model.Value.HPNormalized
+        playerStatus_model?.Value.HPNormalized
             .Subscribe(playerHPTextView.OnChangeHP)
             .AddTo(this.gameObject);
 
         // 弾リロード時間 → リロードUI
-        gunManager_model.ReloadValue
+        gunManager_model?.ReloadValue
             .Subscribe(bulletReloadGageView.OnChangeReloadValue)
+            .AddTo(this.gameObject);
+
+        // スペシャル弾チャージ時間 → チャージUI
+        chargeGunManager_model?.SpecialChargeValue
+            .Subscribe(specialChargeGaugeView.OnChangeChargeValue)
             .AddTo(this.gameObject);
 
         // キルカウントスコア → キルカウントテキスト

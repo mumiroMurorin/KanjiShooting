@@ -29,12 +29,12 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Attack"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""7cc542fa-7163-41a7-9465-d8f61f953c7e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""BackSpace"",

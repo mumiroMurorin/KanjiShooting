@@ -35,13 +35,13 @@ public class YomiganaSpawner : MonoBehaviour, IYomiganaSpawner
 
     private void Start()
     {
-        Initialization();
+        Initialize();
     }
 
     /// <summary>
     /// 初期化
     /// </summary>
-    private void Initialization()
+    private void Initialize()
     {
         DestroyCharacterObjects();
 
@@ -88,6 +88,36 @@ public class YomiganaSpawner : MonoBehaviour, IYomiganaSpawner
         spawnedCharacters = new CharacterController[MAX_ANSWER_LENGTH];
     }
 
+    public void OnChargeStart()
+    {
+        if (spawnedCharacters == null) { return; }
+
+        foreach (CharacterController c in spawnedCharacters)
+        {
+            if (c) { c.ChargeStart(); }
+        }
+    }
+
+    public void OnChargeCancell()
+    {
+        if (spawnedCharacters == null) { return; }
+
+        foreach (CharacterController c in spawnedCharacters)
+        {
+            if (c) { c.ChargeCancell(); }
+        }
+    }
+
+    public void OnChargeComplete()
+    {
+        if (spawnedCharacters == null) { return; }
+
+        foreach (CharacterController c in spawnedCharacters)
+        {
+            if (c) { c.ChargeComplete(); }
+        }
+    }
+
     /*
     /// <summary>
     /// 読み仮名の1文字削除
@@ -107,7 +137,7 @@ public class YomiganaSpawner : MonoBehaviour, IYomiganaSpawner
     /// ひらがなオブジェクトの出現(改善？)
     /// </summary>
     /// <param name="c"></param>
-    public CharacterController SpawnYomiganaObject(char c, int index, int length)
+    private CharacterController SpawnYomiganaObject(char c, int index, int length)
     {
         GameObject prefab = GetYomiganaObject(c);
         if(prefab == null) { return null; }

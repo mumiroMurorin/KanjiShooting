@@ -27,12 +27,15 @@ public class JapaneseInputManager : MonoBehaviour
         // ƒL[“ü—Í‚ğæ“¾
         if (!Input.anyKeyDown) { return; }
 
+        KeyCode inputKey = KeyCode.None;
         foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
         {
             if (!Input.GetKeyDown(keyCode)) { continue; }
-
-            japaneseInputHandler.OnKeyInput(keyCode);
+            inputKey = keyCode;
         }
+
+        // “ü—Í‚³‚ê‚½•¶š‚É‘Î‰‚µ‚Ä‚¢‚È‚©‚Á‚½‚ç(—á‚¦‚ÎEnter)•Ô‚·
+        if (!japaneseInputHandler.OnKeyInput(inputKey)) { return; }
 
         //Debug.Log("Œ»İ‚Ì“ü—Í: " + japaneseInputHandler.GetResult());
         onChangeAnswer.Invoke(japaneseInputHandler.GetResult());
@@ -44,6 +47,7 @@ public class JapaneseInputManager : MonoBehaviour
     public void BackSpace()
     {
         japaneseInputHandler.BackSpace();
+        onChangeAnswer.Invoke(japaneseInputHandler.GetResult());
     }
 
     /// <summary>

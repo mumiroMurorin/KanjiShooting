@@ -103,18 +103,24 @@ public class JapaneseInputHandler
     /// マイナス等の記号も含む関数
     /// </summary>
     /// <param name="keycode"></param>
-    public void OnKeyInput(KeyCode keyCode)
+    public bool OnKeyInput(KeyCode keyCode)
     {
         //記号
         switch (keyCode)
         {
             case KeyCode.Minus:
                 OnKeyInput('-');
-                return;
+                return true;
         }
 
         //その他
-        if (keyCode >= KeyCode.A && keyCode <= KeyCode.Z) { OnKeyInput(keyCode.ToString()[0]); }
+        if (keyCode >= KeyCode.A && keyCode <= KeyCode.Z) 
+        {
+            OnKeyInput(keyCode.ToString()[0]);
+            return true;
+        }
+
+        return false;
     }
 
     // 確定した読みを返す

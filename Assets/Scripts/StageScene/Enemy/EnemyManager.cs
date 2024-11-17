@@ -23,7 +23,8 @@ public abstract class EnemyManager : MonoBehaviour, IEnemy, IDamager
         if(hp <= 0)
         {
             ScoreManager.Instance.AddAnswerState(new AnswerState { questionData = questionData, isCorrect = true });
-            ScoreManager.Instance.IncrementKillCount(); //キル数をプラス
+            ScoreManager.Instance.IncrementKillCount(); // キル数をプラス
+            kanjiCollider.enabled = false;
             OnDeath();
         }
     }

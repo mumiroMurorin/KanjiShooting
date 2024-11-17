@@ -19,6 +19,12 @@ public interface IYomiganaSpawner
     public void OnChangeAnswer(string str);
 
     public void OnShoot();
+
+    public void OnChargeStart();
+
+    public void OnChargeCancell();
+
+    public void OnChargeComplete();
 }
 
 /// <summary>
