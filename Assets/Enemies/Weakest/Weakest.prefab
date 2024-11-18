@@ -153,8 +153,14 @@ MonoBehaviour:
     obj: {fileID: 1692011733723930300}
   kanjiTransform: {fileID: 8476182219595597554}
   animator: {fileID: 3407043886784197692}
-  outlineColor: {r: 1, g: 0.40251565, b: 0.40251565, a: 0.6666667}
-  outlineWidth: 3
+  outlineSettings:
+    color: {r: 1, g: 0.05882353, b: 0.05882353, a: 1}
+    width: 3
+    resources: {fileID: 11400000, guid: d28e70f030b1a634db9a6a6d5478ef19, type: 2}
+    flags: 2
+    ignoreRayerMask:
+      serializedVersion: 2
+      m_Bits: 0
   shakeSettings:
     isLoop: 0
     isFade: 1

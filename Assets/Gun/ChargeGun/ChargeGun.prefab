@@ -51,7 +51,7 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   reviveInterval: 1
   specialBulletChargeTime: 0.75
-  specialBulletCount: 0
+  specialBulletCount: 8
   generalBulletSpawner:
     obj: {fileID: 5847252668284429786}
   specialBulletSpawner:
@@ -248,7 +248,7 @@ MonoBehaviour:
   - charcter: 12410
     obj: {fileID: 3452638058528169187, guid: d91504cd661fda545b268345420a34c9, type: 3}
   - charcter: 12413
-    obj: {fileID: 3878049382896328028, guid: 1c94e84c79b8ecc42b5229617174a0b1, type: 3}
+    obj: {fileID: 7160948519326148555, guid: 4f096af33588ff343af510176ae724e2, type: 3}
   - charcter: 12540
     obj: {fileID: 664746034368908900, guid: 77cbb466208b5334e85dc518d0b9634e, type: 3}
   - charcter: 12353

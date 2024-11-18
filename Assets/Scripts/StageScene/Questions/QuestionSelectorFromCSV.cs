@@ -5,6 +5,7 @@ using System.Threading;
 using System.IO;
 using System;
 using Kanji;
+using System.Linq;
 
 public class QuestionSelectorFromCSV : IQuestionSelector
 {
@@ -18,9 +19,39 @@ public class QuestionSelectorFromCSV : IQuestionSelector
 
     [SerializeField] QuestionFilter[] questionFilters;
 
+    class QuestionDataRandom
+    {
+        public List<QuestionData> originalData;
+        public List<QuestionData> randomData;
+
+        /// <summary>
+        /// ランダムなデータを返す
+        /// 連続して同じデータは返さない
+        /// </summary>
+        /// <returns></returns>
+        public QuestionData GetQuestionData()
+        {
+            if (randomData == null) { Shuffle(); }
+            if (randomData.Count == 0) { Shuffle(); }
+
+            QuestionData data = randomData[0];
+            randomData.RemoveAt(0);
+            return data;
+        }
+
+        /// <summary>
+        /// ランダムに並び替える
+        /// </summary>
+        private void Shuffle()
+        {
+            randomData = new List<QuestionData>();
+            randomData = originalData.OrderBy(x => Guid.NewGuid()).ToList();
+        }
+    }
+
     CancellationTokenSource cts;
     List<QuestionData> questionDatas;
-    Dictionary<QuestionFilter, List<QuestionData>> questionListDictionary; 
+    Dictionary<QuestionFilter, QuestionDataRandom> questionListDictionary;
 
     /// <summary>
     /// 非同期処理でファイルを読み込み
@@ -36,24 +67,29 @@ public class QuestionSelectorFromCSV : IQuestionSelector
         questionDatas = await ConvertQuestionDataListAsync(kanjiData, cts.Token);
 
         // 問題データの抜粋
-        questionListDictionary = new Dictionary<QuestionFilter, List<QuestionData>>();
+        questionListDictionary = new Dictionary<QuestionFilter, QuestionDataRandom>();
         foreach (QuestionFilter filter in questionFilters)
         {
             var list = await PickUpQuestionData(filter, questionDatas, cts.Token);
-            questionListDictionary.Add(filter, list);
+            questionListDictionary.Add(filter, new QuestionDataRandom { originalData = list });
         }
     }
 
+    /// <summary>
+    /// 問題の抜粋
+    /// </summary>
+    /// <param name="filter"></param>
+    /// <returns></returns>
     public QuestionData GetQuestionData(QuestionFilter filter)
     {
         // 問題データがあるか確認
-        if (!questionListDictionary.TryGetValue(filter, out List<QuestionData> list)) 
+        if (!questionListDictionary.TryGetValue(filter, out QuestionDataRandom datas)) 
         {
             Debug.Log("問題データがありません");
             return new QuestionData();
         }
 
-        return list[UnityEngine.Random.Range(0, list.Count)];
+        return datas.GetQuestionData();
     }
 
     /// <summary>

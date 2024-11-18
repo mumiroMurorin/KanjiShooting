@@ -186,6 +186,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unityfx.outline": {
+      "version": "0.8.5",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://registry.npmjs.org"
+    },
     "com.unityroom.client": {
       "version": "https://github.com/naichilab/unityroom-client-library.git?path=Assets/unityroom",
       "depth": 0,

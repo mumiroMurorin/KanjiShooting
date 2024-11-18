@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityFx.Outline;
 
 public class FasterEnemyManager : EnemyManager
 {
     [SerializeField] Animator animator;
-    [SerializeField] Color outlineColor;
-    [SerializeField] float outlineWidth;
 
     [Header("タイヤ")]
     [SerializeField] GameObject[] wheelsRight;
     [SerializeField] GameObject[] wheelsLeft;
 
+    [Header("アウトライン")]
+    [SerializeField] OutlineSettings outlineSettings;
     [Header("アタック時の震え")]
     [SerializeField] ShakeSettings shakeSettingsOnAttack;
 
@@ -85,10 +86,7 @@ public class FasterEnemyManager : EnemyManager
 
     private void SetOutline()
     {
-        Outline outline = kanjiObject.AddComponent<Outline>();
-        outline.OutlineColor = outlineColor;
-        outline.OutlineWidth = outlineWidth;
-        outline.OutlineMode = Outline.Mode.OutlineVisible;
+        outlineSettings.ApplyOutline(kanjiObject);
     }
 
     /// <summary>

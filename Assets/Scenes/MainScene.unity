@@ -4694,7 +4694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 60
-  spawnInterval: 6
+  spawnInterval: 7
   kanjiSpawner: {fileID: 1378339576}
   bgmType: 100
   questionSelector:
@@ -6108,8 +6108,8 @@ MonoBehaviour:
   objectSize: 4
   objectDepth: 1.5
   fontNumber: 0
-  kanjiMaterial: {fileID: 2100000, guid: 8f3bde3c129d6984c87270a14da9efe3, type: 2}
-  kanjiEdgeMaterial: {fileID: 2100000, guid: 54161d75d68c76d47ac01572c964f8bc, type: 2}
+  kanjiMaterial: {fileID: 2100000, guid: e732f6b91ca31468da65644c28570d08, type: 2}
+  kanjiEdgeMaterial: {fileID: 2100000, guid: eb10b6f571322b443bec8c532c088270, type: 2}
   isZaxisReversal: 1
 --- !u!4 &1378339577
 Transform:
@@ -9602,10 +9602,6 @@ PrefabInstance:
       propertyPath: inputManager
       value: 
       objectReference: {fileID: 1625760094}
-    - target: {fileID: 5590933256780749376, guid: 5678d19bfd9c70a438ac6d4fa746f180, type: 3}
-      propertyPath: specialBulletCount
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 5847252666758270029, guid: 5678d19bfd9c70a438ac6d4fa746f180, type: 3}
       propertyPath: m_RootOrder
       value: 1

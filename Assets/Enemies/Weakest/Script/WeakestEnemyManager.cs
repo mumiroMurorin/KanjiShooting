@@ -6,9 +6,9 @@ using DG.Tweening;
 public class WeakestEnemyManager : EnemyManager
 {
     [SerializeField] Animator animator;
-    [SerializeField] Color outlineColor;
-    [SerializeField] float outlineWidth;
 
+    [Header("アウトライン")]
+    [SerializeField] OutlineSettings outlineSettings;
     [Header("アタック時の震え")]
     [SerializeField] ShakeSettings shakeSettings;
 
@@ -67,10 +67,7 @@ public class WeakestEnemyManager : EnemyManager
 
     private void SetOutline()
     {
-        Outline outline = kanjiObject.AddComponent<Outline>();
-        outline.OutlineColor = outlineColor;
-        outline.OutlineWidth = outlineWidth;
-        outline.OutlineMode = Outline.Mode.OutlineVisible;
+        outlineSettings.ApplyOutline(kanjiObject);
     }
 
     protected override void FixedUpdate()
