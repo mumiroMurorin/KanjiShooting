@@ -11,6 +11,7 @@ public class EntranceManager : LocalSingletonMonoBehaviour<EntranceManager>
     const MenuStatus FIRST_MENU_STATUS = MenuStatus.Title;
 
     [SerializeField] EntranceUIController uiController;
+    [SerializeField] TimelineManager timelineManager;
 
     MenuTransitionManager menuTransitionManager = new MenuTransitionManager();
     ReactiveProperty<MenuStatus> currentStatus = new ReactiveProperty<MenuStatus>();
@@ -45,11 +46,11 @@ public class EntranceManager : LocalSingletonMonoBehaviour<EntranceManager>
     /// </summary>
     private void SetTransitioners()
     {
-        menuTransitionManager.AddTransition(MenuStatus.Title, new TitleTransition(uiController, null));
+        menuTransitionManager.AddTransition(MenuStatus.Title, new TitleTransition(uiController, timelineManager.GetPlayableDirector("Title")));
         menuTransitionManager.AddTransition(MenuStatus.MainMenu, new MainMenuTransition(uiController));
         menuTransitionManager.AddTransition(MenuStatus.Option, new OptionTransition(uiController));
         menuTransitionManager.AddTransition(MenuStatus.StageSelect, new StageSelectTransition(uiController));
-        menuTransitionManager.AddTransition(MenuStatus.Sortie, new MainSceneTransition(uiController, null));
+        menuTransitionManager.AddTransition(MenuStatus.Sortie, new MainSceneTransition(uiController, timelineManager.GetPlayableDirector("Sortie")));
     }
 
     /// <summary>

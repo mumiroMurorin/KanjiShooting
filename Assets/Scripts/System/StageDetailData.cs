@@ -11,9 +11,11 @@ public class StageDetailData : ScriptableObject
     [SerializeField] string stageTitle;
     public string StageTitle { get { return stageTitle; } }
 
-    [SerializeField] int difficulity;
-    public int Difficulity { get { return difficulity; } }
+    [Header("難易度")]
+    [SerializeField] int difficulty;
+    public int Difficulty { get { return difficulty; } }
 
+    [Header("ジャンル")]
     [SerializeField] string genre;
     public string Genre { get { return genre; } }
 
@@ -23,15 +25,19 @@ public class StageDetailData : ScriptableObject
     [SerializeField] Sprite backGroundSprite;
     public Sprite BackGroundSprite { get { return backGroundSprite; } }
 
-    [SerializeField] string stageDescription;
+    [Header("ステージ説明文")]
+    [SerializeField, TextArea(1,5)] string stageDescription;
     public string StageDescription { get { return stageDescription; } }
 
+    [Header("漢字の例(鑿,暫時…)")]
     [SerializeField] string kanjiExample;
     public string KanjiExample { get { return kanjiExample; } }
 
+    [Header("漢字レベル")]
     [SerializeField] int kanjiLevel;
     public int KanjiLevel { get { return kanjiLevel; } }
 
+    [Header("タイピングレベル")]
     [SerializeField] int typingLevel;
     public int TypingLevel { get { return typingLevel; } }
 }

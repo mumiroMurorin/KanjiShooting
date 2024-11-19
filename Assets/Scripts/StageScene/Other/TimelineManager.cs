@@ -4,40 +4,32 @@ using UnityEngine.Timeline;
 
 public class TimelineManager : MonoBehaviour
 {
-    [SerializeField] PlayableDirector stageStartDirector;
-    [SerializeField] PlayableDirector waveStartDirector;
-    [SerializeField] PlayableDirector waveFinishDirector;
-    [SerializeField] PlayableDirector stageFinishDirector;
-    [SerializeField] PlayableDirector stageFailedStartDirector;
-    [SerializeField] PlayableDirector stageFailedFinishDirector;
-
-    public PlayableDirector GetStageStartPlayableDirector()
+    [System.Serializable]
+    class PlayableDirectorClass
     {
-        return stageStartDirector;
+        [SerializeField] string sceneName;
+        [SerializeField] PlayableDirector director;
+
+        public string SceneName { get { return sceneName; } }
+        public PlayableDirector Director { get { return director; } }
     }
 
-    public PlayableDirector GetWaveStartPlayableDirector()
-    {
-        return waveStartDirector;
-    }
+    [SerializeField] PlayableDirectorClass[] playableDirectors; 
 
-    public PlayableDirector GetWaveFinishPlayableDirector()
+    public PlayableDirector GetPlayableDirector(string name)
     {
-        return waveFinishDirector;
-    }
+        PlayableDirector director = null;
 
-    public PlayableDirector GetStageFinishPlayableDirector()
-    {
-        return stageFinishDirector;
-    }
+        if (playableDirectors == null) { Debug.LogError("ÅySystemÅzPlayableDirectorClassÇ™ÉZÉbÉgÇ≥ÇÍÇƒÇ¢Ç‹ÇπÇÒ"); return null; }
 
-    public PlayableDirector GetStageFailedStartPlayableDirector()
-    {
-        return stageFailedStartDirector;
-    }
+        foreach (PlayableDirectorClass p in playableDirectors)
+        {
+            if (name != p.SceneName) { continue; }
+            if (director != null) { Debug.LogWarning($"ÅySystemÅzPlayableDirector:{name}ÇÕï°êîÇ†ÇËÇ‹Ç∑ÅBêÊÇìnÇµÇ‹Ç∑"); continue; }
+            director = p.Director;
+        }
 
-    public PlayableDirector GetStageFailedFinishPlayableDirector()
-    {
-        return stageFailedFinishDirector;
+        if (director == null) { Debug.LogWarning($"ÅySystemÅzPlayableDirector:{name}ÇÕë∂ç›ÇµÇ‹ÇπÇÒ"); }
+        return director;
     }
 }
