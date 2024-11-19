@@ -45,14 +45,15 @@ public class EntranceUIPresenter : MonoBehaviour
     {
         // ステージデータ →
         scoreManager_model.StageDataReactiveProperty
-           .Subscribe(data => 
-           {
-               // 背景
-               stageImageBackView.OnSelectStage(data.BackGroundSprite);
-               // ステージ詳細
-               stageDetailView.OnSelectStage(data);
-           })
-           .AddTo(this.gameObject);
+            .Where(data => data != null)
+            .Subscribe(data => 
+            {
+                // 背景
+                stageImageBackView.OnSelectStage(data.BackGroundSprite);
+                // ステージ詳細
+                stageDetailView.OnSelectStage(data);
+            })
+            .AddTo(this.gameObject);
     }
 
     /// <summary>

@@ -17,7 +17,7 @@ public class StageSelectTransition : IPhaseTransitioner
     public async UniTask ExecuteAsync(CancellationToken token)
     {
         // UIÇÃï\é¶èàóù
-        entranceUIController.ActiveUIGroup(MenuStatus.MainMenu);
+        entranceUIController.ActiveUIGroup(MenuStatus.StageSelect);
         await UniTask.Delay(0, cancellationToken: token);
     }
 }

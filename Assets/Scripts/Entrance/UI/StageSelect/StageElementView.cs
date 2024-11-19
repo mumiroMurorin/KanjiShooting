@@ -9,27 +9,32 @@ public class StageElementView : MonoBehaviour
 {
     [Header("背景")]
     [SerializeField] Image backGround;
-    [Header("選択時背景")]
-    [SerializeField] Image selectBack;
     [Header("ステージタイトル")]
     [SerializeField] TextMeshProUGUI stageTitleText;
     [Header("難易度")]
     [SerializeField] TextMeshProUGUI difficulityText;
     [Header("ジャンル")]
     [SerializeField] TextMeshProUGUI genreText;
+    [Space(30)]
+    [Header("ステージデータ")]
+    [SerializeField] StageDetailData stageDetailData;
 
     public Action<StageDetailData> OnStageItemButtonClickedListener;
-    private StageDetailData stageDetailData;
+
+    private void Start()
+    {
+        Initialize(stageDetailData);
+    }
 
     /// <summary>
     /// 初期化
     /// </summary>
-    public void Initialize(StageDetailData stageDetailData)
+    public void Initialize(StageDetailData stageData)
     {
-        backGround.sprite = stageDetailData.StageItemBackSprite;
-        stageTitleText.text = stageDetailData.StageTitle;
-        difficulityText.text = stageDetailData.Difficulity.ToString();
-        genreText.text = stageDetailData.Genre;
+        backGround.sprite = stageData.StageItemBackSprite;
+        stageTitleText.text = stageData.StageTitle;
+        difficulityText.text = stageData.Difficulity.ToString();
+        genreText.text = stageData.Genre;
     }
 
     /// <summary>

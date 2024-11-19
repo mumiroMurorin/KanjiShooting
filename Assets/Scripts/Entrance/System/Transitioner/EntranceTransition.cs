@@ -44,9 +44,9 @@ namespace EntranceTransition
                 return;
             }
 
-            Debug.Log("【System】メニュー移動開始");
+            Debug.Log($"【System】メニュー移動開始: {menuStatus}");
             await phaseTransitioner.ExecuteAsync(cancellationToken);
-            Debug.Log("【System】メニュー移動終了");
+            Debug.Log($"【System】メニュー移動終了: {menuStatus}");
         }
     }
 }

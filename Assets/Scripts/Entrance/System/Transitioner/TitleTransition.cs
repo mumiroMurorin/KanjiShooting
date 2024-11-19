@@ -19,11 +19,15 @@ public class TitleTransition : IPhaseTransitioner
     public async UniTask ExecuteAsync(CancellationToken token)
     {
         entranceUIController.ActiveUIGroup(MenuStatus.Title);
-        titleDirector?.Play();
 
-        // タイトル演出終了まで待ち
-        await UniTask.WaitUntil(() => titleDirector.state != PlayState.Playing, cancellationToken: token);
-        
+        if(titleDirector != null)
+        {
+            titleDirector.Play();
+
+            // タイトル演出終了まで待ち
+            await UniTask.WaitUntil(() => titleDirector.state != PlayState.Playing, cancellationToken: token);
+        }
+
         // ステージステータスの変更
         EntranceManager.Instance.SetMenuStatus(MenuStatus.MainMenu);
     }
