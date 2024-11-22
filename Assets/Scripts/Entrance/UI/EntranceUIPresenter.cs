@@ -3,20 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using EntranceTransition;
+using Sound;
 
 public class EntranceUIPresenter : MonoBehaviour
 {
+    [Header("メインメニュー")]
     [SerializeField] StageSelectButtonView stageSelectButtonView;
     [SerializeField] OptionButtonView optionButtonView;
     [SerializeField] DecisionStageButtonView decisionStageButtonView;
-    [SerializeField] BackMainMenuButtonView backMainMenuButtonView;
-
+    [SerializeField] BackMainMenuButtonView[] backMainMenuButtonViews;
+    
+    [Space(20), Header("ステージセレクト")]
     [SerializeField] StageImageBackView stageImageBackView;
     [SerializeField] StageDetailView stageDetailView;
     [SerializeField] List<StageElementView> stageElementViews;
 
-    [SerializeField] ScoreManager scoreManager_model;
-
+    // Awakeの方がいい？
     private void Start()
     {
         SetEvents();
@@ -32,19 +34,22 @@ public class EntranceUIPresenter : MonoBehaviour
         }
 
         // 「ステージ選択」ボタン
-        stageSelectButtonView.OnStageSelectButtonClickedListener += () => { EntranceManager.Instance.SetMenuStatus(MenuStatus.StageSelect); };
+        stageSelectButtonView.OnStageSelectButtonClickedListener += () => { OnStageSelectButtonClicked(); };
         // 「オプション」ボタン
-        optionButtonView.OnOptionButtonClickedListener += () => { EntranceManager.Instance.SetMenuStatus(MenuStatus.Option); };
+        optionButtonView.OnOptionButtonClickedListener += () => { OnOptionButtonClicked(); };
         // 「出撃」ボタン
-        decisionStageButtonView.OnDecisionStageButtonClickedListener += () => { EntranceManager.Instance.SetMenuStatus(MenuStatus.Sortie); };
+        decisionStageButtonView.OnDecisionStageButtonClickedListener += () => { OnDecisionStageButtonClicked(); };
         // 「(メインメニューに)戻る」ボタン
-        backMainMenuButtonView.OnBackMainMenuButtonClickedListener += () => { EntranceManager.Instance.SetMenuStatus(MenuStatus.MainMenu); };
+        foreach(BackMainMenuButtonView b in backMainMenuButtonViews)
+        {
+            b.OnBackMainMenuButtonClickedListener += () => { OnBackMainMenuButtonClicked(); };
+        }
     }
 
     private void Bind()
     {
         // ステージデータ →
-        scoreManager_model.StageDataReactiveProperty
+        ScoreManager.Instance.StageDataReactiveProperty
             .Where(data => data != null)
             .Subscribe(data => 
             {
@@ -56,12 +61,45 @@ public class EntranceUIPresenter : MonoBehaviour
             .AddTo(this.gameObject);
     }
 
+    //============ Events ============== 
+
     /// <summary>
     /// ステージ(アイテム)ボタンがクリックされたとき
     /// </summary>
     private void OnStageItemButtonClicked(StageDetailData data)
     {
-        scoreManager_model.StageData = data;
+        ScoreManager.Instance.StageData = data;
     }
 
+    /// <summary>
+    /// ステージセレクトボタンがクリックされたとき
+    /// </summary>
+    private void OnStageSelectButtonClicked()
+    {
+        EntranceManager.Instance.SetMenuStatus(MenuStatus.StageSelect);
+    }
+
+    /// <summary>
+    /// オプションボタンがクリックされたとき
+    /// </summary>
+    private void OnOptionButtonClicked()
+    {
+        EntranceManager.Instance.SetMenuStatus(MenuStatus.Option);
+    }
+
+    /// <summary>
+    /// 出撃ボタンがクリックされたときが
+    /// </summary>
+    private void OnDecisionStageButtonClicked()
+    {
+        EntranceManager.Instance.SetMenuStatus(MenuStatus.Sortie);
+    }
+
+    /// <summary>
+    /// メインメニューに戻るボタンがクリックされたとき
+    /// </summary>
+    private void OnBackMainMenuButtonClicked()
+    {
+        EntranceManager.Instance.SetMenuStatus(MenuStatus.MainMenu);
+    }
 }

@@ -17,7 +17,7 @@ public class OptionTransition : IPhaseTransitioner
     public async UniTask ExecuteAsync(CancellationToken token)
     {
         // UIÇÃï\é¶èàóù
-        entranceUIController.ActiveUIGroup(MenuStatus.MainMenu);
+        entranceUIController.ActiveUIGroup(MenuStatus.Option);
         await UniTask.Delay(0, cancellationToken: token);
     }
 }

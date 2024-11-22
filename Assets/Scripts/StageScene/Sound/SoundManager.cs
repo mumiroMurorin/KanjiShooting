@@ -4,6 +4,7 @@ using DG.Tweening;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine.Audio;
+using UniRx;
 
 namespace Sound
 {
@@ -52,9 +53,6 @@ namespace Sound
         const int BGM_ARRAY_LENGTH = 2;
         const int SE_ARRAY_LENGTH = 16;
 
-        // ボリューム関連
-        public float BGM_Volume = 1;
-        public float SE_Volume = 1;
         //フェード関係
         public float BGMFadeInDuration = 0f;
         public float BGMFadeOutDuration = 3f;
@@ -68,6 +66,16 @@ namespace Sound
         // === AudioMixer ===
         [SerializeField] AudioMixerGroup audioMixerGroupSE;
         [SerializeField] AudioMixerGroup audioMixerGroupBGM;
+
+        // BGMVolume
+        private ReactiveProperty<float> bgmMasterVolume = new ReactiveProperty<float>(0.8f);
+        public float BGMMasterVolume { set { bgmMasterVolume.Value = value; } }
+        public IReadOnlyReactiveProperty<float> BGMVolumeReactiveProperty { get { return bgmMasterVolume; } }
+
+        // SEVolume
+        private ReactiveProperty<float> seMasterVolume = new ReactiveProperty<float>(0.8f);
+        public float SEMasterVolume { set { seMasterVolume.Value = value; } }
+        public IReadOnlyReactiveProperty<float> SEVolumeReactiveProperty { get { return seMasterVolume; } }
 
         // === AudioSource ===
         AudioSource[] bgmSources = new AudioSource[BGM_ARRAY_LENGTH];
@@ -90,6 +98,8 @@ namespace Sound
                 seSources[i] = gameObject.AddComponent<AudioSource>();
                 seSources[i].outputAudioMixerGroup = audioMixerGroupSE;
             }
+
+            Bind();
         }
 
         void Update()
@@ -97,14 +107,29 @@ namespace Sound
             // ボリューム設定
             if (!isCrossFading)
             {
-                bgmSources[0].volume = BGM_Volume;
-                bgmSources[1].volume = BGM_Volume;
+                bgmSources[0].volume = 1f;
+                bgmSources[1].volume = 1f;
             }
 
             foreach (AudioSource source in seSources)
             {
-                source.volume = SE_Volume;
+                source.volume = 1f;
             }
+        }
+
+        private void Bind()
+        {
+            // bgmVolume → 
+            bgmMasterVolume
+                .Subscribe(OnBGMVolumeChanged)
+                .AddTo(this.gameObject);
+
+            // seVolume → 
+            seMasterVolume
+                .Subscribe(OnSEVolumeChanged)
+                .AddTo(this.gameObject);
+
+
         }
 
         /// <summary>
@@ -283,14 +308,16 @@ namespace Sound
         /// AudioMixer設定
         /// </summary>
         /// <param name="vol"></param>
-        public void SetAudioMixerVolumeSE(float vol)
+        private void OnSEVolumeChanged(float vol)
         {
-            audioMixerGroupSE.audioMixer.SetFloat("OtherSEVolume", Mathf.Clamp(vol, -80, 0));
+            var volume = Mathf.Clamp(Mathf.Log10(vol) * 20f, -80f, 0f);
+            audioMixerGroupSE.audioMixer.SetFloat("OtherSEVolume", volume);
         }
 
-        public void SetAudioMixerVolumeBGM(float vol)
+        private void OnBGMVolumeChanged(float vol)
         {
-            audioMixerGroupBGM.audioMixer.SetFloat("BGMVolume", Mathf.Clamp(vol, -80, 0));
+            var volume = Mathf.Clamp(Mathf.Log10(vol) * 20f, -80f, 0f);
+            audioMixerGroupBGM.audioMixer.SetFloat("BGMVolume", volume);
         }
 
         private void OnDestroy()
