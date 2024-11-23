@@ -37,7 +37,7 @@ public class ArrawSensitivityView : MonoBehaviour
     /// ミュート値が変わったときのメソッド
     /// </summary>
     /// <param name="isValid"></param>
-    public void OnValidValueChanged(bool isValid)
+    public void OnValidityChanged(bool isValid)
     {
         validToggle.isOn = isValid;
         sensitivitySlider.interactable = isValid;

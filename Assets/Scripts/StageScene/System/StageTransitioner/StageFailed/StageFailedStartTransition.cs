@@ -6,9 +6,11 @@ using StageTransition;
 
 public class StageFailedStartTransition : IPhaseTransitioner
 {
-    public StageFailedStartTransition()
+    ScoreHolder scoreHolder;
+
+    public StageFailedStartTransition(ScoreHolder holder)
     {
-       
+        scoreHolder = holder;
     }
 
     public async UniTask ExecuteAsync(CancellationToken token)
@@ -16,7 +18,7 @@ public class StageFailedStartTransition : IPhaseTransitioner
         Debug.Log("【System】GameOver処理開始");
         
         //スコア記録
-        ScoreManager.Instance.RecordSurvivalTimeScoreForUnityRoom();
+        scoreHolder.RecordSurvivalTimeScoreForUnityRoom();
         //BGMのフェードアウト
         Sound.SoundManager.Instance.StopBGM(true);
         StageManager.Instance.ChangeStageStatus(StageStatus.StageFinish);

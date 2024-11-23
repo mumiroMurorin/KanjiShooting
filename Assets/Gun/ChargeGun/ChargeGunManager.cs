@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UniRx;
+using VContainer;
 
 public class ChargeGunManager : GunManager
 {
@@ -28,8 +29,15 @@ public class ChargeGunManager : GunManager
     ReactiveProperty<float> specialShootValue = new ReactiveProperty<float>(0);
     public IReadOnlyReactiveProperty<float> SpecialShootValue { get { return specialShootValue; } }
 
+    ScoreHolder scoreHolder;
     bool isCharging;
     bool isChargedSpecialBullet;
+
+    [Inject]
+    public void Construct(ScoreHolder holder)
+    {
+        scoreHolder = holder;
+    }
 
     protected override void Initialize()
     {
@@ -42,7 +50,7 @@ public class ChargeGunManager : GunManager
 
     private void Bind()
     {
-        ScoreManager.Instance.KillCountReactiveProperty
+        scoreHolder.KillCountReactiveProperty
             .Pairwise()
             .Subscribe(pair => ChargeSpecialBullet(pair.Current - pair.Previous))
             .AddTo(this.gameObject);

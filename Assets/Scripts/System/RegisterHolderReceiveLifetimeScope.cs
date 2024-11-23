@@ -1,7 +1,7 @@
 using VContainer;
 using VContainer.Unity;
 
-public class ScoreHolderReceiveLifetimeScope : LifetimeScope
+public class RegisterHolderReceiveLifetimeScope : LifetimeScope
 {
     protected override void Configure(IContainerBuilder builder)
     {

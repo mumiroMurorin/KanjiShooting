@@ -415,7 +415,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8448738573934848571}
         m_TargetAssemblyTypeName: BGMVolumeView, Assembly-CSharp
         m_MethodName: OnBGMVolumeSliderChanged
         m_Mode: 0
@@ -632,7 +632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmSlider: {fileID: 8448738573809953782}
-  volumeText: {fileID: 8448738574270317794}
+  volumeText: {fileID: 8448738574101363346}
 --- !u!1 &8448738574101363348
 GameObject:
   m_ObjectHideFlags: 0

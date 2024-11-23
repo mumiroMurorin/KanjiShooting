@@ -35,7 +35,7 @@ public class WeakestEnemyManager : EnemyManager
     protected override void AfterGiveDamage()
     {
         //レコードの追加
-        ScoreManager.Instance.AddAnswerState(new AnswerState { questionData = questionData, isCorrect = false });
+        scoreHolder.AddAnswerState(new AnswerState { questionData = questionData, isCorrect = false });
 
         //アニメーションがない時の消滅と与ダメ
         if (!animator) 

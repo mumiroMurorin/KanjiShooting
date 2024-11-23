@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using StageTransition;
+using VContainer;
 
 public class StageManager : LocalSingletonMonoBehaviour<StageManager>
 {
@@ -21,6 +22,14 @@ public class StageManager : LocalSingletonMonoBehaviour<StageManager>
 
     StageSceneTransitionManager sceneTransitionManager;
     ReactiveProperty<StageStatus> currentStageStatus;
+
+    ScoreHolder scoreHolder;
+
+    [Inject]
+    public void Construct(ScoreHolder holder)
+    {
+        scoreHolder = holder;
+    }
 
     private new void Awake()
     {
@@ -44,9 +53,9 @@ public class StageManager : LocalSingletonMonoBehaviour<StageManager>
         }
 
         //スコアの初期化
-        ScoreManager.Instance.KillCount = 0;
-        ScoreManager.Instance.TimeCount = 0;
-        ScoreManager.Instance.WaveCount = 0;
+        scoreHolder.KillCount = 0;
+        scoreHolder.TimeCount = 0;
+        scoreHolder.WaveCount = 0;
     }
 
     /// <summary>
@@ -64,7 +73,7 @@ public class StageManager : LocalSingletonMonoBehaviour<StageManager>
         foreach (WaveManager w in waves)
         {
             //ウェーブ開始演出
-            stagePhaseTransitioners.Add(new WaveStartEffectTransition(timelineManager.GetPlayableDirector("WaveStart")));
+            stagePhaseTransitioners.Add(new WaveStartEffectTransition(timelineManager.GetPlayableDirector("WaveStart"), scoreHolder));
             //ウェーブ開始
             stagePhaseTransitioners.Add(new WaveStartTransition(w));
             //ウェーブ終了処理開始
@@ -74,7 +83,7 @@ public class StageManager : LocalSingletonMonoBehaviour<StageManager>
         }
 
         //ステージ終了
-        stagePhaseTransitioners.Add(new StageFinishTransition());
+        stagePhaseTransitioners.Add(new StageFinishTransition(scoreHolder));
         //ステージ終了演出
         stagePhaseTransitioners.Add(new StageFinishEffectTransition(timelineManager.GetPlayableDirector("StageFinish")));
 
@@ -84,7 +93,7 @@ public class StageManager : LocalSingletonMonoBehaviour<StageManager>
 
         //ゲームオーバー
         //ゲームオーバー処理開始
-        stagePhaseTransitioners.Add(new StageFailedStartTransition());
+        stagePhaseTransitioners.Add(new StageFailedStartTransition(scoreHolder));
         //ゲームオーバー演出開始
         stagePhaseTransitioners.Add(new StageFailedStartEffectTransition(timelineManager.GetPlayableDirector("StageFailedStart")));
         //ゲームオーバー画面終了演出

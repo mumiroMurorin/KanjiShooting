@@ -10,6 +10,7 @@ public struct EnemyInitializationData
     public Transform target;
     public GameObject kanjiObject;
     public QuestionData questionData;
+    public ScoreHolder scoreHolder;
 }
 
 public abstract class EnemySpawner : MonoBehaviour

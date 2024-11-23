@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UniRx;
 using StageTransition;
+using VContainer;
 
 public abstract class WaveManager : MonoBehaviour
 {
@@ -21,6 +22,14 @@ public abstract class WaveManager : MonoBehaviour
     protected bool isWorking = false;
     protected float time;
     protected float intervalCount;
+
+    ScoreHolder scoreHolder;
+
+    [Inject]
+    public void Construct(ScoreHolder holder)
+    {
+        scoreHolder = holder;
+    }
 
     /// <summary>
     /// ‰Šú‰»
@@ -76,7 +85,7 @@ public abstract class WaveManager : MonoBehaviour
         //ŠÔ‚Ì‰ÁZ
         time += Time.deltaTime;
         intervalCount += Time.deltaTime;
-        ScoreManager.Instance.AddTime(Time.deltaTime);
+        scoreHolder.AddTime(Time.deltaTime);
 
         //‚»‚ê‚¼‚ê‚Ìˆ—‚Ö
         AfterUpdate();
@@ -111,6 +120,7 @@ public abstract class WaveManager : MonoBehaviour
         EnemyInitializationData enemyInitializationData = new EnemyInitializationData
         {
             target = PlayerTransform,
+            scoreHolder = this.scoreHolder
         };
 
         return enemyInitializationData;

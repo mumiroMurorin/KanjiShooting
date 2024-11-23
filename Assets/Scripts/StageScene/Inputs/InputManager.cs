@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UniRx;
 using StageTransition;
+using VContainer;
 
 
 public class InputManager : MonoBehaviour, ICanInput
@@ -13,8 +14,16 @@ public class InputManager : MonoBehaviour, ICanInput
 
     public bool CanInput { get; set; } = true;
     public bool CanInputJapanese { get; set; } = true;
+    OptionHolder optionHolder;
+    OptionHolder ICanInput.Option { get { return optionHolder; } }
 
     private PlayerInputs gameInputs;
+
+    [Inject]
+    public void Construct(OptionHolder holder)
+    {
+        optionHolder = holder;
+    }
 
     private void Awake()
     {
@@ -88,6 +97,7 @@ public interface ICanInput
 {
     public bool CanInput { get; }
     public bool CanInputJapanese { get; }
+    public OptionHolder Option { get; }
 }
 
 
@@ -101,6 +111,9 @@ public interface IInputHandler
     void Bind(PlayerInputs inputs);
 }
 
+/// <summary>
+/// マウスからの回転入力
+/// </summary>
 public class PlayerRotateHandler : IInputHandler
 {
     [SerializeField] UnityEvent<Vector2> onInput;
@@ -119,13 +132,19 @@ public class PlayerRotateHandler : IInputHandler
     private void OnAction(InputAction.CallbackContext context)
     {
         if (!permit.CanInput) { return; }
+        if (!permit.Option.IsMouseValidityReactiveProperty.Value) { return; }
+
+        float magnitude = permit.Option.MouseSensitivityReactiveProperty.Value;
 
         // このままだと縦横が逆になってしまうので反転
         Vector2 vector2 = context.ReadValue<Vector2>();
-        onInput?.Invoke(new Vector2(-vector2.y, vector2.x));
+        onInput?.Invoke(new Vector2(-vector2.y * magnitude, vector2.x * magnitude));
     }
 }
 
+/// <summary>
+/// 攻撃
+/// </summary>
 public class AttackHandler : IInputHandler
 {
     [SerializeField] UnityEvent onInput;
@@ -149,6 +168,9 @@ public class AttackHandler : IInputHandler
     }
 }
 
+/// <summary>
+/// チャージ攻撃
+/// </summary>
 public class AttackHoldHandler : IInputHandler
 {
     [SerializeField] UnityEvent onPerfomred;
@@ -181,6 +203,9 @@ public class AttackHoldHandler : IInputHandler
     }
 }
 
+/// <summary>
+/// 文字を消す
+/// </summary>
 public class BackSpaceHandler : IInputHandler
 {
     [SerializeField] UnityEvent onInput;
@@ -205,6 +230,9 @@ public class BackSpaceHandler : IInputHandler
     }
 }
 
+/// <summary>
+/// スペースキーの入力
+/// </summary>
 public class RotatePermitHandler : IInputHandler
 {
     [SerializeField] UnityEvent onStarted;
@@ -225,6 +253,7 @@ public class RotatePermitHandler : IInputHandler
     private void OnStarted(InputAction.CallbackContext context)
     {
         if (!permit.CanInput) { return; }
+        if (!permit.Option.IsSpaceValidityReactiveProperty.Value) { return; }
 
         onStarted?.Invoke();
     }
@@ -232,11 +261,15 @@ public class RotatePermitHandler : IInputHandler
     private void OnCanceled(InputAction.CallbackContext context)
     {
         if (!permit.CanInput) { return; }
+        if (!permit.Option.IsSpaceValidityReactiveProperty.Value) { return; }
 
         onCanceled?.Invoke();
     }
 }
 
+/// <summary>
+/// WASD(+Space)の入力
+/// </summary>
 public class PlayerRotateFromKeyInputHandler : IInputHandler
 {
     [SerializeField] UnityEvent<Vector2> onInput;
@@ -257,20 +290,27 @@ public class PlayerRotateFromKeyInputHandler : IInputHandler
     {
         if (!permit.CanInput) { return; }
         if (permit.CanInputJapanese) { return; }
+        if (!permit.Option.IsSpaceValidityReactiveProperty.Value) { return; }
+
+        float magnitude = permit.Option.SpaceSensitivityReactiveProperty.Value;
 
         Vector2 vector2 = context.ReadValue<Vector2>();
-        onInput?.Invoke(new Vector2(-vector2.y, vector2.x));
+        onInput?.Invoke(new Vector2(-vector2.y * magnitude, vector2.x * magnitude));
     }
 
     private void OnCanceled(InputAction.CallbackContext context)
     {
         if (!permit.CanInput) { return; }
         if (permit.CanInputJapanese) { return; }
+        if (!permit.Option.IsSpaceValidityReactiveProperty.Value) { return; }
 
         onInput?.Invoke(Vector2.zero);
     }
 }
 
+/// <summary>
+/// 矢印キーからの入力
+/// </summary>
 public class PlayerRotateFromArrawHandler : IInputHandler
 {
     [SerializeField] UnityEvent<Vector2> onInput;
@@ -290,14 +330,18 @@ public class PlayerRotateFromArrawHandler : IInputHandler
     private void OnPerformed(InputAction.CallbackContext context)
     {
         if (!permit.CanInput) { return; }
+        if (!permit.Option.IsArrawValidityReactiveProperty.Value) { return; }
+
+        float magnitude = permit.Option.ArrawSensitivityReactiveProperty.Value;
 
         Vector2 vector2 = context.ReadValue<Vector2>();
-        onInput?.Invoke(new Vector2(-vector2.y, vector2.x));
+        onInput?.Invoke(new Vector2(-vector2.y * magnitude, vector2.x * magnitude));
     }
 
     private void OnCanceled(InputAction.CallbackContext context)
     {
         if (!permit.CanInput) { return; }
+        if (!permit.Option.IsArrawValidityReactiveProperty.Value) { return; }
 
         onInput?.Invoke(Vector2.zero);
     }

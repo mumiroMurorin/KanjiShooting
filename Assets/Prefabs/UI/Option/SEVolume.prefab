@@ -710,9 +710,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BGMVolumeView, Assembly-CSharp
-        m_MethodName: OnBGMVolumeSliderChanged
+      - m_Target: {fileID: 2567180109801306560}
+        m_TargetAssemblyTypeName: SEVolumeView, Assembly-CSharp
+        m_MethodName: OnSEVolumeSliderChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

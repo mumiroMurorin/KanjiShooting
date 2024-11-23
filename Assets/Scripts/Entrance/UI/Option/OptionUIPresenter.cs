@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using EntranceTransition;
-using Sound;
+using VContainer;
 
 public class OptionUIPresenter : MonoBehaviour
 {
@@ -13,6 +13,14 @@ public class OptionUIPresenter : MonoBehaviour
     [SerializeField] MouseSensitivityView mouseSensitivityView;
     [SerializeField] ArrawSensitivityView arrawSensitivityView;
     [SerializeField] SpaceSensitivityView spaceSensitivityView;
+
+    OptionHolder optionHolder;
+
+    [Inject]
+    public void Construct(OptionHolder holder)
+    {
+        optionHolder = holder;
+    }
 
     private void Start()
     {
@@ -33,15 +41,15 @@ public class OptionUIPresenter : MonoBehaviour
         // マウス感度
         mouseSensitivityView.OnChangeSensitivityListener += (value) => { OnMouseSensitivityChanged(value); };
         // マウス有効
-        mouseSensitivityView.OnChangeValidValueListener += (value) => { OnMouseValidableChanged(value); };
+        mouseSensitivityView.OnChangeValidValueListener += (value) => { OnMouseValidityChanged(value); };
         // 矢印感度
         arrawSensitivityView.OnChangeSensitivityListener += (value) => { OnArrawSensitivityChanged(value); };
         // 矢印有効
-        arrawSensitivityView.OnChangeValidValueListener += (value) => { OnArrawValidableChanged(value); };
+        arrawSensitivityView.OnChangeValidValueListener += (value) => { OnArrawValidityChanged(value); };
         // スペース感度
         spaceSensitivityView.OnChangeSensitivityListener += (value) => { OnSpaceSensitivityChanged(value); };
         // スペース有効
-        spaceSensitivityView.OnChangeValidValueListener += (value) => { OnSpaceValidableChanged(value); };
+        spaceSensitivityView.OnChangeValidValueListener += (value) => { OnSpaceValidityChanged(value); };
     }
 
     /// <summary>
@@ -50,16 +58,44 @@ public class OptionUIPresenter : MonoBehaviour
     private void Bind()
     {
         // BGMVolume → SliderUI
-        Sound.SoundManager.Instance.BGMVolumeReactiveProperty
+        optionHolder.BGMVolumeReactiveProperty
             .Subscribe(value => bgmVolumeView.OnBGMVolumeChanged(value))
             .AddTo(this.gameObject);
 
         // SEVolume → SliderUI
-        Sound.SoundManager.Instance.SEVolumeReactiveProperty
+        optionHolder.SEVolumeReactiveProperty
             .Subscribe(value => seVolumeView.OnSEVolumeChanged(value))
             .AddTo(this.gameObject);
 
         // マウス感度 → 
+        optionHolder.MouseSensitivityReactiveProperty
+            .Subscribe(value => mouseSensitivityView.OnSensitivityChanged(value))
+            .AddTo(this.gameObject);
+
+        // マウス有効? →
+        optionHolder.IsMouseValidityReactiveProperty
+            .Subscribe(value => mouseSensitivityView.OnValidityChanged(value))
+            .AddTo(this.gameObject);
+
+        // 矢印キー感度 → 
+        optionHolder.ArrawSensitivityReactiveProperty
+            .Subscribe(value => arrawSensitivityView.OnSensitivityChanged(value))
+            .AddTo(this.gameObject);
+
+        // 矢印キー有効? →
+        optionHolder.IsArrawValidityReactiveProperty
+            .Subscribe(value => arrawSensitivityView.OnValidityChanged(value))
+            .AddTo(this.gameObject);
+
+        // スペースキー感度 → 
+        optionHolder.SpaceSensitivityReactiveProperty
+            .Subscribe(value => spaceSensitivityView.OnSensitivityChanged(value))
+            .AddTo(this.gameObject);
+
+        // スペースキー有効? →
+        optionHolder.IsSpaceValidityReactiveProperty
+            .Subscribe(value => spaceSensitivityView.OnValidityChanged(value))
+            .AddTo(this.gameObject);
     }
 
     //============ Events ============== 
@@ -70,7 +106,7 @@ public class OptionUIPresenter : MonoBehaviour
     /// <param name="value"></param>
     private void OnBGMVolumeChanged(float value)
     {
-        Sound.SoundManager.Instance.BGMMasterVolume = value;
+        optionHolder.SetBGMVolume(value);
     }
 
     /// <summary>
@@ -79,7 +115,7 @@ public class OptionUIPresenter : MonoBehaviour
     /// <param name="value"></param>
     private void OnSEVolumeChanged(float value)
     {
-        Sound.SoundManager.Instance.SEMasterVolume = value;
+        optionHolder.SetSEVolume(value);
     }
 
     /// <summary>
@@ -88,16 +124,16 @@ public class OptionUIPresenter : MonoBehaviour
     /// <param name="sensitivity"></param>
     private void OnMouseSensitivityChanged(float sensitivity)
     {
-
+        optionHolder.SetMouseSensitivity(sensitivity);
     }
 
     /// <summary>
     /// マウス入力有効が変えられたとき
     /// </summary>
     /// <param name="isValid"></param>
-    private void OnMouseValidableChanged(bool isValid)
+    private void OnMouseValidityChanged(bool isValid)
     {
-
+        optionHolder.SetMouseValidity(isValid);
     }
 
     /// <summary>
@@ -106,16 +142,16 @@ public class OptionUIPresenter : MonoBehaviour
     /// <param name="sensitivity"></param>
     private void OnArrawSensitivityChanged(float sensitivity)
     {
-
+        optionHolder.SetArrawSensitivity(sensitivity);
     }
 
     /// <summary>
     /// 矢印入力有効が変えられたとき
     /// </summary>
     /// <param name="isValid"></param>
-    private void OnArrawValidableChanged(bool isValid)
+    private void OnArrawValidityChanged(bool isValid)
     {
-
+        optionHolder.SetArrawValidity(isValid);
     }
 
     /// <summary>
@@ -124,15 +160,15 @@ public class OptionUIPresenter : MonoBehaviour
     /// <param name="sensitivity"></param>
     private void OnSpaceSensitivityChanged(float sensitivity)
     {
-
+        optionHolder.SetSpaceSensitivity(sensitivity);
     }
 
     /// <summary>
     /// スペースキー入力有効が変えられたとき
     /// </summary>
     /// <param name="isValid"></param>
-    private void OnSpaceValidableChanged(bool isValid)
+    private void OnSpaceValidityChanged(bool isValid)
     {
-
+        optionHolder.SetSpaceValidity(isValid);
     }
 }

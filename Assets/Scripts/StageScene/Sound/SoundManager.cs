@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine.Audio;
 using UniRx;
+using VContainer;
 
 namespace Sound
 {
@@ -33,7 +34,7 @@ namespace Sound
     /// <summary>
     /// âπåπä«óùÉNÉâÉX
     /// </summary>
-    public class SoundManager : SingletonMonoBehaviour<SoundManager>
+    public class SoundManager : LocalSingletonMonoBehaviour<SoundManager>
     {
         [System.Serializable]
         class BGMTypeToAudioClip
@@ -67,22 +68,20 @@ namespace Sound
         [SerializeField] AudioMixerGroup audioMixerGroupSE;
         [SerializeField] AudioMixerGroup audioMixerGroupBGM;
 
-        // BGMVolume
-        private ReactiveProperty<float> bgmMasterVolume = new ReactiveProperty<float>(0.8f);
-        public float BGMMasterVolume { set { bgmMasterVolume.Value = value; } }
-        public IReadOnlyReactiveProperty<float> BGMVolumeReactiveProperty { get { return bgmMasterVolume; } }
-
-        // SEVolume
-        private ReactiveProperty<float> seMasterVolume = new ReactiveProperty<float>(0.8f);
-        public float SEMasterVolume { set { seMasterVolume.Value = value; } }
-        public IReadOnlyReactiveProperty<float> SEVolumeReactiveProperty { get { return seMasterVolume; } }
-
         // === AudioSource ===
         AudioSource[] bgmSources = new AudioSource[BGM_ARRAY_LENGTH];
         AudioSource[] seSources = new AudioSource[SE_ARRAY_LENGTH];
 
         bool isCrossFading;
         CancellationTokenSource cts;
+
+        OptionHolder optionHolder;
+
+        [Inject]
+        public void Construct(OptionHolder holder)
+        {
+            optionHolder = holder;
+        }
 
         private void Start()
         {
@@ -120,12 +119,12 @@ namespace Sound
         private void Bind()
         {
             // bgmVolume Å® 
-            bgmMasterVolume
+            optionHolder.BGMVolumeReactiveProperty
                 .Subscribe(OnBGMVolumeChanged)
                 .AddTo(this.gameObject);
 
             // seVolume Å® 
-            seMasterVolume
+            optionHolder.SEVolumeReactiveProperty
                 .Subscribe(OnSEVolumeChanged)
                 .AddTo(this.gameObject);
 

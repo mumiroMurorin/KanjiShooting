@@ -13,6 +13,7 @@ public abstract class EnemyManager : MonoBehaviour, IEnemy, IDamager
     protected BoxCollider kanjiCollider;
     protected Transform TargetTransform;
     protected QuestionData questionData;
+    protected ScoreHolder scoreHolder;
 
     /// <summary>
     /// HPが変わったときの処理
@@ -22,8 +23,8 @@ public abstract class EnemyManager : MonoBehaviour, IEnemy, IDamager
     {
         if(hp <= 0)
         {
-            ScoreManager.Instance.AddAnswerState(new AnswerState { questionData = questionData, isCorrect = true });
-            ScoreManager.Instance.IncrementKillCount(); // キル数をプラス
+            scoreHolder.AddAnswerState(new AnswerState { questionData = questionData, isCorrect = true });
+            scoreHolder.IncrementKillCount(); // キル数をプラス
             kanjiCollider.enabled = false;
             OnDeath();
         }
@@ -37,6 +38,7 @@ public abstract class EnemyManager : MonoBehaviour, IEnemy, IDamager
     {
         TargetTransform = initialData.target;
         questionData = initialData.questionData;
+        scoreHolder = initialData.scoreHolder;
         KanjiStatus.Value.SetAnswers(initialData.questionData.answers);
 
         SetKanjiObject(initialData.kanjiObject);

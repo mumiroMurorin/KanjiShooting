@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using VContainer;
 
 public class MainUIPresenter : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class MainUIPresenter : MonoBehaviour
     [SerializeField] BulletReloadGageView bulletReloadGageView;
     [SerializeField] SpecialChargeGaugeView specialChargeGaugeView;
     [SerializeField] KillCountTextView killCountTextView;
+    [SerializeField] StageDataView stageDataView;
     [SerializeField] WaveTextView waveTextView;
     [SerializeField] TimerTextView timerTextView;
     [SerializeField] DamageEffectView damageEffectView;
@@ -20,6 +22,14 @@ public class MainUIPresenter : MonoBehaviour
     [SerializeField] SerializeInterface<IStatus> playerStatus_model;
     [SerializeField] GunManager gunManager_model;
     [SerializeField] ChargeGunManager chargeGunManager_model;
+
+    ScoreHolder scoreHolder;
+
+    [Inject]
+    public void Construct(ScoreHolder holder)
+    {
+        scoreHolder = holder;
+    }
 
     private void Start()
     {
@@ -67,16 +77,21 @@ public class MainUIPresenter : MonoBehaviour
             .AddTo(this.gameObject);
 
         // キルカウントスコア → キルカウントテキスト
-        ScoreManager.Instance.KillCountReactiveProperty
+        scoreHolder.KillCountReactiveProperty
             .Subscribe(killCountTextView.OnChangeKillCount)
             .AddTo(this.gameObject);
 
+        // ステージデータ → ステージタイトル他
+        scoreHolder.StageDataReactiveProperty
+            .Subscribe(stageDataView.OnChangeStageData)
+            .AddTo(this.gameObject);
+
         // Waveカウント → 経過Waveテキスト
-        ScoreManager.Instance.WaveCountReactiveProperty
+        scoreHolder.WaveCountReactiveProperty
             .Subscribe(waveTextView.OnChangeWaveCount)
             .AddTo(this.gameObject);
 
-        ScoreManager.Instance.WaveCountReactiveProperty
+        scoreHolder.WaveCountReactiveProperty
             .Subscribe(count => 
             {
                 previousWaveView.OnChangePreviousWave(count);
@@ -85,12 +100,12 @@ public class MainUIPresenter : MonoBehaviour
             .AddTo(this.gameObject);
 
         // 経過時間 → タイマーテキスト
-        ScoreManager.Instance.TimeCountreactiveProperty
+        scoreHolder.TimeCountreactiveProperty
             .Subscribe(timerTextView.OnChangeTimeCount)
             .AddTo(this.gameObject);
 
         // 回答 → 解答ログ
-        ScoreManager.Instance.AnswerStatesReactiveCollection
+        scoreHolder.AnswerStatesReactiveCollection
             .ObserveAdd().Subscribe(addState => SpawnAnswerBox(addState.Value))
             .AddTo(this);
     }

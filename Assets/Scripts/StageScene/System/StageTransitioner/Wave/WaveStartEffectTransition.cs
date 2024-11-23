@@ -9,16 +9,18 @@ using UnityEngine.Playables;
 public class WaveStartEffectTransition : IPhaseTransitioner
 {
     PlayableDirector waveStartDirector;
+    ScoreHolder scoreHolder;
 
-    public WaveStartEffectTransition(PlayableDirector director)
+    public WaveStartEffectTransition(PlayableDirector director, ScoreHolder holder)
     {
         waveStartDirector = director;
+        scoreHolder = holder;
     }
 
     public async UniTask ExecuteAsync(CancellationToken token)
     {
         //Waveカウントを更新
-        ScoreManager.Instance.IncrementWaveCount();
+        scoreHolder.IncrementWaveCount();
 
         //ウェーブ開始演出
         waveStartDirector.Play();

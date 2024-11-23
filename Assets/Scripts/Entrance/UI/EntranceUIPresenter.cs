@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using EntranceTransition;
-using Sound;
+using VContainer;
 
 public class EntranceUIPresenter : MonoBehaviour
 {
@@ -17,6 +17,14 @@ public class EntranceUIPresenter : MonoBehaviour
     [SerializeField] StageImageBackView stageImageBackView;
     [SerializeField] StageDetailView stageDetailView;
     [SerializeField] List<StageElementView> stageElementViews;
+
+    ScoreHolder scoreHolder;
+
+    [Inject]
+    public void Construct(ScoreHolder sholder)
+    {
+        scoreHolder = sholder;
+    }
 
     // Awakeの方がいい？
     private void Start()
@@ -49,7 +57,7 @@ public class EntranceUIPresenter : MonoBehaviour
     private void Bind()
     {
         // ステージデータ →
-        ScoreManager.Instance.StageDataReactiveProperty
+        scoreHolder.StageDataReactiveProperty
             .Where(data => data != null)
             .Subscribe(data => 
             {
@@ -68,7 +76,7 @@ public class EntranceUIPresenter : MonoBehaviour
     /// </summary>
     private void OnStageItemButtonClicked(StageDetailData data)
     {
-        ScoreManager.Instance.StageData = data;
+        scoreHolder.StageData = data;
     }
 
     /// <summary>
