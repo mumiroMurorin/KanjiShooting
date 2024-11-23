@@ -32,7 +32,7 @@ public class ScoreHolder
     // Œo‰ßŽžŠÔ
     ReactiveProperty<float> timeCount = new ReactiveProperty<float>();
     public float TimeCount { set { timeCount.Value = value; } }
-    public IReadOnlyReactiveProperty<float> TimeCountreactiveProperty { get { return timeCount; } }
+    public IReadOnlyReactiveProperty<float> TimeCountReactiveProperty { get { return timeCount; } }
     public void AddTime(float value)
     {
         timeCount.Value += value;

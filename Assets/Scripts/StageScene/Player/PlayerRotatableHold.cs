@@ -22,7 +22,7 @@ public class PlayerRotatableHold : MonoBehaviour, IRotatable
 
         if (addAngle.magnitude <= 0) { return; }
 
-        newAngle += addAngle;
+        newAngle += addAngle * Time.deltaTime;
 
         if (0 > newAngle.x && newAngle.x < verticalAngleMax) { newAngle.x = verticalAngleMax; }
         if (0 < newAngle.x && newAngle.x > verticalAngleMin) { newAngle.x = verticalAngleMin; }

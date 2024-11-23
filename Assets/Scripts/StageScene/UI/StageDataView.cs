@@ -15,6 +15,8 @@ public class StageDataView : MonoBehaviour
     /// <param name="number"></param>
     public void OnChangeStageData(StageDetailData data)
     {
+        if(data == null) { return; }
+
         stageTitleTmp.text = data.StageTitle;
     }
 }

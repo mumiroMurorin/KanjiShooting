@@ -9713,7 +9713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1133433990}
   mapCameraTransform: {fileID: 298006686}
-  magnitude: 3
+  magnitude: 300
   verticalAngleMin: 60
   verticalAngleMax: -60
   isReverseVertical: 0
@@ -9823,7 +9823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1133433990}
   mapCameraTransform: {fileID: 298006686}
-  magnitude: 0.25
+  magnitude: 25
   verticalAngleMin: 60
   verticalAngleMax: -60
   isReverseVertical: 0

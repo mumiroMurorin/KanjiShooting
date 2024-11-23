@@ -12,23 +12,15 @@ public class PlayerRotatable : MonoBehaviour, IRotatable
     [SerializeField] private bool isReverseVertical;
     [SerializeField] private bool isReverseHorizontal;
 
-    private Vector3 newAngle;
+    private Vector3 addAngle;
 
     private void Update()
     {
-        newAngle = NormalizeAngle(playerTransform.localEulerAngles);
-    }
-
-    /// <summary>
-    /// âÒì]èàóù
-    /// </summary>
-    /// <param name="rotate">âÒì]Ç≥ÇπÇÈäpìx</param>
-    public void Rotate(Vector2 rotation)
-    {
-        rotation *= magnitude;
-        newAngle.y += rotation.y * (isReverseHorizontal ? -1 : 1);
-        newAngle.x += rotation.x * (isReverseVertical ? -1 : 1);
+        Vector3 newAngle = playerTransform.localEulerAngles;
+        newAngle += addAngle * Time.deltaTime;
         newAngle = NormalizeAngle(newAngle);
+
+        addAngle = Vector3.zero;
 
         if (0 > newAngle.x && newAngle.x < verticalAngleMax) { newAngle.x = verticalAngleMax; }
         if (0 < newAngle.x && newAngle.x > verticalAngleMin) { newAngle.x = verticalAngleMin; }
@@ -37,6 +29,21 @@ public class PlayerRotatable : MonoBehaviour, IRotatable
 
         playerTransform.localEulerAngles = newAngle;
         mapCameraTransform.localEulerAngles = new Vector3(mapCameraTransform.eulerAngles.x, newAngle.y, 0);
+    }
+
+    /// <summary>
+    /// âÒì]èàóù
+    /// </summary>
+    /// <param name="rotate">âÒì]Ç≥ÇπÇÈäpìx</param>
+    public void Rotate(Vector2 rotation)
+    {
+        addAngle = new Vector3();
+
+        rotation *= magnitude;
+        addAngle.y = rotation.y * (isReverseHorizontal ? -1 : 1);
+        addAngle.x = rotation.x * (isReverseVertical ? -1 : 1);
+
+        //Debug.Log($"angle{newAngle}");
     }
 
     private static Vector3 NormalizeAngle(Vector3 angle)

@@ -100,7 +100,7 @@ public class MainUIPresenter : MonoBehaviour
             .AddTo(this.gameObject);
 
         // 経過時間 → タイマーテキスト
-        scoreHolder.TimeCountreactiveProperty
+        scoreHolder.TimeCountReactiveProperty
             .Subscribe(timerTextView.OnChangeTimeCount)
             .AddTo(this.gameObject);
 
