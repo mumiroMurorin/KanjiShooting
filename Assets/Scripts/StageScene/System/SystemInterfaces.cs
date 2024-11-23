@@ -254,3 +254,12 @@ public interface ISpawnpointSelector
 {
     public Transform GetSpawnPoint();
 }
+
+/// <summary>
+/// –â‘è‚É‘Î‚·‚é‰ğ“šî•ñ
+/// </summary>
+public struct AnswerState
+{
+    public QuestionData questionData;
+    public bool isCorrect;
+}

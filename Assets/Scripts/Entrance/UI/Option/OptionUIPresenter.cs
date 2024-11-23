@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-using EntranceTransition;
+using EntranceUI;
 using VContainer;
 
 public class OptionUIPresenter : MonoBehaviour

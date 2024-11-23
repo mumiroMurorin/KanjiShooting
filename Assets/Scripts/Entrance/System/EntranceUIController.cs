@@ -33,8 +33,3 @@ public class EntranceUIController : MonoBehaviour , IEntranceUIcontroller
         }
     }
 }
-
-public interface IEntranceUIcontroller
-{
-    public void ActiveUIGroup(MenuStatus status);
-}

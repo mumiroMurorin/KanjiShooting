@@ -1,18 +1,21 @@
 using UnityEngine;
 using System;
 
-public class OptionButtonView : MonoBehaviour
+namespace EntranceUI
 {
-    public Action OnOptionButtonClickedListener;
-
-    /// <summary>
-    /// 設定ボタンが押されたときのメソッド
-    /// </summary>
-    public void OnOptionButtonClicked()
+    public class OptionButtonView : MonoBehaviour
     {
-        if (OnOptionButtonClickedListener != null)
+        public Action OnOptionButtonClickedListener;
+
+        /// <summary>
+        /// 設定ボタンが押されたときのメソッド
+        /// </summary>
+        public void OnOptionButtonClicked()
         {
-            OnOptionButtonClickedListener.Invoke();
+            if (OnOptionButtonClickedListener != null)
+            {
+                OnOptionButtonClickedListener.Invoke();
+            }
         }
     }
 }

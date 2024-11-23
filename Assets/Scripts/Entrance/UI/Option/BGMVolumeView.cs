@@ -3,31 +3,34 @@ using System;
 using UnityEngine.UI;
 using TMPro;
 
-public class BGMVolumeView : MonoBehaviour
+namespace EntranceUI
 {
-    [SerializeField] Slider bgmSlider;
-    [SerializeField] TextMeshProUGUI volumeText;
-
-    public Action<float> OnChangeValueListener;
-
-    /// <summary>
-    /// BGMボリュームが変わったときのメソッド
-    /// </summary>
-    /// <param name="value"></param>
-    public void OnBGMVolumeChanged(float value)
+    public class BGMVolumeView : MonoBehaviour
     {
-        bgmSlider.value = value;
-        volumeText.text = (value * 10).ToString("0.00");
-    }
+        [SerializeField] Slider bgmSlider;
+        [SerializeField] TextMeshProUGUI volumeText;
 
-    /// <summary>
-    /// BGMスライダーが変えられたときのメソッド
-    /// </summary>
-    public void OnBGMVolumeSliderChanged(float value)
-    {
-        if (OnChangeValueListener != null)
+        public Action<float> OnChangeValueListener;
+
+        /// <summary>
+        /// BGMボリュームが変わったときのメソッド
+        /// </summary>
+        /// <param name="value"></param>
+        public void OnBGMVolumeChanged(float value)
         {
-            OnChangeValueListener.Invoke(value);
+            bgmSlider.value = value;
+            volumeText.text = (value * 10).ToString("0.00");
+        }
+
+        /// <summary>
+        /// BGMスライダーが変えられたときのメソッド
+        /// </summary>
+        public void OnBGMVolumeSliderChanged(float value)
+        {
+            if (OnChangeValueListener != null)
+            {
+                OnChangeValueListener.Invoke(value);
+            }
         }
     }
 }

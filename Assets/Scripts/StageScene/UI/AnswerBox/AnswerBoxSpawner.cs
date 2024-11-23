@@ -3,38 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using Kanji;
 
-public struct AnswerState
+namespace StageUI
 {
-    public QuestionData questionData;
-    public bool isCorrect;
-}
-
-public abstract class AnswerBoxSpawner : MonoBehaviour
-{
-    [SerializeField] GameObject answerBoxPrefab;
-    [SerializeField] Transform answerBoxParent;
-
-    /// <summary>
-    /// スポーンさせる条件に合致しているか返す
-    /// </summary>
-    /// <param name="answerState"></param>
-    /// <returns></returns>
-    public abstract bool CanSpawn(AnswerState answerState);
-
-    /// <summary>
-    /// 回答UIの生成
-    /// </summary>
-    /// <param name="answerState"></param>
-    /// <returns></returns>
-    public AnswerBoxView Spawn(AnswerState answerState)
+    public abstract class AnswerBoxSpawner : MonoBehaviour
     {
-        //インスタンス化
-        GameObject obj = Instantiate(answerBoxPrefab, answerBoxParent);
-        AnswerBoxView answerBoxView = obj.GetComponent<AnswerBoxView>();
-        answerBoxView.SetAnswer(answerState.questionData);
+        [SerializeField] GameObject answerBoxPrefab;
+        [SerializeField] Transform answerBoxParent;
 
-        return answerBoxView;
+        /// <summary>
+        /// スポーンさせる条件に合致しているか返す
+        /// </summary>
+        /// <param name="answerState"></param>
+        /// <returns></returns>
+        public abstract bool CanSpawn(AnswerState answerState);
+
+        /// <summary>
+        /// 回答UIの生成
+        /// </summary>
+        /// <param name="answerState"></param>
+        /// <returns></returns>
+        public AnswerBoxView Spawn(AnswerState answerState)
+        {
+            //インスタンス化
+            GameObject obj = Instantiate(answerBoxPrefab, answerBoxParent);
+            AnswerBoxView answerBoxView = obj.GetComponent<AnswerBoxView>();
+            answerBoxView.SetAnswer(answerState.questionData);
+
+            return answerBoxView;
+        }
+
+        protected abstract void AfterSpawn();
     }
 
-    protected abstract void AfterSpawn();
 }

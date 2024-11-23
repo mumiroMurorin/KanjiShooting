@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnswerBoxCorrectSpawner : AnswerBoxSpawner
+namespace StageUI
 {
-    public override bool CanSpawn(AnswerState answerState)
+    public class AnswerBoxCorrectSpawner : AnswerBoxSpawner
     {
-        return answerState.isCorrect;
+        public override bool CanSpawn(AnswerState answerState)
+        {
+            return answerState.isCorrect;
+        }
+
+        protected override void AfterSpawn()
+        {
+
+        }
     }
 
-    protected override void AfterSpawn()
-    {
-
-    }
 }

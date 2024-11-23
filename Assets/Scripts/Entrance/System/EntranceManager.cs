@@ -5,11 +5,10 @@ using EntranceTransition;
 using UniRx;
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using VContainer;
 
 public class EntranceManager : LocalSingletonMonoBehaviour<EntranceManager>
 {
-    const MenuStatus FIRST_MENU_STATUS = MenuStatus.Title;
-
     [SerializeField] EntranceUIController uiController;
     [SerializeField] TimelineManager timelineManager;
 
@@ -18,12 +17,20 @@ public class EntranceManager : LocalSingletonMonoBehaviour<EntranceManager>
     public IReadOnlyReactiveProperty<MenuStatus> CurentStatusReactiveProperty { get { return currentStatus; } }
     CancellationTokenSource cts;
 
+    ScoreHolder scoreHolder;
+
+    [Inject]
+    public void Construct(ScoreHolder sholder)
+    {
+        scoreHolder = sholder;
+        SetMenuStatus(scoreHolder.InitialEntranceMenuStatus);
+    }
+
     private new void Awake()
     {
         Initialize();
         SetTransitioners();
         Bind();
-        SetMenuStatus(FIRST_MENU_STATUS);
     }
 
     private void Initialize()

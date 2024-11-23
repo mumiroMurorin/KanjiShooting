@@ -4,13 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class NextWaveView : MonoBehaviour
+namespace StageUI
 {
-    [Header("NextWaveText")]
-    [SerializeField] TextMeshProUGUI tmp;
-
-    public void OnChangePreviousWave(int waveNum)
+    public class NextWaveView : MonoBehaviour
     {
-        tmp.text = "WAVE" + waveNum + " START";
+        [Header("NextWaveText")]
+        [SerializeField] TextMeshProUGUI tmp;
+
+        public void OnChangePreviousWave(int waveNum)
+        {
+            tmp.text = "WAVE" + waveNum + " START";
+        }
     }
+
 }

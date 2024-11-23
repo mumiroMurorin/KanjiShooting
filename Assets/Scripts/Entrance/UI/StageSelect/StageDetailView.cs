@@ -4,34 +4,38 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class StageDetailView : MonoBehaviour
+namespace EntranceUI
 {
-    [Header("説明文")]
-    [SerializeField] TextMeshProUGUI stageDescriptionText;
-    [Header("出現漢字例")]
-    [SerializeField] TextMeshProUGUI kanjiExampleText;
-    [Header("漢字レベル")]
-    [SerializeField] TextMeshProUGUI kanjiLevelText;
-    [Header("タイピングレベル")]
-    [SerializeField] TextMeshProUGUI typingLevelText;
-
-    StageDetailData currentData;
-
-    /// <summary>
-    /// ステージが選択されたときのメソッド
-    /// </summary>
-    public void OnSelectStage(StageDetailData stageDetailData)
+    public class StageDetailView : MonoBehaviour
     {
-        // 選択されたのが同じデータだったら変えない
-        if (currentData == stageDetailData) { return; }
+        [Header("説明文")]
+        [SerializeField] TextMeshProUGUI stageDescriptionText;
+        [Header("出現漢字例")]
+        [SerializeField] TextMeshProUGUI kanjiExampleText;
+        [Header("漢字レベル")]
+        [SerializeField] TextMeshProUGUI kanjiLevelText;
+        [Header("タイピングレベル")]
+        [SerializeField] TextMeshProUGUI typingLevelText;
 
-        currentData = stageDetailData;
-        
-        // データの更新
-        stageDescriptionText.text = stageDetailData.StageDescription;
-        kanjiExampleText.text = stageDetailData.KanjiExample;
-        kanjiLevelText.text = stageDetailData.KanjiLevel.ToString();
-        typingLevelText.text = stageDetailData.TypingLevel.ToString();
+        StageDetailData currentData;
+
+        /// <summary>
+        /// ステージが選択されたときのメソッド
+        /// </summary>
+        public void OnSelectStage(StageDetailData stageDetailData)
+        {
+            // 選択されたのが同じデータだったら変えない
+            if (currentData == stageDetailData) { return; }
+
+            currentData = stageDetailData;
+
+            // データの更新
+            stageDescriptionText.text = stageDetailData.StageDescription;
+            kanjiExampleText.text = stageDetailData.KanjiExample;
+            kanjiLevelText.text = stageDetailData.KanjiLevel.ToString();
+            typingLevelText.text = stageDetailData.TypingLevel.ToString();
+        }
+
     }
 
 }

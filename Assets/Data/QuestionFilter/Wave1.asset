@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee1ab408350775043ac27d2715eb7e42, type: 3}
   m_Name: Wave1
   m_EditorClassIdentifier: 
-  kanjiLevel: 16
+  kanjiLevel: 2
   kanjiRadical: -1
-  kanjiOtherTag: -1
+  kanjiOtherTag: 524281

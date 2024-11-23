@@ -4,14 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class KillCountTextView : MonoBehaviour
+namespace StageUI
 {
-    [Header("killCountText")]
-    [SerializeField] TextMeshProUGUI tmp;
-
-    //キル数が変わったときのメソッド
-    public void OnChangeKillCount(int count)
+    public class KillCountTextView : MonoBehaviour
     {
-        tmp.text = count.ToString();
+        [Header("killCountText")]
+        [SerializeField] TextMeshProUGUI tmp;
+
+        //キル数が変わったときのメソッド
+        public void OnChangeKillCount(int count)
+        {
+            tmp.text = count.ToString();
+        }
     }
+
 }

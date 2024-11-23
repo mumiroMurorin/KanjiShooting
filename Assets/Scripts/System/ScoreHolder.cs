@@ -6,6 +6,9 @@ using unityroom.Api;
 
 public class ScoreHolder
 {
+    // エントランスの初期画面
+    public EntranceTransition.MenuStatus InitialEntranceMenuStatus { get; set; } = EntranceTransition.MenuStatus.Title;
+
     // ステージデータ
     ReactiveProperty<StageDetailData> stageData = new ReactiveProperty<StageDetailData>();
     public StageDetailData StageData { set { stageData.Value = value; } }

@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DamageEffectView : MonoBehaviour
+namespace StageUI
 {
-    [Header("DamageEffectAnimator")]
-    [SerializeField] Animator animator;
-
-    //ダメージを受けた時メソッド
-    public void OnDamage(float decrementAmount)
+    public class DamageEffectView : MonoBehaviour
     {
-        animator.SetTrigger("Damage");
+        [Header("DamageEffectAnimator")]
+        [SerializeField] Animator animator;
+
+        //ダメージを受けた時メソッド
+        public void OnDamage(float decrementAmount)
+        {
+            animator.SetTrigger("Damage");
+        }
     }
+
 }

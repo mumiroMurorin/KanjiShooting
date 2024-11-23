@@ -4,19 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class StageDataView : MonoBehaviour
+namespace StageUI
 {
-    [Header("StageTitleText")]
-    [SerializeField] TextMeshProUGUI stageTitleTmp;
-
-    /// <summary>
-    /// ステージ情報が変わったときの処理
-    /// </summary>
-    /// <param name="number"></param>
-    public void OnChangeStageData(StageDetailData data)
+    public class StageDataView : MonoBehaviour
     {
-        if(data == null) { return; }
+        [Header("StageTitleText")]
+        [SerializeField] TextMeshProUGUI stageTitleTmp;
 
-        stageTitleTmp.text = data.StageTitle;
+        /// <summary>
+        /// ステージ情報が変わったときの処理
+        /// </summary>
+        /// <param name="number"></param>
+        public void OnChangeStageData(StageDetailData data)
+        {
+            if (data == null) { return; }
+
+            stageTitleTmp.text = data.StageTitle;
+        }
     }
+
 }

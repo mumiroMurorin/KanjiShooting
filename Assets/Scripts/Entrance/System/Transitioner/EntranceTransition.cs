@@ -49,4 +49,9 @@ namespace EntranceTransition
             Debug.Log($"ySystemzƒƒjƒ…[ˆÚ“®I—¹: {menuStatus}");
         }
     }
+
+    public interface IEntranceUIcontroller
+    {
+        public void ActiveUIGroup(MenuStatus status);
+    }
 }

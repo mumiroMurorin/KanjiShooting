@@ -72,34 +72,34 @@ public class StageManager : LocalSingletonMonoBehaviour<StageManager>
         //WAVE内ループ
         foreach (WaveManager w in waves)
         {
-            //ウェーブ開始演出
+            // ウェーブ開始演出
             stagePhaseTransitioners.Add(new WaveStartEffectTransition(timelineManager.GetPlayableDirector("WaveStart"), scoreHolder));
-            //ウェーブ開始
+            // ウェーブ開始
             stagePhaseTransitioners.Add(new WaveStartTransition(w));
-            //ウェーブ終了処理開始
+            // ウェーブ終了処理開始
             stagePhaseTransitioners.Add(new WaveFinishTransition(w));
-            //ウェーブ終了演出
+            // ウェーブ終了演出
             stagePhaseTransitioners.Add(new WaveFinishEffectTransition(timelineManager.GetPlayableDirector("WaveFinish")));
         }
 
-        //ステージ終了
+        // ステージ終了
         stagePhaseTransitioners.Add(new StageFinishTransition(scoreHolder));
-        //ステージ終了演出
+        // ステージ終了演出
         stagePhaseTransitioners.Add(new StageFinishEffectTransition(timelineManager.GetPlayableDirector("StageFinish")));
+        // シーンチェンジ
+        stagePhaseTransitioners.Add(new ResultSceneTransition(timelineManager.GetPlayableDirector("SceneChange")));
 
         //シーンの追加
         sceneTransitionManager.AddPhaseTransitioner(StageSceneTag.Fighting, GenerateScenePhaseTransitionManager(stagePhaseTransitioners));
         stagePhaseTransitioners = new List<IPhaseTransitioner>();
 
-        //ゲームオーバー
-        //ゲームオーバー処理開始
+        // ゲームオーバー
+        // ゲームオーバー処理開始
         stagePhaseTransitioners.Add(new StageFailedStartTransition(scoreHolder));
-        //ゲームオーバー演出開始
+        // ゲームオーバー演出開始
         stagePhaseTransitioners.Add(new StageFailedStartEffectTransition(timelineManager.GetPlayableDirector("StageFailedStart")));
-        //ゲームオーバー画面終了演出
-        stagePhaseTransitioners.Add(new StageFailedFinishEffectTransition(timelineManager.GetPlayableDirector("StageFailedFinish")));
-        //ゲームオーバー処理終了
-        stagePhaseTransitioners.Add(new StageFailedFinishTransition());
+        // シーンチェンジ
+        stagePhaseTransitioners.Add(new ResultSceneTransition(timelineManager.GetPlayableDirector("SceneChange")));
 
         //シーンの追加
         sceneTransitionManager.AddPhaseTransitioner(StageSceneTag.StageFailed, GenerateScenePhaseTransitionManager(stagePhaseTransitioners));

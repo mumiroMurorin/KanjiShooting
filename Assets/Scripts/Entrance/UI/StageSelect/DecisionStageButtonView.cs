@@ -1,18 +1,21 @@
 using UnityEngine;
 using System;
 
-public class DecisionStageButtonView : MonoBehaviour
+namespace EntranceUI
 {
-    public Action OnDecisionStageButtonClickedListener;
-
-    /// <summary>
-    /// 出撃ボタンが押されたときのメソッド
-    /// </summary>
-    public void OnDecisionStageButtonClicked()
+    public class DecisionStageButtonView : MonoBehaviour
     {
-        if (OnDecisionStageButtonClickedListener != null)
+        public Action OnDecisionStageButtonClickedListener;
+
+        /// <summary>
+        /// 出撃ボタンが押されたときのメソッド
+        /// </summary>
+        public void OnDecisionStageButtonClicked()
         {
-            OnDecisionStageButtonClickedListener.Invoke();
+            if (OnDecisionStageButtonClickedListener != null)
+            {
+                OnDecisionStageButtonClickedListener.Invoke();
+            }
         }
     }
 }

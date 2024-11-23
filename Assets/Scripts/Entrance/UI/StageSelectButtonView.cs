@@ -4,18 +4,22 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class StageSelectButtonView : MonoBehaviour
+namespace EntranceUI
 {
-    public Action OnStageSelectButtonClickedListener;
-
-    /// <summary>
-    /// ステージセレクトボタンが押されたときのメソッド
-    /// </summary>
-    public void OnStageSelectButtonClicked()
+    public class StageSelectButtonView : MonoBehaviour
     {
-        if (OnStageSelectButtonClickedListener != null)
+        public Action OnStageSelectButtonClickedListener;
+
+        /// <summary>
+        /// ステージセレクトボタンが押されたときのメソッド
+        /// </summary>
+        public void OnStageSelectButtonClicked()
         {
-            OnStageSelectButtonClickedListener.Invoke();
+            if (OnStageSelectButtonClickedListener != null)
+            {
+                OnStageSelectButtonClickedListener.Invoke();
+            }
         }
     }
+
 }

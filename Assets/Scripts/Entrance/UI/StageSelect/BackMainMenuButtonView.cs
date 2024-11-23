@@ -1,18 +1,21 @@
 using UnityEngine;
 using System;
 
-public class BackMainMenuButtonView : MonoBehaviour
+namespace EntranceUI
 {
-    public Action OnBackMainMenuButtonClickedListener;
-
-    /// <summary>
-    /// 「メインメニューに戻る」ボタンが押されたときのメソッド
-    /// </summary>
-    public void OnBackMainMenuButtonClicked()
+    public class BackMainMenuButtonView : MonoBehaviour
     {
-        if (OnBackMainMenuButtonClickedListener != null)
+        public Action OnBackMainMenuButtonClickedListener;
+
+        /// <summary>
+        /// 「メインメニューに戻る」ボタンが押されたときのメソッド
+        /// </summary>
+        public void OnBackMainMenuButtonClicked()
         {
-            OnBackMainMenuButtonClickedListener.Invoke();
+            if (OnBackMainMenuButtonClickedListener != null)
+            {
+                OnBackMainMenuButtonClickedListener.Invoke();
+            }
         }
     }
 }

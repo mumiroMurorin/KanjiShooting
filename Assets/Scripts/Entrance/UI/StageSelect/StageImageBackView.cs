@@ -4,17 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class StageImageBackView : MonoBehaviour
+namespace EntranceUI
 {
-    [Header("背景")]
-    [SerializeField] Image backGroundImage;
-
-    /// <summary>
-    /// ステージ選択時
-    /// </summary>
-    public void OnSelectStage(Sprite sprite)
+    public class StageImageBackView : MonoBehaviour
     {
-        if (backGroundImage.sprite == sprite) { return; }
-        backGroundImage.sprite = sprite;
+        [Header("背景")]
+        [SerializeField] Image backGroundImage;
+
+        /// <summary>
+        /// ステージ選択時
+        /// </summary>
+        public void OnSelectStage(Sprite sprite)
+        {
+            if (backGroundImage.sprite == sprite) { return; }
+            backGroundImage.sprite = sprite;
+        }
     }
+
 }
