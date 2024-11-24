@@ -17,6 +17,7 @@ public class EntranceUIPresenter : MonoBehaviour
     [Space(20), Header("ステージセレクト")]
     [SerializeField] StageImageBackView stageImageBackView;
     [SerializeField] StageDetailView stageDetailView;
+    [SerializeField] LoadingUIView loadingUIView;
     [SerializeField] List<StageElementView> stageElementViews;
 
     ScoreHolder scoreHolder;

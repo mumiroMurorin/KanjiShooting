@@ -55,6 +55,7 @@ public class EntranceManager : LocalSingletonMonoBehaviour<EntranceManager>
     {
         menuTransitionManager.AddTransition(MenuStatus.Title, new TitleTransition(uiController, timelineManager.GetPlayableDirector("Title")));
         menuTransitionManager.AddTransition(MenuStatus.MainMenu, new MainMenuTransition(uiController));
+        menuTransitionManager.AddTransition(MenuStatus.StageSelectFromOtherScene, new FromOtherSceneTransition(uiController, timelineManager.GetPlayableDirector("LoadFinish")));
         menuTransitionManager.AddTransition(MenuStatus.Option, new OptionTransition(uiController));
         menuTransitionManager.AddTransition(MenuStatus.StageSelect, new StageSelectTransition(uiController));
         menuTransitionManager.AddTransition(MenuStatus.Sortie, new MainSceneTransition(uiController, timelineManager.GetPlayableDirector("Sortie")));

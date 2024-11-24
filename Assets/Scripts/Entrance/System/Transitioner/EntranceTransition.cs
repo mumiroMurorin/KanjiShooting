@@ -10,6 +10,7 @@ namespace EntranceTransition
         //GameDataLoad,
         Title,
         MainMenu,
+        StageSelectFromOtherScene,
         StageSelect,
         Option,
         Sortie

@@ -27,9 +27,16 @@ public class EntranceUIController : MonoBehaviour , IEntranceUIcontroller
     /// <param name="status"></param>
     public void ActiveUIGroup(MenuStatus status)
     {
+        // ˆê’U‘S•””ñ•\Ž¦
         foreach(UIGroup ui in uiGroups)
         {
-            ui.SetActiveUI(ui.Status == status);
+            ui.SetActiveUI(false);
+        }
+
+        // ŠY“–UI‚Ì‚Ý•\Ž¦
+        foreach (UIGroup ui in uiGroups)
+        {
+            if(ui.Status == status) { ui.SetActiveUI(true); }
         }
     }
 }

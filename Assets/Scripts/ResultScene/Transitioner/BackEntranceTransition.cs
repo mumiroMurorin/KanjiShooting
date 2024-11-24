@@ -27,7 +27,7 @@ public class BackEntranceTransition : IPhaseTransitioner
         await UniTask.SwitchToMainThread();
 
         // エントランスはステージセレクトから
-        scoreHolder.InitialEntranceMenuStatus = EntranceTransition.MenuStatus.StageSelect;
+        scoreHolder.InitialEntranceMenuStatus = EntranceTransition.MenuStatus.StageSelectFromOtherScene;
 
         // オペレーションの登録
         changeSceneAcync = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(ENTRANCE_SCENE_NAME);

@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
-public class WeakestEnemyManager : EnemyManager
+public class WeakestEnemyManager : EnemyManager , IAttachableItemOnDestroy
 {
     [SerializeField] Animator animator;
 
@@ -14,6 +15,9 @@ public class WeakestEnemyManager : EnemyManager
 
     bool isMoving = false;
     IStatus playerStatus;
+
+    // エネミーが死んだときのコールバック
+    public Action<Transform> OnDestroyEvent { get; set; }
 
     private void Start()
     {
@@ -53,7 +57,10 @@ public class WeakestEnemyManager : EnemyManager
 
     protected override void OnDeath()
     {
-        //死ぬアニメーション
+        // 死んだときのコールバック発火
+        OnDestroyEvent?.Invoke(TargetTransform);
+
+        // 死ぬアニメーション
         if (animator) { animator.SetTrigger("Destroy"); }
         else { Destroy(this.gameObject); }
     }

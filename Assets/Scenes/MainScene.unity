@@ -400,107 +400,44 @@ MonoBehaviour:
   questionSelector:
     rid: 2752144884801208323
   waveStatuses:
-  - rid: 2752144884801208320
-  - rid: 2752145069004029952
+  - rid: 2752145224381497347
+  - rid: 2752145224381497348
   references:
     version: 2
     RefIds:
-    - rid: 2752144884801208320
-      type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
-      data:
-        statusName: The Weakest
-        spawner: {fileID: 1357853441}
-        curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 0.3
-            value: 1
-            inSlope: -0
-            outSlope: -Infinity
-            tangentMode: 5
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 2
-            inSlope: 1.4285715
-            outSlope: 1.4285715
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        filter: {fileID: 11400000, guid: 36659f940f05ece41a80eee8f95bbba1, type: 2}
-        spawnSelector:
-          obj: {fileID: 1292306509}
     - rid: 2752144884801208323
       type: {class: QuestionSelectorFromCSV, ns: , asm: Assembly-CSharp}
       data:
         questionFilters:
         - {fileID: 11400000, guid: 36659f940f05ece41a80eee8f95bbba1, type: 2}
-    - rid: 2752145069004029952
+    - rid: 2752145224381497347
       type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
       data:
-        statusName: First Faster
-        spawner: {fileID: 1797267450}
+        statusName: 
+        spawner: {fileID: 0}
+        filter: {fileID: 0}
+        spawnSelector:
+          obj: {fileID: 0}
         curve:
           serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: -10
-            outSlope: -10
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 0.1
-            value: 0
-            inSlope: Infinity
-            outSlope: -0
-            tangentMode: 1
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.36937442
-          - serializedVersion: 3
-            time: 0.6
-            value: 0
-            inSlope: -0
-            outSlope: -Infinity
-            tangentMode: 5
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 2.5000002
-            outSlope: 2.5000002
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
+          m_Curve: []
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-        filter: {fileID: 11400000, guid: 36659f940f05ece41a80eee8f95bbba1, type: 2}
+    - rid: 2752145224381497348
+      type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
+      data:
+        statusName: 
+        spawner: {fileID: 0}
+        filter: {fileID: 0}
         spawnSelector:
-          obj: {fileID: 1714462524}
+          obj: {fileID: 0}
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
 --- !u!1 &28434956
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,17 +769,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 4ff883fe11790d545a22d870c59ece1a, type: 3}
   m_PrefabInstance: {fileID: 153638136}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &153638138 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -6394067115797556469, guid: 4ff883fe11790d545a22d870c59ece1a, type: 3}
-  m_PrefabInstance: {fileID: 153638136}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af9c70e7cb7d7e4d8fce3c910b663fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &155733816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,81 +1047,45 @@ MonoBehaviour:
   questionSelector:
     rid: 2752144884801208323
   waveStatuses:
-  - rid: 2752144884801208320
-  - rid: 2752145066384949248
+  - rid: 2752145224381497344
+  - rid: 2752145224381497356
   references:
     version: 2
     RefIds:
-    - rid: 2752144884801208320
-      type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
-      data:
-        statusName: Weakest
-        spawner: {fileID: 738192011}
-        curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 2
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 2
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        filter: {fileID: 11400000, guid: ea499292c3db21a4398a81cc18f245c3, type: 2}
-        spawnSelector:
-          obj: {fileID: 1292306509}
     - rid: 2752144884801208323
       type: {class: QuestionSelectorFromCSV, ns: , asm: Assembly-CSharp}
       data:
         questionFilters:
         - {fileID: 11400000, guid: a7fc1b28aaab9394ea35ee09ffc2fae9, type: 2}
         - {fileID: 11400000, guid: ea499292c3db21a4398a81cc18f245c3, type: 2}
-    - rid: 2752145066384949248
+    - rid: 2752145224381497344
       type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
       data:
-        statusName: Faster
-        spawner: {fileID: 153638138}
+        statusName: 
+        spawner: {fileID: 0}
+        filter: {fileID: 0}
+        spawnSelector:
+          obj: {fileID: 0}
         curve:
           serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
+          m_Curve: []
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-        filter: {fileID: 11400000, guid: a7fc1b28aaab9394ea35ee09ffc2fae9, type: 2}
+    - rid: 2752145224381497356
+      type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
+      data:
+        statusName: 
+        spawner: {fileID: 0}
+        filter: {fileID: 0}
         spawnSelector:
-          obj: {fileID: 1714462524}
+          obj: {fileID: 0}
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
 --- !u!1 &298006685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,7 +1481,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 0
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1911,6 +1801,126 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1001 &389893590
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1002005863}
+    m_Modifications:
+    - target: {fileID: 2636476196707412140, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595138, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_Name
+      value: Loading
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668347301463364717, guid: e31f58d634877554196366451c8d982b, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e31f58d634877554196366451c8d982b, type: 3}
+--- !u!224 &389893591 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7243224341127595149, guid: e31f58d634877554196366451c8d982b, type: 3}
+  m_PrefabInstance: {fileID: 389893590}
+  m_PrefabAsset: {fileID: 0}
+--- !u!320 &389893592 stripped
+PlayableDirector:
+  m_CorrespondingSourceObject: {fileID: 2502270079746125757, guid: e31f58d634877554196366451c8d982b, type: 3}
+  m_PrefabInstance: {fileID: 389893590}
+  m_PrefabAsset: {fileID: 0}
+--- !u!320 &389893593 stripped
+PlayableDirector:
+  m_CorrespondingSourceObject: {fileID: 4426018126798772910, guid: e31f58d634877554196366451c8d982b, type: 3}
+  m_PrefabInstance: {fileID: 389893590}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &435783812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2113,90 +2123,45 @@ MonoBehaviour:
   questionSelector:
     rid: 2752144884801208323
   waveStatuses:
-  - rid: 2752144884801208320
-  - rid: 2752145066384949248
+  - rid: 2752145224381497353
+  - rid: 2752145224381497352
   references:
     version: 2
     RefIds:
-    - rid: 2752144884801208320
-      type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
-      data:
-        statusName: The Weakest
-        spawner: {fileID: 547439872}
-        curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 2
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 2
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        filter: {fileID: 11400000, guid: 68bfeefc36e3e7643b0f901f07d47692, type: 2}
-        spawnSelector:
-          obj: {fileID: 1292306509}
     - rid: 2752144884801208323
       type: {class: QuestionSelectorFromCSV, ns: , asm: Assembly-CSharp}
       data:
         questionFilters:
         - {fileID: 11400000, guid: 68bfeefc36e3e7643b0f901f07d47692, type: 2}
         - {fileID: 11400000, guid: 62da3e3a5df6c8c4581882088cbae59a, type: 2}
-    - rid: 2752145066384949248
+    - rid: 2752145224381497352
       type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
       data:
-        statusName: Faster
-        spawner: {fileID: 2007861484}
+        statusName: 
+        spawner: {fileID: 0}
+        filter: {fileID: 0}
+        spawnSelector:
+          obj: {fileID: 0}
         curve:
           serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 0.3
-            value: 0
-            inSlope: -0
-            outSlope: -Infinity
-            tangentMode: 5
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 1.4285715
-            outSlope: 1.4285715
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
+          m_Curve: []
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-        filter: {fileID: 11400000, guid: 68bfeefc36e3e7643b0f901f07d47692, type: 2}
+    - rid: 2752145224381497353
+      type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
+      data:
+        statusName: 
+        spawner: {fileID: 0}
+        filter: {fileID: 0}
         spawnSelector:
-          obj: {fileID: 1714462524}
+          obj: {fileID: 0}
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
 --- !u!1 &501230855
 GameObject:
   m_ObjectHideFlags: 0
@@ -2510,17 +2475,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 50108400b3c7acd45a9483d1c8ccfaf2, type: 3}
   m_PrefabInstance: {fileID: 547439870}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &547439872 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: 50108400b3c7acd45a9483d1c8ccfaf2, type: 3}
-  m_PrefabInstance: {fileID: 547439870}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &551060893
 GameObject:
   m_ObjectHideFlags: 0
@@ -2632,12 +2586,6 @@ MonoBehaviour:
   kanjiCsv: {fileID: 4900000, guid: f3a4dbf05c008b248ad3335c18c3f643, type: 3}
   waves:
   - {fileID: 1108513689}
-  - {fileID: 1005148052}
-  - {fileID: 26637228}
-  - {fileID: 1934074348}
-  - {fileID: 442979030}
-  - {fileID: 652449339}
-  - {fileID: 266721209}
 --- !u!4 &555023128
 Transform:
   m_ObjectHideFlags: 0
@@ -3356,90 +3304,45 @@ MonoBehaviour:
   questionSelector:
     rid: 2752144884801208323
   waveStatuses:
-  - rid: 2752144884801208320
-  - rid: 2752145066384949248
+  - rid: 2752145224381497354
+  - rid: 2752145224381497355
   references:
     version: 2
     RefIds:
-    - rid: 2752144884801208320
-      type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
-      data:
-        statusName: Weakest
-        spawner: {fileID: 1297870926}
-        curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 2
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 2
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        filter: {fileID: 11400000, guid: b8c5fc8ee1dde9840a37f8ad5e84d697, type: 2}
-        spawnSelector:
-          obj: {fileID: 1292306509}
     - rid: 2752144884801208323
       type: {class: QuestionSelectorFromCSV, ns: , asm: Assembly-CSharp}
       data:
         questionFilters:
         - {fileID: 11400000, guid: b8c5fc8ee1dde9840a37f8ad5e84d697, type: 2}
         - {fileID: 11400000, guid: cb2f210c1f03c66419f9e3b348e5132f, type: 2}
-    - rid: 2752145066384949248
+    - rid: 2752145224381497354
       type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
       data:
-        statusName: Faster
-        spawner: {fileID: 1599321457}
+        statusName: 
+        spawner: {fileID: 0}
+        filter: {fileID: 0}
+        spawnSelector:
+          obj: {fileID: 0}
         curve:
           serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 0.3
-            value: 0
-            inSlope: 0
-            outSlope: -Infinity
-            tangentMode: 5
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 1.4285715
-            outSlope: 1.4285715
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
+          m_Curve: []
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-        filter: {fileID: 11400000, guid: b8c5fc8ee1dde9840a37f8ad5e84d697, type: 2}
+    - rid: 2752145224381497355
+      type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
+      data:
+        statusName: 
+        spawner: {fileID: 0}
+        filter: {fileID: 0}
         spawnSelector:
-          obj: {fileID: 1714462524}
+          obj: {fileID: 0}
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
 --- !u!1 &658056817
 GameObject:
   m_ObjectHideFlags: 0
@@ -3795,17 +3698,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 50108400b3c7acd45a9483d1c8ccfaf2, type: 3}
   m_PrefabInstance: {fileID: 738192009}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &738192011 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: 50108400b3c7acd45a9483d1c8ccfaf2, type: 3}
-  m_PrefabInstance: {fileID: 738192009}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &775688105
 GameObject:
   m_ObjectHideFlags: 0
@@ -4024,17 +3916,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 4ff883fe11790d545a22d870c59ece1a, type: 3}
   m_PrefabInstance: {fileID: 877293910}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &877293912 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -6394067115797556469, guid: 4ff883fe11790d545a22d870c59ece1a, type: 3}
-  m_PrefabInstance: {fileID: 877293910}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af9c70e7cb7d7e4d8fce3c910b663fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &914707128
 GameObject:
   m_ObjectHideFlags: 0
@@ -4439,6 +4320,7 @@ RectTransform:
   - {fileID: 16684401}
   - {fileID: 986053324}
   - {fileID: 1619984795}
+  - {fileID: 389893591}
   m_Father: {fileID: 563477840}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4500,47 +4382,29 @@ MonoBehaviour:
   questionSelector:
     rid: 2752144884801208323
   waveStatuses:
-  - rid: 2752144884801208320
+  - rid: 2752145224381497346
   references:
     version: 2
     RefIds:
-    - rid: 2752144884801208320
-      type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
-      data:
-        statusName: The Weakest
-        spawner: {fileID: 1882006585}
-        curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        filter: {fileID: 11400000, guid: e569c1f86627b8d488ff26ce21bbacb5, type: 2}
-        spawnSelector:
-          obj: {fileID: 1292306509}
     - rid: 2752144884801208323
       type: {class: QuestionSelectorFromCSV, ns: , asm: Assembly-CSharp}
       data:
         questionFilters:
         - {fileID: 11400000, guid: e569c1f86627b8d488ff26ce21bbacb5, type: 2}
+    - rid: 2752145224381497346
+      type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
+      data:
+        statusName: 
+        spawner: {fileID: 0}
+        filter: {fileID: 0}
+        spawnSelector:
+          obj: {fileID: 0}
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
 --- !u!1 &1037490237
 GameObject:
   m_ObjectHideFlags: 0
@@ -4703,6 +4567,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 528052748}
+  - {fileID: 1697691034}
+  - {fileID: 1506521797}
   m_Father: {fileID: 555023128}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4719,13 +4585,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 60
-  spawnInterval: 7
+  spawnInterval: 5
   kanjiSpawner: {fileID: 1378339576}
   bgmType: 100
   questionSelector:
     rid: 2752144884801208323
   waveStatuses:
-  - rid: 2752145047426957313
+  - rid: 2752145224381497345
+  - rid: 2752145224381497357
+  - rid: 2752145224381497359
   references:
     version: 2
     RefIds:
@@ -4734,11 +4602,14 @@ MonoBehaviour:
       data:
         questionFilters:
         - {fileID: 11400000, guid: 29db3524f54bbd045bf88115ccc16257, type: 2}
-    - rid: 2752145047426957313
+    - rid: 2752145224381497345
       type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
       data:
         statusName: The Weakest
         spawner: {fileID: 969453558}
+        filter: {fileID: 11400000, guid: 29db3524f54bbd045bf88115ccc16257, type: 2}
+        spawnSelector:
+          obj: {fileID: 1714462524}
         curve:
           serializedVersion: 2
           m_Curve:
@@ -4763,9 +4634,118 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
+    - rid: 2752145224381497357
+      type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
+      data:
+        statusName: Heart Weakest
+        spawner: {fileID: 1697691035}
         filter: {fileID: 11400000, guid: 29db3524f54bbd045bf88115ccc16257, type: 2}
         spawnSelector:
           obj: {fileID: 1714462524}
+        amountCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        probabilityCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 2
+            outSlope: 2
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+    - rid: 2752145224381497359
+      type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
+      data:
+        statusName: Bomb Weakest
+        spawner: {fileID: 1506521798}
+        filter: {fileID: 11400000, guid: 29db3524f54bbd045bf88115ccc16257, type: 2}
+        spawnSelector:
+          obj: {fileID: 1714462524}
+        amountCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 2
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 1
+            value: 2
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        probabilityCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: -0.18340553
+            outSlope: -0.18340553
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.2539936
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: -2.3417547
+            outSlope: -2.3417547
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.070287585
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
 --- !u!1 &1130437940
 GameObject:
   m_ObjectHideFlags: 0
@@ -5386,22 +5366,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 50108400b3c7acd45a9483d1c8ccfaf2, type: 3}
   m_PrefabInstance: {fileID: 1225445860}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1225445862 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: 50108400b3c7acd45a9483d1c8ccfaf2, type: 3}
-  m_PrefabInstance: {fileID: 1225445860}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1292306509 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1292306509, guid: 3bf5a07e9ab672c4fac582337595ca86, type: 3}
-  m_PrefabInstance: {fileID: 6264959168519404184}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1295146782
 GameObject:
   m_ObjectHideFlags: 0
@@ -5540,17 +5504,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 50108400b3c7acd45a9483d1c8ccfaf2, type: 3}
   m_PrefabInstance: {fileID: 1297870924}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1297870926 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: 50108400b3c7acd45a9483d1c8ccfaf2, type: 3}
-  m_PrefabInstance: {fileID: 1297870924}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1310134308
 GameObject:
   m_ObjectHideFlags: 0
@@ -6104,17 +6057,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 50108400b3c7acd45a9483d1c8ccfaf2, type: 3}
   m_PrefabInstance: {fileID: 1357853439}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1357853441 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: 50108400b3c7acd45a9483d1c8ccfaf2, type: 3}
-  m_PrefabInstance: {fileID: 1357853439}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1378339575
 GameObject:
   m_ObjectHideFlags: 0
@@ -6500,6 +6442,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482688544}
   m_CullTransparentMesh: 1
+--- !u!1001 &1506521796
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1108513688}
+    m_Modifications:
+    - target: {fileID: 5154973234452232419, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
+      propertyPath: m_Name
+      value: WeakestHeartSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
+--- !u!4 &1506521797 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
+  m_PrefabInstance: {fileID: 1506521796}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1506521798 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
+  m_PrefabInstance: {fileID: 1506521796}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1554939468
 GameObject:
   m_ObjectHideFlags: 0
@@ -6843,17 +6858,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 4ff883fe11790d545a22d870c59ece1a, type: 3}
   m_PrefabInstance: {fileID: 1599321455}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1599321457 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -6394067115797556469, guid: 4ff883fe11790d545a22d870c59ece1a, type: 3}
-  m_PrefabInstance: {fileID: 1599321455}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af9c70e7cb7d7e4d8fce3c910b663fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1619984794
 GameObject:
   m_ObjectHideFlags: 0
@@ -7200,6 +7204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playableDirectors:
+  - sceneName: LoadFinish
+    director: {fileID: 389893593}
   - sceneName: StageStart
     director: {fileID: 155733818}
   - sceneName: WaveStart
@@ -7212,6 +7218,8 @@ MonoBehaviour:
     director: {fileID: 340853430}
   - sceneName: StageFailedFinish
     director: {fileID: 506457975}
+  - sceneName: Result
+    director: {fileID: 389893592}
 --- !u!1 &1686794823
 GameObject:
   m_ObjectHideFlags: 0
@@ -7385,6 +7393,79 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.44705883}
   m_EffectDistance: {x: 1, y: 1}
   m_UseGraphicAlpha: 1
+--- !u!1001 &1697691033
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1108513688}
+    m_Modifications:
+    - target: {fileID: 5154973234452232419, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
+      propertyPath: m_Name
+      value: WeakestBombSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
+--- !u!4 &1697691034 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
+  m_PrefabInstance: {fileID: 1697691033}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1697691035 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
+  m_PrefabInstance: {fileID: 1697691033}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1714462524 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1714462524, guid: 3bf5a07e9ab672c4fac582337595ca86, type: 3}
@@ -7634,17 +7715,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ff883fe11790d545a22d870c59ece1a, type: 3}
---- !u!114 &1797267450 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -6394067115797556469, guid: 4ff883fe11790d545a22d870c59ece1a, type: 3}
-  m_PrefabInstance: {fileID: 1797267449}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af9c70e7cb7d7e4d8fce3c910b663fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1797267451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 4ff883fe11790d545a22d870c59ece1a, type: 3}
@@ -8162,17 +8232,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 50108400b3c7acd45a9483d1c8ccfaf2, type: 3}
   m_PrefabInstance: {fileID: 1882006583}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1882006585 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: 50108400b3c7acd45a9483d1c8ccfaf2, type: 3}
-  m_PrefabInstance: {fileID: 1882006583}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1895070094
 GameObject:
   m_ObjectHideFlags: 0
@@ -8339,7 +8398,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 0
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -8460,81 +8519,45 @@ MonoBehaviour:
   questionSelector:
     rid: 2752144884801208323
   waveStatuses:
-  - rid: 2752144884801208320
-  - rid: 2752145069004029952
+  - rid: 2752145224381497349
+  - rid: 2752145224381497351
   references:
     version: 2
     RefIds:
-    - rid: 2752144884801208320
-      type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
-      data:
-        statusName: The Weakest
-        spawner: {fileID: 1225445862}
-        curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 2
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 2
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        filter: {fileID: 11400000, guid: 6a33421518258884985fd137e6e6d5ee, type: 2}
-        spawnSelector:
-          obj: {fileID: 1292306509}
     - rid: 2752144884801208323
       type: {class: QuestionSelectorFromCSV, ns: , asm: Assembly-CSharp}
       data:
         questionFilters:
         - {fileID: 11400000, guid: 6a33421518258884985fd137e6e6d5ee, type: 2}
         - {fileID: 11400000, guid: bfc1a54f460b4c047a35dd4120fa30f1, type: 2}
-    - rid: 2752145069004029952
+    - rid: 2752145224381497349
       type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
       data:
-        statusName: First Faster
-        spawner: {fileID: 877293912}
+        statusName: 
+        spawner: {fileID: 0}
+        filter: {fileID: 0}
+        spawnSelector:
+          obj: {fileID: 0}
         curve:
           serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
+          m_Curve: []
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-        filter: {fileID: 11400000, guid: bfc1a54f460b4c047a35dd4120fa30f1, type: 2}
+    - rid: 2752145224381497351
+      type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
+      data:
+        statusName: 
+        spawner: {fileID: 0}
+        filter: {fileID: 0}
         spawnSelector:
-          obj: {fileID: 1714462524}
+          obj: {fileID: 0}
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
 --- !u!1 &1951786329
 GameObject:
   m_ObjectHideFlags: 0
@@ -8993,17 +9016,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 4ff883fe11790d545a22d870c59ece1a, type: 3}
   m_PrefabInstance: {fileID: 2007861482}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2007861484 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -6394067115797556469, guid: 4ff883fe11790d545a22d870c59ece1a, type: 3}
-  m_PrefabInstance: {fileID: 2007861482}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af9c70e7cb7d7e4d8fce3c910b663fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2017784875
 GameObject:
   m_ObjectHideFlags: 0
@@ -9453,7 +9465,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 0
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3

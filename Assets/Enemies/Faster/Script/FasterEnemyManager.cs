@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityFx.Outline;
+using System;
 
-public class FasterEnemyManager : EnemyManager
+public class FasterEnemyManager : EnemyManager, IAttachableItemOnDestroy
 {
     [SerializeField] Animator animator;
 
@@ -22,6 +23,8 @@ public class FasterEnemyManager : EnemyManager
 
     bool isMoving = false;
     IStatus playerStatus;
+
+    public Action<Transform> OnDestroyEvent { get; set; }
 
     private void Start()
     {

@@ -65,8 +65,9 @@ public class StageManager : LocalSingletonMonoBehaviour<StageManager>
     {
         List<IPhaseTransitioner> stagePhaseTransitioners = new List<IPhaseTransitioner>();
 
-        //通常のゲームループ
-        //ステージ開始演出
+        // 通常のゲームループ
+        // ステージ開始演出
+        stagePhaseTransitioners.Add(new SceneStartTransition(timelineManager.GetPlayableDirector("LoadFinish")));
         stagePhaseTransitioners.Add(new StageStartEffectTransition(timelineManager.GetPlayableDirector("StageStart")));
         
         //WAVE内ループ
@@ -87,7 +88,7 @@ public class StageManager : LocalSingletonMonoBehaviour<StageManager>
         // ステージ終了演出
         stagePhaseTransitioners.Add(new StageFinishEffectTransition(timelineManager.GetPlayableDirector("StageFinish")));
         // シーンチェンジ
-        stagePhaseTransitioners.Add(new ResultSceneTransition(timelineManager.GetPlayableDirector("SceneChange")));
+        stagePhaseTransitioners.Add(new ResultSceneTransition(timelineManager.GetPlayableDirector("Result")));
 
         //シーンの追加
         sceneTransitionManager.AddPhaseTransitioner(StageSceneTag.Fighting, GenerateScenePhaseTransitionManager(stagePhaseTransitioners));
@@ -99,7 +100,7 @@ public class StageManager : LocalSingletonMonoBehaviour<StageManager>
         // ゲームオーバー演出開始
         stagePhaseTransitioners.Add(new StageFailedStartEffectTransition(timelineManager.GetPlayableDirector("StageFailedStart")));
         // シーンチェンジ
-        stagePhaseTransitioners.Add(new ResultSceneTransition(timelineManager.GetPlayableDirector("SceneChange")));
+        stagePhaseTransitioners.Add(new ResultSceneTransition(timelineManager.GetPlayableDirector("Result")));
 
         //シーンの追加
         sceneTransitionManager.AddPhaseTransitioner(StageSceneTag.StageFailed, GenerateScenePhaseTransitionManager(stagePhaseTransitioners));
