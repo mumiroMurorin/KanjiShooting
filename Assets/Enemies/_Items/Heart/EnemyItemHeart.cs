@@ -7,10 +7,12 @@ public class EnemyItemHeart : MonoBehaviour, IDamager
 {
     [SerializeField] EnemyManager enemy;
     [SerializeField] GameObject heartObject;
+    [SerializeField] Animator anim;
     [SerializeField] int recoverAmount = 30;
     [SerializeField] float moveDuration = 0.75f;
 
     bool isRecoverPermit;
+    Transform playerTransform;
     IAttachableItemOnDestroy attachableItem;
 
     private void Start()
@@ -40,25 +42,25 @@ public class EnemyItemHeart : MonoBehaviour, IDamager
         this.transform.parent = null;
 
         isRecoverPermit = true;
+        this.playerTransform = playerTransform;
 
-        // プレイヤーに向かう
-        MoveTo(playerTransform, moveDuration);
+        anim.SetTrigger("Active");
     }
 
     /// <summary>
-    /// 指定されたターゲットまでn秒で移動する
+    /// プレイヤーまで移動する
     /// </summary>
     /// <param name="target">目的地のTransform</param>
     /// <param name="duration">移動にかける時間（秒）</param>
-    public void MoveTo(Transform target, float duration)
+    public void MoveToPlayer()
     {
-        if (target == null)
+        if (playerTransform == null)
         {
             Debug.LogWarning("Target Transform is null. Aborting movement.");
             return;
         }
 
-        transform.DOMove(target.position, duration)
+        transform.DOMove(playerTransform.position, moveDuration)
                  .SetEase(Ease.Linear);
     }
 
