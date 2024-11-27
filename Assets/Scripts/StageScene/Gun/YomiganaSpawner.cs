@@ -24,7 +24,7 @@ public class YomiganaSpawner : MonoBehaviour, IYomiganaSpawner
     Dictionary<char, GameObject> dictionary;
     CharacterController[] spawnedCharacters;
 
-    //“š‚¦
+    // “š‚¦
     ReactiveProperty<string> _answer = new ReactiveProperty<string>("");
     public IReadOnlyReactiveProperty<string> Answer
     {

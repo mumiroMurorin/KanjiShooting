@@ -10,6 +10,7 @@ public class OptionUIPresenter : MonoBehaviour
     [Header("オプション")]
     [SerializeField] BGMVolumeView bgmVolumeView;
     [SerializeField] SEVolumeView seVolumeView;
+    [SerializeField] SE3DVolumeView se3DVolumeView;
     [SerializeField] MouseSensitivityView mouseSensitivityView;
     [SerializeField] ArrawSensitivityView arrawSensitivityView;
     [SerializeField] SpaceSensitivityView spaceSensitivityView;
@@ -37,6 +38,8 @@ public class OptionUIPresenter : MonoBehaviour
         bgmVolumeView.OnChangeValueListener += (value) => { OnBGMVolumeChanged(value); };
         // SEVolume
         seVolumeView.OnChangeValueListener += (value) => { OnSEVolumeChanged(value); };
+        // 3DSEVolume
+        se3DVolumeView.OnChangeValueListener += (value) => { OnSE3DVolumeChanged(value); };
 
         // マウス感度
         mouseSensitivityView.OnChangeSensitivityListener += (value) => { OnMouseSensitivityChanged(value); };
@@ -65,6 +68,11 @@ public class OptionUIPresenter : MonoBehaviour
         // SEVolume → SliderUI
         optionHolder.SEVolumeReactiveProperty
             .Subscribe(value => seVolumeView.OnSEVolumeChanged(value))
+            .AddTo(this.gameObject);
+
+        // 3DSEVolume → SliderUI
+        optionHolder.SE3DVolumeReactiveProperty
+            .Subscribe(value => se3DVolumeView.OnSE3DVolumeChanged(value))
             .AddTo(this.gameObject);
 
         // マウス感度 → 
@@ -117,6 +125,16 @@ public class OptionUIPresenter : MonoBehaviour
     {
         optionHolder.SetSEVolume(value);
     }
+
+    /// <summary>
+    /// 3DSEVolumeが変えられたとき
+    /// </summary>
+    /// <param name="value"></param>
+    private void OnSE3DVolumeChanged(float value)
+    {
+        optionHolder.SetSE3DVolume(value);
+    }
+
 
     /// <summary>
     /// マウス感度が変えられた時

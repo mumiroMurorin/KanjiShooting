@@ -49,5 +49,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 904db23e3c7835f4facea55b00a73392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  answerBoxPrefab: {fileID: 8223086799284299290, guid: 60c0a59a6fea17c4fbf70e927bd31cb5, type: 3}
+  answerBoxPrefab: {fileID: 1483612093096328398, guid: 60c0a59a6fea17c4fbf70e927bd31cb5, type: 3}
   answerBoxParent: {fileID: 0}

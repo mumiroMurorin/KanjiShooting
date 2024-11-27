@@ -68,4 +68,12 @@ public class OptionHolder
     {
         seVolume.Value = value;
     }
+
+    // 3DSEÉ{ÉäÉÖÅ[ÉÄ
+    ReactiveProperty<float> se3DVolume = new ReactiveProperty<float>(0.75f);
+    public IReadOnlyReactiveProperty<float> SE3DVolumeReactiveProperty { get { return se3DVolume; } }
+    public void SetSE3DVolume(float value)
+    {
+        se3DVolume.Value = value;
+    }
 }

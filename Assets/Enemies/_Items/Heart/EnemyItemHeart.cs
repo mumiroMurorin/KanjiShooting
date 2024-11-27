@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class EnemyItemHeart : MonoBehaviour, IDamager
+public class EnemyItemHeart : MonoBehaviour, IDamager, ISoundPlayable
 {
     [SerializeField] EnemyManager enemy;
     [SerializeField] GameObject heartObject;
     [SerializeField] Animator anim;
     [SerializeField] int recoverAmount = 30;
     [SerializeField] float moveDuration = 0.75f;
+    [Header("âπê∫")]
+    [SerializeField] AudioClip activeClip;
+    [SerializeField] SoundPlayer soundPlayer;
 
     bool isRecoverPermit;
     Transform playerTransform;
@@ -43,6 +46,7 @@ public class EnemyItemHeart : MonoBehaviour, IDamager
 
         isRecoverPermit = true;
         this.playerTransform = playerTransform;
+        PlayOnShot(activeClip);
 
         anim.SetTrigger("Active");
     }
@@ -90,5 +94,10 @@ public class EnemyItemHeart : MonoBehaviour, IDamager
 
         // ÇŸÇÒÇ≈è¡Ç¶ÇÈ
         Destroy(this.gameObject);
+    }
+
+    public void PlayOnShot(AudioClip audioClip)
+    {
+        ((ISoundPlayable)soundPlayer).PlayOnShot(audioClip);
     }
 }

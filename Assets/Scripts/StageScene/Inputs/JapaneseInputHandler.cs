@@ -46,6 +46,7 @@ public class JapaneseInputHandler
             { "sha", "ÇµÇ·" }, { "shu", "ÇµÇ„" }, { "sho", "ÇµÇÂ" },
             { "sya", "ÇµÇ·" }, { "syu", "ÇµÇ„" }, { "syo", "ÇµÇÂ" },
             { "zya", "Ç∂Ç·" }, { "zyu", "Ç∂Ç„" }, { "zyo", "Ç∂ÇÂ" },
+            { "jya", "Ç∂Ç·" }, { "jyu", "Ç∂Ç„" }, { "jyo", "Ç∂ÇÂ" },
             { "cha", "ÇøÇ·" }, { "chu", "ÇøÇ„" }, { "cho", "ÇøÇÂ" },
             { "tya", "ÇøÇ·" }, { "tyu", "ÇøÇ„" }, { "tyo", "ÇøÇÂ" },
             { "dya", "Ç¿Ç·" }, { "dyu", "Ç¿Ç„" }, { "dyo", "Ç¿ÇÂ" },
@@ -161,9 +162,11 @@ public class JapaneseInputHandler
     /// <summary>
     /// àÍï∂éöè¡Ç∑
     /// </summary>
-    public void BackSpace()
+    public bool BackSpace()
     {
-        if(result.Length <= 0) { return; }
+        if(result.Length <= 0) { return false; }
         result = result.Substring(0, result.Length - 1);
+
+        return true;
     }
 }

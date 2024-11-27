@@ -22,6 +22,9 @@ public class MainSceneTransition : IPhaseTransitioner
 
     public async UniTask ExecuteAsync(CancellationToken token)
     {
+        // BGMの停止
+        Sound.SoundManager.Instance.StopBGM(true);
+
         // メインスレッドに戻す
         await UniTask.SwitchToMainThread();
         // オペレーションの登録

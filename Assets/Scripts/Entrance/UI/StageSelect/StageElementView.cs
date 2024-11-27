@@ -17,6 +17,8 @@ namespace EntranceUI
         [SerializeField] Transform diffcultyParent;
         [Header("ジャンル")]
         [SerializeField] TextMeshProUGUI genreText;
+        [Header("選択オブジェクト")]
+        [SerializeField] GameObject selectObject;
         [Space(30)]
         [Header("ステージデータ")]
         [SerializeField] StageDetailData stageDetailData;
@@ -49,17 +51,9 @@ namespace EntranceUI
         /// <summary>
         /// 選択されたときのメソッド
         /// </summary>
-        public void OnSelect()
+        public void OnSelected(StageDetailData stageData)
         {
-
-        }
-
-        /// <summary>
-        /// 他が選択されたときのメソッド
-        /// </summary>
-        public void OnDeselect()
-        {
-
+            selectObject.SetActive(stageDetailData == stageData);
         }
 
         /// <summary>

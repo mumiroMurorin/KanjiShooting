@@ -20,7 +20,7 @@ public class TitleTransition : IPhaseTransitioner
     {
         entranceUIController.ActiveUIGroup(MenuStatus.Title);
 
-        if(titleDirector != null)
+        if (titleDirector != null)
         {
             titleDirector.Play();
 
@@ -30,5 +30,8 @@ public class TitleTransition : IPhaseTransitioner
 
         // ステージステータスの変更
         EntranceManager.Instance.SetMenuStatus(MenuStatus.MainMenu);
+
+        // タイトル音楽再生
+        Sound.SoundManager.Instance.PlayBGM(Sound.BGM_Type.Title);
     }
 }

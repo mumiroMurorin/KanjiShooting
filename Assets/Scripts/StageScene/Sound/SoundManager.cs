@@ -12,6 +12,7 @@ namespace Sound
     // BGM管理
     public enum BGM_Type
     {
+        Title = 10,
         Battle1 = 100,
         Battle2 = 101,
         Battle3 = 102,
@@ -28,7 +29,11 @@ namespace Sound
     // SE管理
     public enum SE_Type
     {
-
+        CursorOnButton = 10,
+        ButtonClicked1 = 21,
+        ButtonClicked2 = 22,
+        ButtonClicked3 = 23,
+        BackButtonClicked1 = 31
     }
 
     /// <summary>
@@ -128,7 +133,10 @@ namespace Sound
                 .Subscribe(OnSEVolumeChanged)
                 .AddTo(this.gameObject);
 
-
+            // 3DseVolume → 
+            optionHolder.SE3DVolumeReactiveProperty
+                .Subscribe(OnSE3DVolumeChanged)
+                .AddTo(this.gameObject);
         }
 
         /// <summary>
@@ -145,24 +153,27 @@ namespace Sound
                 return;
             }
 
-            AudioClip setClip = GetBGMClip(bgmType);
+            PlayBGM(GetBGMClip(bgmType));
+        }
 
+        public void PlayBGM(AudioClip audioClip, bool loopFlg = true, bool isFadeout = true)
+        {
             // 同じBGMの場合は何もしない
-            if (bgmSources[0].clip != null && bgmSources[0].clip == setClip) { return; }
-            else if (bgmSources[1].clip != null && bgmSources[1].clip == setClip) { return; }
+            if (bgmSources[0].clip != null && bgmSources[0].clip == audioClip) { return; }
+            else if (bgmSources[1].clip != null && bgmSources[1].clip == audioClip) { return; }
 
             // フェードでBGM開始
             if (bgmSources[0].clip == null && bgmSources[1].clip == null)
             {
                 //フェードイン処理
                 cts = new CancellationTokenSource();
-                FadeIn(setClip, loopFlg, cts.Token).Forget();
+                FadeIn(audioClip, loopFlg, cts.Token).Forget();
             }
             else
             {
                 // クロスフェード処理
                 cts = new CancellationTokenSource();
-                CrossFade(setClip, loopFlg, cts.Token).Forget();
+                CrossFade(audioClip, loopFlg, cts.Token).Forget();
             }
         }
 
@@ -239,8 +250,11 @@ namespace Sound
         /// <param name="seType"></param>
         public void PlaySE(SE_Type seType)
         {
-            AudioClip setClip = GetSEClip(seType);
+            PlaySE(GetSEClip(seType));
+        }
 
+        public void PlaySE(AudioClip setClip)
+        {
             // 再生中ではないAudioSourceをつかってSEを鳴らす
             foreach (AudioSource source in seSources)
             {
@@ -311,6 +325,12 @@ namespace Sound
         {
             var volume = Mathf.Clamp(Mathf.Log10(vol) * 20f, -80f, 0f);
             audioMixerGroupSE.audioMixer.SetFloat("OtherSEVolume", volume);
+        }
+
+        private void OnSE3DVolumeChanged(float vol)
+        {
+            var volume = Mathf.Clamp(Mathf.Log10(vol) * 20f, -80f, 0f);
+            audioMixerGroupSE.audioMixer.SetFloat("3DSEVolume", volume);
         }
 
         private void OnBGMVolumeChanged(float vol)

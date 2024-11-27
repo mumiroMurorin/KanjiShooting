@@ -5,6 +5,7 @@ using UnityEngine;
 public class YomiganaBulletShooter : MonoBehaviour, IBulletShooter
 {
     Transform bulletShootedParent;
+    [SerializeField] AudioClip shootSE;
 
     public BulletController Bullet { private get; set; }
 
@@ -23,6 +24,9 @@ public class YomiganaBulletShooter : MonoBehaviour, IBulletShooter
     {
         Bullet?.transform.SetParent(bulletShootedParent);
         Bullet?.Shoot();
+
+        // SEçƒê∂
+        if (Bullet != null && shootSE != null) { Sound.SoundManager.Instance.PlaySE(shootSE); }
         return Bullet;
     }
 }

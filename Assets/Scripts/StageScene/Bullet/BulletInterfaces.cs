@@ -37,6 +37,25 @@ public interface IBulletShooter
     public BulletController Shoot();
 }
 
+public interface IBulletReloadCharger
+{
+    IReadOnlyReactiveProperty<float> ChargeCount { get; }
+
+    void Charge(float amount);
+
+    void ResetCharge();
+}
+
+public interface IBulletShootCharger : IBulletShooter
+{
+    IReadOnlyReactiveProperty<float> ChargeCount { get; }
+
+    void Charge(float amount);
+
+    void ResetCharge();
+
+}
+
 public interface IKanjiStatus : IStatus
 {
     public IReadOnlyReactiveProperty<string[]> Answers { get; }

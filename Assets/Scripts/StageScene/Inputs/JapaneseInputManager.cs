@@ -8,6 +8,9 @@ public class JapaneseInputManager : MonoBehaviour
     [SerializeField] UnityEvent<string> onChangeAnswer;
     [SerializeField] SerializeInterface<ICanInput> inputPermit;
 
+    [SerializeField] AudioClip inputSE;
+    [SerializeField] AudioClip backSpaceSE;
+
     JapaneseInputHandler japaneseInputHandler = new JapaneseInputHandler();
 
     private void Update()
@@ -39,6 +42,9 @@ public class JapaneseInputManager : MonoBehaviour
 
         //Debug.Log("Œ»İ‚Ì“ü—Í: " + japaneseInputHandler.GetResult());
         onChangeAnswer.Invoke(japaneseInputHandler.GetResult());
+
+        // SEÄ¶
+        Sound.SoundManager.Instance.PlaySE(inputSE);
     }
 
     /// <summary>
@@ -46,8 +52,11 @@ public class JapaneseInputManager : MonoBehaviour
     /// </summary>
     public void BackSpace()
     {
-        japaneseInputHandler.BackSpace();
+        if (!japaneseInputHandler.BackSpace()) { return; }
         onChangeAnswer.Invoke(japaneseInputHandler.GetResult());
+
+        // SEÄ¶
+        Sound.SoundManager.Instance.PlaySE(backSpaceSE);
     }
 
     /// <summary>

@@ -67,6 +67,29 @@ public class EntranceUIPresenter : MonoBehaviour
                 stageImageBackView.OnSelectStage(data.BackGroundSprite);
                 // ステージ詳細
                 stageDetailView.OnSelectStage(data);
+
+                // 出撃可能
+                decisionStageButtonView.OnStageSelected(true);
+
+                // ステージ一覧を更新
+                foreach(StageElementView view in stageElementViews)
+                {
+                    view.OnSelected(data);
+                }
+            })
+            .AddTo(this.gameObject);
+
+        // ステージデータが無い時
+        scoreHolder.StageDataReactiveProperty
+            .Where(data => data == null)
+            .Subscribe(_ => {
+
+                foreach (StageElementView view in stageElementViews)
+                {
+                    view.OnSelected(null);
+                }
+
+                decisionStageButtonView.OnStageSelected(false);
             })
             .AddTo(this.gameObject);
     }

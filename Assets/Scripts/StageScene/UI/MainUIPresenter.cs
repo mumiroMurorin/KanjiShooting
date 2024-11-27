@@ -22,7 +22,7 @@ public class MainUIPresenter : MonoBehaviour
 
     [SerializeField] SerializeInterface<IStatus> playerStatus_model;
     [SerializeField] GunManager gunManager_model;
-    [SerializeField] ChargeGunManager chargeGunManager_model;
+    [SerializeField] SerializeInterface<IBulletReloadCharger> bulletReloadCharger_model;
 
     ScoreHolder scoreHolder;
 
@@ -73,7 +73,7 @@ public class MainUIPresenter : MonoBehaviour
             .AddTo(this.gameObject);
 
         // スペシャル弾チャージ時間 → チャージUI
-        chargeGunManager_model?.SpecialChargeValue
+        bulletReloadCharger_model?.Value.ChargeCount
             .Subscribe(specialChargeGaugeView.OnChangeChargeValue)
             .AddTo(this.gameObject);
 

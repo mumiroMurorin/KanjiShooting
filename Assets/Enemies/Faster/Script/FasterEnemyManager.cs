@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityFx.Outline;
 using System;
 
-public class FasterEnemyManager : EnemyManager, IAttachableItemOnDestroy
+public class FasterEnemyManager : EnemyManager, IAttachableItemOnDestroy, ISoundPlayable
 {
     [SerializeField] Animator animator;
 
@@ -20,6 +20,9 @@ public class FasterEnemyManager : EnemyManager, IAttachableItemOnDestroy
 
     [Header("移動時車体の揺れ")]
     [SerializeField] ShakeSettings shakeSettingsOnMove;
+
+    [Header("音声")]
+    [SerializeField] SoundPlayer soundPlayer;
 
     bool isMoving = false;
     IStatus playerStatus;
@@ -71,8 +74,10 @@ public class FasterEnemyManager : EnemyManager, IAttachableItemOnDestroy
         // 体の震えを止める
         shakeSettingsOnMove.StopShake();
 
-        //死ぬアニメーション
+        // アイテム効果発動
+        OnDestroyEvent?.Invoke(TargetTransform);
 
+        //死ぬアニメーション
         if (animator) { animator.SetTrigger("Destroy"); }
         else { Destroy(this.gameObject); }
     }
@@ -109,6 +114,11 @@ public class FasterEnemyManager : EnemyManager, IAttachableItemOnDestroy
         {
             obj.transform.localPosition = new Vector3(center - width / 2f, obj.transform.localPosition.y, obj.transform.localPosition.z);
         }
+    }
+
+    public void PlayOnShot(AudioClip audioClip)
+    {
+        ((ISoundPlayable)soundPlayer).PlayOnShot(audioClip);
     }
 
     protected override void FixedUpdate()

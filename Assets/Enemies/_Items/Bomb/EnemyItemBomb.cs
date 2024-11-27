@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyItemBomb : MonoBehaviour
+public class EnemyItemBomb : MonoBehaviour , ISoundPlayable
 {
+    [SerializeField] float killDuration = 5f;
     [SerializeField] EnemyManager enemy;
     [SerializeField] BombController bombController;
-    [SerializeField] GameObject bombObject; 
-    [SerializeField] float killDuration = 5f;
+    [SerializeField] GameObject bombObject;
+    [Header("âπê∫")]
+    [SerializeField] AudioClip bombClip;
+    [SerializeField] SoundPlayer soundPlayer;
 
     IAttachableItemOnDestroy attachableItem;
 
@@ -40,9 +43,14 @@ public class EnemyItemBomb : MonoBehaviour
         // îöîj
         bombController.Bomb();
         bombObject.SetActive(false);
+        PlayOnShot(bombClip);
 
         // çÌèú
         Destroy(this.gameObject, killDuration);
     }
 
+    public void PlayOnShot(AudioClip audioClip)
+    {
+        ((ISoundPlayable)soundPlayer).PlayOnShot(audioClip);
+    }
 }

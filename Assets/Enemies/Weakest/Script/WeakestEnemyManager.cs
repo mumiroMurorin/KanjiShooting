@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 
-public class WeakestEnemyManager : EnemyManager , IAttachableItemOnDestroy
+public class WeakestEnemyManager : EnemyManager , IAttachableItemOnDestroy, ISoundPlayable
 {
     [SerializeField] Animator animator;
 
@@ -12,6 +12,9 @@ public class WeakestEnemyManager : EnemyManager , IAttachableItemOnDestroy
     [SerializeField] OutlineSettings outlineSettings;
     [Header("アタック時の震え")]
     [SerializeField] ShakeSettings shakeSettings;
+
+    [Header("音声")]
+    [SerializeField] SoundPlayer soundPlayer;
 
     bool isMoving = false;
     IStatus playerStatus;
@@ -75,6 +78,11 @@ public class WeakestEnemyManager : EnemyManager , IAttachableItemOnDestroy
     private void SetOutline()
     {
         outlineSettings.ApplyOutline(kanjiObject);
+    }
+
+    public void PlayOnShot(AudioClip audioClip)
+    {
+        ((ISoundPlayable)soundPlayer).PlayOnShot(audioClip);
     }
 
     protected override void FixedUpdate()

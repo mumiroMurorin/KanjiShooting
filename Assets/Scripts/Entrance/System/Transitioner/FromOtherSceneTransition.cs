@@ -30,5 +30,8 @@ public class FromOtherSceneTransition : IPhaseTransitioner
 
         // ステージステータスの変更
         EntranceManager.Instance.SetMenuStatus(MenuStatus.StageSelect);
+
+        // タイトル音楽再生
+        Sound.SoundManager.Instance.PlayBGM(Sound.BGM_Type.Title);
     }
 }
