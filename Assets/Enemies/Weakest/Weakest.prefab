@@ -257,7 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 1
   HPInit: 1
-  attackInit: 8
+  attackInit: 80
   speedInit: 750
   OnChangeHP:
     m_PersistentCalls:

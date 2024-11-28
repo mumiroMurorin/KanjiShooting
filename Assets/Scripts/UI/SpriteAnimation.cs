@@ -33,7 +33,7 @@ public class SpriteAnimation : MonoBehaviour
 
     private void OnDestroy()
     {
-        cts.Cancel();
-        cts.Dispose();
+        cts?.Cancel();
+        cts?.Dispose();
     }
 }

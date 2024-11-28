@@ -56,6 +56,7 @@ public class StageManager : LocalSingletonMonoBehaviour<StageManager>
         scoreHolder.KillCount = 0;
         scoreHolder.TimeCount = 0;
         scoreHolder.WaveCount = 0;
+        scoreHolder.ResetAnswerStatus();
     }
 
     /// <summary>

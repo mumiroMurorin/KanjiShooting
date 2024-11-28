@@ -663,8 +663,8 @@ MonoBehaviour:
   - {fileID: 1106111517}
   - {fileID: 784446256}
   - {fileID: 456414322}
-  animationDuration: 2
-  waitTime: 0.75
+  animationDuration: 1
+  waitTime: 0.5
   backOfTopDuration: 0.75
 --- !u!1 &271584614
 GameObject:

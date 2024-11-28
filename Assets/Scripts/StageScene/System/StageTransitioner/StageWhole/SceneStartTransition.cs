@@ -21,7 +21,6 @@ public class SceneStartTransition : IPhaseTransitioner
 
         //ステージ開始演出終了まで待ち
         await UniTask.WaitUntil(() => startEffectDirector.state != PlayState.Playing, cancellationToken: token);
-        StageManager.Instance.ChangeStageStatus(StageStatus.Fighting);
 
         Debug.Log("【System】シーン開始演出終了");
     }

@@ -14,7 +14,10 @@ public class PostProcessingContoller : MonoBehaviour
     [Header("瀕死時")]
     [SerializeReference, SubclassSelector] IPostProcessingEffect[] dyingEffects;
     [SerializeField] float dyingHpRatio = 0.2f;
+    [Header("死亡時")]
+    [SerializeReference, SubclassSelector] IPostProcessingEffect[] gameOverEffects;
     [SerializeField] SerializeInterface<IStatus> playerStatus;
+
 
     List<IPostProcessingEffect> allEffect;
 
@@ -28,6 +31,7 @@ public class PostProcessingContoller : MonoBehaviour
     {
         allEffect = new List<IPostProcessingEffect>();
         allEffect.AddRange(dyingEffects);
+        allEffect.AddRange(gameOverEffects);
 
         foreach (IPostProcessingEffect effect in allEffect)
         {
@@ -44,6 +48,15 @@ public class PostProcessingContoller : MonoBehaviour
             .Subscribe(_ => 
             {
                 foreach(var effect in dyingEffects) { effect.SetEnableEffect(true); }
+            })
+            .AddTo(this.gameObject);
+
+        // 死亡時ポストエフェクトをオン
+        playerStatus.Value.HPNormalized
+            .Where(value => value <= 0f)
+            .Subscribe(_ =>
+            {
+                foreach (var effect in gameOverEffects) { effect.SetEnableEffect(true); }
             })
             .AddTo(this.gameObject);
 
@@ -155,7 +168,7 @@ public class VignetteEffect : IPostProcessingEffect
     {
         if (!profile.TryGetSettings<Vignette>(out vignette))
         {
-            Debug.Log("ChromaticAberration is not set");
+            Debug.Log("Vignette is not set");
             return;
         }
     }
@@ -171,5 +184,45 @@ public class VignetteEffect : IPostProcessingEffect
     {
         if (vignette == null) { return; }
         vignette.enabled.value = isEnabled;
+    }
+}
+
+public class ColorGrandingEffect : IPostProcessingEffect
+{
+    ColorGrading colorGranding;
+
+    [SerializeField] AnimationCurve saturationCurve;
+    [SerializeField] AnimationCurve brightnessCurve;
+    [SerializeField] float duration;
+    float NormalizedTime => timeElapsed / duration;
+    float timeElapsed = 0;
+
+    public void AddTime(float value)
+    {
+        timeElapsed += value;
+        if (timeElapsed > duration) { timeElapsed = 0; }
+    }
+
+    public void SetProfile(PostProcessProfile profile)
+    {
+        if (!profile.TryGetSettings<ColorGrading>(out colorGranding))
+        {
+            Debug.Log("ColorGrading is not set");
+            return;
+        }
+    }
+
+    public void ApplyEffect()
+    {
+        if (colorGranding == null) { return; }
+
+        colorGranding.saturation.value = saturationCurve.Evaluate(NormalizedTime);
+        colorGranding.brightness.value = brightnessCurve.Evaluate(NormalizedTime);
+    }
+
+    public void SetEnableEffect(bool isEnabled)
+    {
+        if (colorGranding == null) { return; }
+        colorGranding.enabled.value = isEnabled;
     }
 }

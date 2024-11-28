@@ -98,4 +98,9 @@ namespace StageTransition
             Debug.Log("【System】ステージ内シーン終了");
         }
     }
+
+    public interface IStageUIcontroller
+    {
+        public void ActiveUIGroup(StageStatus status);
+    }
 }

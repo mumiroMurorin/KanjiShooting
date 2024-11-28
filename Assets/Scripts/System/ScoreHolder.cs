@@ -50,4 +50,5 @@ public class ScoreHolder
     private ReactiveCollection<AnswerStatus> answerStates = new ReactiveCollection<AnswerStatus>();
     public IReadOnlyReactiveCollection<AnswerStatus> AnswerStatesReactiveCollection { get { return answerStates; } }
     public void AddAnswerStatus(AnswerStatus answerStatus) { answerStates.Add(answerStatus); }
+    public void ResetAnswerStatus() { answerStates = new ReactiveCollection<AnswerStatus>(); }
 }
