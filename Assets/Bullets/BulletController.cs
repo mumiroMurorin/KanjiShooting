@@ -5,12 +5,12 @@ using UnityEngine;
 public abstract class BulletController : MonoBehaviour, IDamager
 {
     [SerializeField] protected Rigidbody rb;
-    [SerializeField] protected SerializeInterface<IKanjiStatus> KanjiStatus;
+    [SerializeField] protected SerializeInterface<IBulletStatus> status;
 
     protected bool isShooted;
 
     //読み仮名を橋渡し(正しい使い方かどうかは分からない…)
-    public string Yomigana { set { KanjiStatus.Value.SetAnswers(new string[]{ value }); } } 
+    public string Answer { set { status.Value.SetAnswer(value); } } 
 
     public abstract void Shoot();
 
@@ -33,20 +33,17 @@ public abstract class BulletController : MonoBehaviour, IDamager
         // 敵チェック
         if (enemyStatus.Layer != MobLayer.Enemy) { return; }
 
-        bool isCollect = IsCollectAnswer(KanjiStatus.Value.Answers.Value, enemyStatus.Answers.Value);
-
-        // ログの生成
-        string log = isCollect ? "【解答】〇正解 回答:" : "【解答】×不正解 回答:";
-        log += $"{string.Join(",", KanjiStatus.Value.Answers.Value)}";
-        log += $" 正答: {string.Join(",", enemyStatus.Answers.Value)}";
-        Debug.Log(log);
+        bool isCollect = IsCollectAnswer(status.Value.Answer.Value, enemyStatus.Question.Value.answers);
 
         // 正答チェック
         if (!isCollect)
         { AfterBouncedBack(); return; }
 
+        // 記録
+        StageManager.Instance.AddAnswerStatus(new AnswerStatus { questionData = enemyStatus.Question.Value, state = AnswerState.Corrected });
+
         // HP削るよ
-        enemyStatus.SetHP(enemyStatus.HP.Value - KanjiStatus.Value.Attack.Value);
+        enemyStatus.SetHP(enemyStatus.HP.Value - status.Value.Attack.Value);
         AfterKillEnemy();
     }
 
@@ -61,7 +58,7 @@ public abstract class BulletController : MonoBehaviour, IDamager
 
         Debug.Log("漢字ステータスを無視して攻撃します");
 
-        enemyStatus.SetHP(enemyStatus.HP.Value - KanjiStatus.Value.Attack.Value);
+        enemyStatus.SetHP(enemyStatus.HP.Value - status.Value.Attack.Value);
         AfterKillEnemy();
     }
 
@@ -87,15 +84,13 @@ public abstract class BulletController : MonoBehaviour, IDamager
     /// <param name="answer1"></param>
     /// <param name="answer2"></param>
     /// <returns></returns>
-    private bool IsCollectAnswer(string[] answer1, string[] answer2)
+    private bool IsCollectAnswer(string answer, string[] answer2)
     {
-        foreach (string b_answer in answer1)
+        foreach (string e_answer in answer2)
         {
-            foreach (string e_answer in answer2)
-            {
-                if (b_answer == e_answer) { return true; }
-            }
+            if (answer == e_answer) { return true; }
         }
+
         return false;
     }
 }

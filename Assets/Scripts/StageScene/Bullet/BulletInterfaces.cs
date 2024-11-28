@@ -58,9 +58,16 @@ public interface IBulletShootCharger : IBulletShooter
 
 public interface IKanjiStatus : IStatus
 {
-    public IReadOnlyReactiveProperty<string[]> Answers { get; }
+    public IReadOnlyReactiveProperty<Kanji.QuestionData> Question { get; }
 
-    public void SetAnswers(string[] value);
+    public void SetQuestion(Kanji.QuestionData questionData);
+}
+
+public interface IBulletStatus : IStatus
+{
+    public IReadOnlyReactiveProperty<string> Answer { get; }
+
+    public void SetAnswer(string answer);
 }
 
 /// <summary>

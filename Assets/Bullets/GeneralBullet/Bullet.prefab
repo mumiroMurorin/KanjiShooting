@@ -48,7 +48,7 @@ MonoBehaviour:
   HPInit: 1
   attackInit: 1
   speedInit: 3500
-  answerInit: []
+  answerInit: 
   OnChangeHP:
     m_PersistentCalls:
       m_Calls: []
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5701941250349043590}
-  KanjiStatus:
+  status:
     obj: {fileID: 5701941250213816087}
 --- !u!54 &5701941250349043590
 Rigidbody:

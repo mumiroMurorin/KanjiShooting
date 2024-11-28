@@ -27,6 +27,9 @@ public class StartSceneTransition : IPhaseTransitioner
             await UniTask.WaitUntil(() => startSceneDirector.state != PlayState.Playing, cancellationToken: token);
         }
 
+        // BGM再生
+        Sound.SoundManager.Instance.PlayBGM(Sound.BGM_Type.Result);
+
         // ステージステータスの変更
         ResultManager.Instance.SetMenuStatus(MenuStatus.Result);
     }

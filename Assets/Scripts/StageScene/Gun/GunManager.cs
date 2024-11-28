@@ -76,7 +76,7 @@ public abstract class GunManager : MonoBehaviour
         SetParent(hiraganaParent.transform, bullet.transform);
 
         BulletController b = bulletShooter.Shoot();
-        b.Yomigana = yomiganaSpawner.Answer.Value;
+        b.Answer = yomiganaSpawner.Answer.Value;
         yomiganaSpawner.OnShoot();
 
         // 再度ひらがなオブジェクトの親を生成

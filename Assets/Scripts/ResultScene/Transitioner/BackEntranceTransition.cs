@@ -23,6 +23,9 @@ public class BackEntranceTransition : IPhaseTransitioner
 
     public async UniTask ExecuteAsync(CancellationToken token)
     {
+        // BGM停止
+        Sound.SoundManager.Instance.StopBGM(true);
+
         // メインスレッドに戻す
         await UniTask.SwitchToMainThread();
 

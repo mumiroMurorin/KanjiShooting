@@ -51,10 +51,10 @@ public class FasterEnemyManager : EnemyManager, IAttachableItemOnDestroy, ISound
 
     protected override void AfterGiveDamage()
     {
-        //レコードの追加
-        scoreHolder.AddAnswerState(new AnswerState { questionData = questionData, isCorrect = false });
+        // 不正解レコードの追加
+        StageManager.Instance.AddAnswerStatus(new AnswerStatus { questionData = questionData, state = AnswerState.Incorrected });
 
-        //アニメーションがない時の消滅と与ダメ
+        // アニメーションがない時の消滅と与ダメ
         if (!animator) 
         {
             GiveDamageTrigger();

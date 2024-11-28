@@ -47,7 +47,7 @@ public class ScoreHolder
     }
 
     // äøéöÉåÉRÅ[Éh
-    private ReactiveCollection<AnswerState> answerStates = new ReactiveCollection<AnswerState>();
-    public IReadOnlyReactiveCollection<AnswerState> AnswerStatesReactiveCollection { get { return answerStates; } }
-    public void AddAnswerState(AnswerState answerState) { answerStates.Add(answerState); }
+    private ReactiveCollection<AnswerStatus> answerStates = new ReactiveCollection<AnswerStatus>();
+    public IReadOnlyReactiveCollection<AnswerStatus> AnswerStatesReactiveCollection { get { return answerStates; } }
+    public void AddAnswerStatus(AnswerStatus answerStatus) { answerStates.Add(answerStatus); }
 }

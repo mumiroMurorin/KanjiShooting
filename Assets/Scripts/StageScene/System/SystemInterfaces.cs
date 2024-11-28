@@ -258,8 +258,19 @@ public interface ISpawnpointSelector
 /// <summary>
 /// –â‘è‚É‘Î‚·‚é‰ğ“šî•ñ
 /// </summary>
-public struct AnswerState
+public struct AnswerStatus
 {
     public QuestionData questionData;
-    public bool isCorrect;
+    public AnswerState state;
+}
+
+/// <summary>
+/// “G‚Ì“¢”°ó‹µ
+/// </summary>
+public enum AnswerState
+{
+    Unanswered,
+    Corrected,
+    Incorrected,
+    CollateralDamage,
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UniRx;
+using Kanji;
 
 public class EnemyStatus : MonoBehaviour, IKanjiStatus
 {
@@ -21,15 +22,15 @@ public class EnemyStatus : MonoBehaviour, IKanjiStatus
     [SerializeField] UnityEvent<int> OnChangeHP;
     [Header("Delegate on Change Attack")]
     [SerializeField] UnityEvent<int> OnChangeAttack;
-    [Header("Delegate on Change Answer")]
-    [SerializeField] UnityEvent<string[]> OnChangeAnswer;
+    [Header("Delegate on Change QuestionData")]
+    [SerializeField] UnityEvent<QuestionData> OnChangeQuestion;
     [Header("Delegate on Change Speed")]
     [SerializeField] UnityEvent<int> OnChangeSpeed;
 
     ReactiveProperty<int> hp;
     ReactiveProperty<int> attack;
     ReactiveProperty<int> speed;
-    ReactiveProperty<string[]> answers;
+    ReactiveProperty<QuestionData> question;
 
     public MobLayer Layer { get; } = MobLayer.Enemy;
 
@@ -39,9 +40,9 @@ public class EnemyStatus : MonoBehaviour, IKanjiStatus
     }
     public IReadOnlyReactiveProperty<float> HPNormalized { get; private set; }
 
-    public IReadOnlyReactiveProperty<string[]> Answers
+    public IReadOnlyReactiveProperty<QuestionData> Question
     { 
-        get { return answers; }
+        get { return question; }
     }
 
     public IReadOnlyReactiveProperty<int> Attack 
@@ -86,8 +87,8 @@ public class EnemyStatus : MonoBehaviour, IKanjiStatus
               .AddTo(this);
 
         //仮
-        answers = new ReactiveProperty<string[]>();
-        answers.Subscribe(a => OnChangeAnswer.Invoke(a))
+        question = new ReactiveProperty<QuestionData>();
+        question.Subscribe(a => OnChangeQuestion.Invoke(a))
               .AddTo(this);
     }
 
@@ -97,10 +98,10 @@ public class EnemyStatus : MonoBehaviour, IKanjiStatus
         hp.Value = Mathf.Clamp(value, 0, maxHP);
     }
 
-    public void SetAnswers(string[] value)
+    public void SetQuestion(QuestionData value)
     {
-        if (answers == null) { Debug.LogError("ReactiveProperty:answersが初期化されていません"); return; }
-        answers.Value = value;
+        if (question == null) { Debug.LogError("ReactiveProperty:answersが初期化されていません"); return; }
+        question.Value = value;
     }
 
     public void SetAttack(int value) 

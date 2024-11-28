@@ -109,6 +109,33 @@ public class StageManager : LocalSingletonMonoBehaviour<StageManager>
     }
 
     /// <summary>
+    /// ‰ğ“šƒXƒe[ƒ^ƒX‚Ì“o˜^
+    /// </summary>
+    /// <param name="status"></param>
+    public void AddAnswerStatus(AnswerStatus status)
+    {
+        // ƒƒO‚Ì¶¬
+        string log = "";
+        switch (status.state)
+        {
+            case AnswerState.Corrected:
+                log += "y‰ğ“šz Z³‰ğ";
+                break;
+            case AnswerState.Incorrected:
+                log += "y‰ğ“šz ~•s³‰ğ";
+                break;
+            case AnswerState.CollateralDamage:
+                log += "y‰ğ“šz ZŠª‚«“Y‚¦";
+                break;
+        }
+
+        log += $" ³“š: {string.Join(",", status.questionData.answers)}";
+        Debug.Log(log);
+
+        scoreHolder.AddAnswerStatus(status);
+    }
+
+    /// <summary>
     /// ScenePhaseTransitionManager‚ğ¶¬‚·‚é
     /// </summary>
     /// <param name="stagePhaseTransitioners"></param>

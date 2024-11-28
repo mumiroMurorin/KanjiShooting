@@ -12,6 +12,6 @@ public class GeneralBulletController : BulletController
     {
         isShooted = true;
         rb.isKinematic = false;
-        rb.AddForce(this.transform.forward * KanjiStatus.Value.Speed.Value, ForceMode.Acceleration);
+        rb.AddForce(this.transform.forward * status.Value.Speed.Value, ForceMode.Acceleration);
     }
 }

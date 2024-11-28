@@ -115,13 +115,13 @@ public class MainUIPresenter : MonoBehaviour
     /// 条件に合ったスポナーでアンサーボックスをスポーンさせる
     /// </summary>
     /// <param name="answerState"></param>
-    private void SpawnAnswerBox(AnswerState answerState)
+    private void SpawnAnswerBox(AnswerStatus answerStatus)
     {
         foreach(AnswerBoxSpawner a in answerBoxSpawners)
         {
-            if (a.CanSpawn(answerState)) 
+            if (a.CanSpawn(answerStatus)) 
             { 
-                a.Spawn(answerState);
+                a.Spawn(answerStatus);
                 break;
             }
         }

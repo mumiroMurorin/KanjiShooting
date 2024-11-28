@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UniRx;
+using Kanji;
 
-public class BulletStatus : MonoBehaviour, IKanjiStatus
+public class BulletStatus : MonoBehaviour, IBulletStatus
 {
     [Header("MaxHP")]
     [SerializeField] int maxHP;
@@ -15,21 +16,21 @@ public class BulletStatus : MonoBehaviour, IKanjiStatus
     [Header("初期スピード")]
     [SerializeField] int speedInit;
     [Header("答え(デバッグ用)")]
-    [SerializeField] string[] answerInit;
+    [SerializeField] string answerInit;
 
     [Header("Delegate on Change HP")]
     [SerializeField] UnityEvent<int> OnChangeHP;
     [Header("Delegate on Change Attack")]
     [SerializeField] UnityEvent<int> OnChangeAttack;
     [Header("Delegate on Change Answer")]
-    [SerializeField] UnityEvent<string[]> OnChangeAnswer;
+    [SerializeField] UnityEvent<string> OnChangeAnswer;
     [Header("Delegate on Change Speed")]
     [SerializeField] UnityEvent<int> OnChangeSpeed;
 
     ReactiveProperty<int> hp;
     ReactiveProperty<int> attack;
     ReactiveProperty<int> speed;
-    ReactiveProperty<string[]> answers;
+    ReactiveProperty<string> answer;
 
     public MobLayer Layer { get; } = MobLayer.Bullet;
 
@@ -40,9 +41,9 @@ public class BulletStatus : MonoBehaviour, IKanjiStatus
 
     public IReadOnlyReactiveProperty<float> HPNormalized  { get; private set; }
 
-    public IReadOnlyReactiveProperty<string[]> Answers
+    public IReadOnlyReactiveProperty<string> Answer
     { 
-        get { return answers; }
+        get { return answer; }
     }
 
     public IReadOnlyReactiveProperty<int> Attack 
@@ -87,8 +88,8 @@ public class BulletStatus : MonoBehaviour, IKanjiStatus
               .AddTo(this);
 
         //仮
-        answers = new ReactiveProperty<string[]>(answerInit);
-        answers.Subscribe(a => OnChangeAnswer.Invoke(a))
+        answer = new ReactiveProperty<string>(answerInit);
+        answer.Subscribe(a => OnChangeAnswer.Invoke(a))
               .AddTo(this);
     }
 
@@ -98,10 +99,10 @@ public class BulletStatus : MonoBehaviour, IKanjiStatus
         hp.Value = Mathf.Clamp(value, 0, maxHP);
     }
 
-    public void SetAnswers(string[] value)
+    public void SetAnswer(string value)
     {
-        if (answers == null) { Debug.LogError("ReactiveProperty:answersが初期化されていません"); return; }
-        answers.Value = value;
+        if (answer == null) { Debug.LogError("ReactiveProperty:answersが初期化されていません"); return; }
+        answer.Value = value;
     }
 
     public void SetAttack(int value) 

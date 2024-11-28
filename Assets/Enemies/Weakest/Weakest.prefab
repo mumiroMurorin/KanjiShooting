@@ -258,7 +258,7 @@ MonoBehaviour:
   maxHP: 1
   HPInit: 1
   attackInit: 8
-  speedInit: 75
+  speedInit: 750
   OnChangeHP:
     m_PersistentCalls:
       m_Calls:
@@ -277,7 +277,7 @@ MonoBehaviour:
   OnChangeAttack:
     m_PersistentCalls:
       m_Calls: []
-  OnChangeAnswer:
+  OnChangeQuestion:
     m_PersistentCalls:
       m_Calls: []
   OnChangeSpeed:

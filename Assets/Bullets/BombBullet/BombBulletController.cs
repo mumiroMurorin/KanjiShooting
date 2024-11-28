@@ -16,7 +16,7 @@ public class BombBulletController : BulletController
     {
         isShooted = true;
         rb.isKinematic = false;
-        rb.AddForce(this.transform.forward * KanjiStatus.Value.Speed.Value, ForceMode.Acceleration);
+        rb.AddForce(this.transform.forward * status.Value.Speed.Value, ForceMode.Acceleration);
     }
 
     protected override void AfterKillEnemy()

@@ -15,19 +15,19 @@ namespace StageUI
         /// </summary>
         /// <param name="answerState"></param>
         /// <returns></returns>
-        public abstract bool CanSpawn(AnswerState answerState);
+        public abstract bool CanSpawn(AnswerStatus answerStatus);
 
         /// <summary>
         /// 回答UIの生成
         /// </summary>
         /// <param name="answerState"></param>
         /// <returns></returns>
-        public AnswerBoxView Spawn(AnswerState answerState)
+        public AnswerBoxView Spawn(AnswerStatus answerStatus)
         {
             //インスタンス化
             GameObject obj = Instantiate(answerBoxPrefab, answerBoxParent);
             AnswerBoxView answerBoxView = obj.GetComponent<AnswerBoxView>();
-            answerBoxView.SetAnswer(answerState.questionData);
+            answerBoxView.SetAnswer(answerStatus.questionData);
 
             return answerBoxView;
         }

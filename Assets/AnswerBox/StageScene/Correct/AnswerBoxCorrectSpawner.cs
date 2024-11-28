@@ -6,9 +6,9 @@ namespace StageUI
 {
     public class AnswerBoxCorrectSpawner : AnswerBoxSpawner
     {
-        public override bool CanSpawn(AnswerState answerState)
+        public override bool CanSpawn(AnswerStatus answerStatus)
         {
-            return answerState.isCorrect;
+            return answerStatus.state == AnswerState.Corrected;
         }
 
         protected override void AfterSpawn()

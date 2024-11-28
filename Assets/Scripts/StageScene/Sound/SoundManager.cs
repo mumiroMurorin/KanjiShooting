@@ -23,6 +23,7 @@ namespace Sound
         Battle8 = 107,
         Battle9 = 108,
         Battle10 = 109,
+        Result = 800,
         SILENCE = 999, // ñ≥âπèÛë‘
     }
 

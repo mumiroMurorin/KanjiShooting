@@ -52,8 +52,6 @@ public class ChargeBulletShooter : MonoBehaviour, IBulletShootCharger
         // リロードチャージのリセット
         reloadCharger.Value.ResetCharge();
 
-        Debug.Log($"あれぇ？ {reloadCharger.Value.ChargeCount}");
-
         // SE再生
         if (Bullet != null && shootSE != null) { Sound.SoundManager.Instance.PlaySE(shootSE); }
         return Bullet;

@@ -21,6 +21,9 @@ public class RetryStageTransition : IPhaseTransitioner
 
     public async UniTask ExecuteAsync(CancellationToken token)
     {
+        // SEの停止
+        Sound.SoundManager.Instance.StopBGM(true);
+
         // メインスレッドに戻す
         await UniTask.SwitchToMainThread();
         // オペレーションの登録

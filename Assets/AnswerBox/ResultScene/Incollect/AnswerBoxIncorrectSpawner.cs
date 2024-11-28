@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace StageUI
+namespace ResultUI
 {
     public class AnswerBoxIncorrectSpawner : AnswerBoxSpawner
     {
-        public override bool CanSpawn(AnswerState answerState)
+        public override bool CanSpawn(AnswerStatus answerStatus)
         {
-            return !answerState.isCorrect;
+            return answerStatus.state == AnswerState.Incorrected;
         }
 
         protected override void AfterSpawn()

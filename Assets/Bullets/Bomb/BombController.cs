@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class BombController : MonoBehaviour,IDamager
+public class BombController : MonoBehaviour, IDamager
 {
     [SerializeField] SphereCollider bombCollider;
     [SerializeField] SerializeInterface<IStatus> status;
@@ -41,8 +41,8 @@ public class BombController : MonoBehaviour,IDamager
         // “Gƒ`ƒFƒbƒN
         if (enemyStatus.Layer != MobLayer.Enemy) { return; }
 
-        // ƒƒO‚Ì¶¬
-        Debug.Log($"y‰ğ“šzZ”š”j ‰ñ“š: {string.Join(" ,", enemyStatus.Answers.Value)}");
+        // ‹L˜^
+        StageManager.Instance.AddAnswerStatus(new AnswerStatus { questionData = enemyStatus.Question.Value, state = AnswerState.CollateralDamage });
 
         // HPí‚é‚æ
         enemyStatus.SetHP(enemyStatus.HP.Value - status.Value.Attack.Value);

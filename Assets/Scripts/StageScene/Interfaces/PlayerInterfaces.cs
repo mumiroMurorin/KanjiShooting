@@ -35,5 +35,6 @@ public enum MobLayer
 {
     Enemy,
     Player,
-    Bullet
+    Bullet,
+    Bomb
 }
