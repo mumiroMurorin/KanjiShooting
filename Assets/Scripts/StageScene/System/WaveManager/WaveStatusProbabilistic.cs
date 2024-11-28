@@ -4,40 +4,24 @@ using UnityEngine;
 using Kanji;
 
 [System.Serializable]
-class WaveStatusRandom : IWaveStatus
+class WaveStatusProbabilistic : IWaveStatus
 {
-    [System.Serializable]
-    class EnemyProbability
-    {
-        [SerializeField] EnemySpawner spawner;
-        [SerializeField] float weight;
-
-        public float Weight { get { return weight; } }
-        public EnemySpawner Spawner { get { return spawner; } }
-    }
-
     [SerializeField] string statusName;
-    [SerializeField] EnemyProbability[] enemyPlobabilities;
+    [SerializeField] EnemySpawner spawner;
     [SerializeField] QuestionFilter filter;
     [SerializeField] SerializeInterface<ISpawnpointSelector> spawnSelector;
     [SerializeField] AnimationCurve amountCurve;
+    [SerializeField] AnimationCurve probabilityCurve;
 
     IQuestionSelector questionSelector;
     KanjiObjectSpawner kanjiSpawner;
-    float weightSum;
 
     public void Initialize(IQuestionSelector qSelector, KanjiObjectSpawner kSpawner)
     {
         questionSelector = qSelector;
         kanjiSpawner = kSpawner;
 
-        foreach(EnemyProbability e in enemyPlobabilities)
-        {
-            // 重みの合計を算出
-            weightSum += e.Weight;
-            e.Spawner.Initialize();
-        }
-
+        spawner.Initialize();
     }
 
     public void SpawnEnemy(float timeRatio, EnemyInitializationData enemyInitializationData)
@@ -45,17 +29,8 @@ class WaveStatusRandom : IWaveStatus
         for (int spawnNum = 0; spawnNum < amountCurve.Evaluate(timeRatio); spawnNum++)
         {
             // 抽選
-            EnemySpawner spawner = null;
-            float count = 0;
-            float random = Random.Range(0f, 1f);
+            if(probabilityCurve.Evaluate(timeRatio) < Random.Range(0f, 1f)) { continue; }
 
-            foreach(EnemyProbability e in enemyPlobabilities)
-            {
-                // 正規化した値を足し合わせる
-                count += e.Weight / weightSum; 
-                if (count >= random) { spawner = e.Spawner; break; }
-            }
-            
             // 問題の選定
             QuestionData data = questionSelector.GetQuestionData(filter);
             enemyInitializationData.questionData = data;
@@ -71,9 +46,6 @@ class WaveStatusRandom : IWaveStatus
 
     public void DespawnEnemy()
     {
-        foreach (EnemyProbability e in enemyPlobabilities)
-        {
-            e.Spawner.DespawnEnemy();
-        }
+        spawner.DespawnEnemy();
     }
 }

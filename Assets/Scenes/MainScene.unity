@@ -447,7 +447,7 @@ MonoBehaviour:
       type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
       data:
         statusName: Random Bomb
-        spawner: {fileID: 771120864}
+        enemyPlobabilities: []
         filter: {fileID: 11400000, guid: 36659f940f05ece41a80eee8f95bbba1, type: 2}
         spawnSelector:
           obj: {fileID: 6264959168519404185}
@@ -471,30 +471,6 @@ MonoBehaviour:
             tangentMode: 34
             weightedMode: 0
             inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        probabilityCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0.1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 0.1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
             outWeight: 0
           m_PreInfinity: 2
           m_PostInfinity: 2
@@ -503,7 +479,7 @@ MonoBehaviour:
       type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
       data:
         statusName: Random Heart
-        spawner: {fileID: 1774782918}
+        enemyPlobabilities: []
         filter: {fileID: 11400000, guid: 36659f940f05ece41a80eee8f95bbba1, type: 2}
         spawnSelector:
           obj: {fileID: 6264959168519404185}
@@ -527,30 +503,6 @@ MonoBehaviour:
             tangentMode: 34
             weightedMode: 0
             inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        probabilityCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0.1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 0.1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
             outWeight: 0
           m_PreInfinity: 2
           m_PostInfinity: 2
@@ -693,17 +645,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
   m_PrefabInstance: {fileID: 31663129}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &31663131 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
-  m_PrefabInstance: {fileID: 31663129}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &85230457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,7 +1455,7 @@ MonoBehaviour:
       type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
       data:
         statusName: Random Heart1
-        spawner: {fileID: 2079307290}
+        enemyPlobabilities: []
         filter: {fileID: 11400000, guid: ea499292c3db21a4398a81cc18f245c3, type: 2}
         spawnSelector:
           obj: {fileID: 6264959168519404185}
@@ -1538,30 +1479,6 @@ MonoBehaviour:
             tangentMode: 34
             weightedMode: 0
             inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        probabilityCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0.2
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 0.2
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
             outWeight: 0
           m_PreInfinity: 2
           m_PostInfinity: 2
@@ -1570,7 +1487,7 @@ MonoBehaviour:
       type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
       data:
         statusName: Random Heart2
-        spawner: {fileID: 1798482506}
+        enemyPlobabilities: []
         filter: {fileID: 11400000, guid: ea499292c3db21a4398a81cc18f245c3, type: 2}
         spawnSelector:
           obj: {fileID: 1714462524}
@@ -1598,35 +1515,11 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-        probabilityCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0.2
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 0.2
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
     - rid: 2752145251337502736
       type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
       data:
         statusName: Random Bomb1
-        spawner: {fileID: 1268381204}
+        enemyPlobabilities: []
         filter: {fileID: 11400000, guid: ea499292c3db21a4398a81cc18f245c3, type: 2}
         spawnSelector:
           obj: {fileID: 6264959168519404185}
@@ -1654,35 +1547,11 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-        probabilityCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0.2
-            inSlope: 0.8
-            outSlope: 0.8
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0.8
-            outSlope: 0.8
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
     - rid: 2752145251337502737
       type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
       data:
         statusName: Random Bomb2
-        spawner: {fileID: 1920076673}
+        enemyPlobabilities: []
         filter: {fileID: 11400000, guid: ea499292c3db21a4398a81cc18f245c3, type: 2}
         spawnSelector:
           obj: {fileID: 1714462524}
@@ -1706,30 +1575,6 @@ MonoBehaviour:
             tangentMode: 34
             weightedMode: 0
             inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        probabilityCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0.2
-            inSlope: 0.8
-            outSlope: 0.8
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0.8
-            outSlope: 0.8
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
             outWeight: 0
           m_PreInfinity: 2
           m_PostInfinity: 2
@@ -2999,7 +2844,7 @@ MonoBehaviour:
       type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
       data:
         statusName: Random Bomb
-        spawner: {fileID: 31663131}
+        enemyPlobabilities: []
         filter: {fileID: 11400000, guid: 68bfeefc36e3e7643b0f901f07d47692, type: 2}
         spawnSelector:
           obj: {fileID: 6264959168519404185}
@@ -3027,35 +2872,11 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-        probabilityCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0.15
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 0.15
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
     - rid: 2752145251337502729
       type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
       data:
         statusName: Random Heart
-        spawner: {fileID: 31663131}
+        enemyPlobabilities: []
         filter: {fileID: 11400000, guid: 62da3e3a5df6c8c4581882088cbae59a, type: 2}
         spawnSelector:
           obj: {fileID: 6264959168519404185}
@@ -3079,30 +2900,6 @@ MonoBehaviour:
             tangentMode: 34
             weightedMode: 0
             inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        probabilityCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0.15
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 0.15
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
             outWeight: 0
           m_PreInfinity: 2
           m_PostInfinity: 2
@@ -3169,17 +2966,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 4ff883fe11790d545a22d870c59ece1a, type: 3}
   m_PrefabInstance: {fileID: 500353809}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &500353811 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -6394067115797556469, guid: 4ff883fe11790d545a22d870c59ece1a, type: 3}
-  m_PrefabInstance: {fileID: 500353809}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af9c70e7cb7d7e4d8fce3c910b663fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &501230855
 GameObject:
   m_ObjectHideFlags: 0
@@ -3694,17 +3480,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 61967192239713e4fa46fb4deb1fe157, type: 3}
   m_PrefabInstance: {fileID: 571802606}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &571802608 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -6394067115797556469, guid: 61967192239713e4fa46fb4deb1fe157, type: 3}
-  m_PrefabInstance: {fileID: 571802606}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af9c70e7cb7d7e4d8fce3c910b663fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &596194455
 GameObject:
   m_ObjectHideFlags: 0
@@ -4355,7 +4130,7 @@ MonoBehaviour:
       type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
       data:
         statusName: Random Faster
-        spawner: {fileID: 1599321457}
+        enemyPlobabilities: []
         filter: {fileID: 11400000, guid: b8c5fc8ee1dde9840a37f8ad5e84d697, type: 2}
         spawnSelector:
           obj: {fileID: 1714462524}
@@ -4392,35 +4167,11 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-        probabilityCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0.2
-            inSlope: 0.8
-            outSlope: 0.8
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0.8
-            outSlope: 0.8
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
     - rid: 2752145251337502731
       type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
       data:
         statusName: Random Heart
-        spawner: {fileID: 766539193}
+        enemyPlobabilities: []
         filter: {fileID: 11400000, guid: cb2f210c1f03c66419f9e3b348e5132f, type: 2}
         spawnSelector:
           obj: {fileID: 6264959168519404185}
@@ -4448,35 +4199,11 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-        probabilityCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0.2
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 0.2
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
     - rid: 2752145251337502733
       type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
       data:
         statusName: Random Bomb
-        spawner: {fileID: 571802608}
+        enemyPlobabilities: []
         filter: {fileID: 11400000, guid: b8c5fc8ee1dde9840a37f8ad5e84d697, type: 2}
         spawnSelector:
           obj: {fileID: 1714462524}
@@ -4500,30 +4227,6 @@ MonoBehaviour:
             tangentMode: 34
             weightedMode: 0
             inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        probabilityCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0.1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 0.1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
             outWeight: 0
           m_PreInfinity: 2
           m_PostInfinity: 2
@@ -4701,17 +4404,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
   m_PrefabInstance: {fileID: 766539191}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &766539193 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
-  m_PrefabInstance: {fileID: 766539191}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &771120862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4774,17 +4466,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
   m_PrefabInstance: {fileID: 771120862}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &771120864 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
-  m_PrefabInstance: {fileID: 771120862}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &775688105
 GameObject:
   m_ObjectHideFlags: 0
@@ -4917,17 +4598,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
   m_PrefabInstance: {fileID: 816012767}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &816012769 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
-  m_PrefabInstance: {fileID: 816012767}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &847104477
 GameObject:
   m_ObjectHideFlags: 0
@@ -5149,17 +4819,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 61967192239713e4fa46fb4deb1fe157, type: 3}
   m_PrefabInstance: {fileID: 889703659}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &889703661 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -6394067115797556469, guid: 61967192239713e4fa46fb4deb1fe157, type: 3}
-  m_PrefabInstance: {fileID: 889703659}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af9c70e7cb7d7e4d8fce3c910b663fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &906402352
 GameObject:
   m_ObjectHideFlags: 0
@@ -5378,6 +5037,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
   m_PrefabInstance: {fileID: 939705506}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &939705508 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
+  m_PrefabInstance: {fileID: 939705506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &960936041
 GameObject:
   m_ObjectHideFlags: 0
@@ -6703,15 +6373,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 60
-  spawnInterval: 10
+  spawnInterval: 3
   kanjiSpawner: {fileID: 1378339576}
   bgmType: 103
   questionSelector:
     rid: 2752144884801208323
   waveStatuses:
-  - rid: 2752145224381497345
-  - rid: 2752145224381497357
-  - rid: 2752145224381497359
+  - rid: 2752145325818642434
   references:
     version: 2
     RefIds:
@@ -6720,127 +6388,21 @@ MonoBehaviour:
       data:
         questionFilters:
         - {fileID: 11400000, guid: 29db3524f54bbd045bf88115ccc16257, type: 2}
-    - rid: 2752145224381497345
-      type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
-      data:
-        statusName: The Weakest
-        spawner: {fileID: 500353811}
-        filter: {fileID: 11400000, guid: 29db3524f54bbd045bf88115ccc16257, type: 2}
-        spawnSelector:
-          obj: {fileID: 1714462524}
-        curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-    - rid: 2752145224381497357
+    - rid: 2752145325818642434
       type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
       data:
-        statusName: Heart Weakest
-        spawner: {fileID: 889703661}
+        statusName: General or Heart or Bomb
+        enemyPlobabilities:
+        - spawner: {fileID: 1758779799}
+          weight: 1
+        - spawner: {fileID: 2011812388}
+          weight: 1
+        - spawner: {fileID: 939705508}
+          weight: 1
         filter: {fileID: 11400000, guid: 29db3524f54bbd045bf88115ccc16257, type: 2}
         spawnSelector:
-          obj: {fileID: 1714462524}
+          obj: {fileID: 6264959168519404185}
         amountCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        probabilityCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-    - rid: 2752145224381497359
-      type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
-      data:
-        statusName: Bomb Weakest
-        spawner: {fileID: 1857567098}
-        filter: {fileID: 11400000, guid: 29db3524f54bbd045bf88115ccc16257, type: 2}
-        spawnSelector:
-          obj: {fileID: 1714462524}
-        amountCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        probabilityCurve:
           serializedVersion: 2
           m_Curve:
           - serializedVersion: 3
@@ -7243,17 +6805,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
   m_PrefabInstance: {fileID: 1268381202}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1268381204 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
-  m_PrefabInstance: {fileID: 1268381202}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1295146782
 GameObject:
   m_ObjectHideFlags: 0
@@ -8619,17 +8170,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 4ff883fe11790d545a22d870c59ece1a, type: 3}
   m_PrefabInstance: {fileID: 1599321455}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1599321457 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -6394067115797556469, guid: 4ff883fe11790d545a22d870c59ece1a, type: 3}
-  m_PrefabInstance: {fileID: 1599321455}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af9c70e7cb7d7e4d8fce3c910b663fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1619984794
 GameObject:
   m_ObjectHideFlags: 0
@@ -9321,6 +8861,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 50108400b3c7acd45a9483d1c8ccfaf2, type: 3}
   m_PrefabInstance: {fileID: 1758779797}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1758779799 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: 50108400b3c7acd45a9483d1c8ccfaf2, type: 3}
+  m_PrefabInstance: {fileID: 1758779797}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1768086686
 GameObject:
   m_ObjectHideFlags: 0
@@ -9463,17 +9014,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
   m_PrefabInstance: {fileID: 1774782916}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1774782918 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
-  m_PrefabInstance: {fileID: 1774782916}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1779653635
 GameObject:
   m_ObjectHideFlags: 0
@@ -9685,17 +9225,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 7bd172bf04d61cf4ea548dcc6e32e365, type: 3}
   m_PrefabInstance: {fileID: 1798482504}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1798482506 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -6394067115797556469, guid: 7bd172bf04d61cf4ea548dcc6e32e365, type: 3}
-  m_PrefabInstance: {fileID: 1798482504}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af9c70e7cb7d7e4d8fce3c910b663fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1806572894
 GameObject:
   m_ObjectHideFlags: 0
@@ -10130,17 +9659,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 7bd172bf04d61cf4ea548dcc6e32e365, type: 3}
   m_PrefabInstance: {fileID: 1857567096}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1857567098 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -6394067115797556469, guid: 7bd172bf04d61cf4ea548dcc6e32e365, type: 3}
-  m_PrefabInstance: {fileID: 1857567096}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af9c70e7cb7d7e4d8fce3c910b663fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1859132601
 GameObject:
   m_ObjectHideFlags: 0
@@ -10586,17 +10104,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 61967192239713e4fa46fb4deb1fe157, type: 3}
   m_PrefabInstance: {fileID: 1920076671}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1920076673 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -6394067115797556469, guid: 61967192239713e4fa46fb4deb1fe157, type: 3}
-  m_PrefabInstance: {fileID: 1920076671}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af9c70e7cb7d7e4d8fce3c910b663fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1934074346
 GameObject:
   m_ObjectHideFlags: 0
@@ -10751,7 +10258,7 @@ MonoBehaviour:
       type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
       data:
         statusName: Random Bomb
-        spawner: {fileID: 2011203016}
+        enemyPlobabilities: []
         filter: {fileID: 11400000, guid: 6a33421518258884985fd137e6e6d5ee, type: 2}
         spawnSelector:
           obj: {fileID: 6264959168519404185}
@@ -10779,44 +10286,11 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-        probabilityCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0.1
-            inSlope: 0.40000004
-            outSlope: 0.40000004
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 0.5
-            value: 0.3
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 0.1
-            inSlope: -0.40000004
-            outSlope: -0.40000004
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
     - rid: 2752145251337502728
       type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
       data:
         statusName: Random Heart
-        spawner: {fileID: 816012769}
+        enemyPlobabilities: []
         filter: {fileID: 11400000, guid: bfc1a54f460b4c047a35dd4120fa30f1, type: 2}
         spawnSelector:
           obj: {fileID: 6264959168519404185}
@@ -10840,30 +10314,6 @@ MonoBehaviour:
             tangentMode: 34
             weightedMode: 0
             inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        probabilityCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0.15
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 0.15
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
             outWeight: 0
           m_PreInfinity: 2
           m_PostInfinity: 2
@@ -11491,17 +10941,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
   m_PrefabInstance: {fileID: 2011203014}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2011203016 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
-  m_PrefabInstance: {fileID: 2011203014}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2011812386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11564,6 +11003,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
   m_PrefabInstance: {fileID: 2011812386}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2011812388 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
+  m_PrefabInstance: {fileID: 2011812386}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2017784875
 GameObject:
   m_ObjectHideFlags: 0
@@ -11922,17 +11372,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
   m_PrefabInstance: {fileID: 2079307288}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2079307290 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
-  m_PrefabInstance: {fileID: 2079307288}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2099585744
 GameObject:
   m_ObjectHideFlags: 0
@@ -12341,7 +11780,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5035818835525315566, guid: 5678d19bfd9c70a438ac6d4fa746f180, type: 3}
       propertyPath: chargeAmount
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5590933256780749376, guid: 5678d19bfd9c70a438ac6d4fa746f180, type: 3}
       propertyPath: inputManager
