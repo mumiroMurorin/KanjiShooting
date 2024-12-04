@@ -14,6 +14,8 @@ public class InputManager : MonoBehaviour, ICanInput
 
     public bool CanInput { get; set; } = true;
     public bool CanInputJapanese { get; set; } = true;
+    public bool CanShootBullet { get; set; } = false;
+
     OptionHolder optionHolder;
     OptionHolder ICanInput.Option { get { return optionHolder; } }
 
@@ -86,6 +88,13 @@ public class InputManager : MonoBehaviour, ICanInput
             .AddTo(this.gameObject);
     }
 
+    public void OnChangeAnswer(string answer)
+    {
+        if(answer.Length == 0) { CanShootBullet = false; }
+        else { CanShootBullet = true; }
+        Debug.Log($"‚«‚¿‚á: {CanShootBullet}");
+    }
+
     private void OnDestroy()
     {
         gameInputs?.Dispose();
@@ -97,6 +106,7 @@ public interface ICanInput
 {
     public bool CanInput { get; }
     public bool CanInputJapanese { get; }
+    public bool CanShootBullet { get; }
     public OptionHolder Option { get; }
 }
 
@@ -163,6 +173,7 @@ public class AttackHandler : IInputHandler
     private void OnAction(InputAction.CallbackContext context)
     {
         if (!permit.CanInput) { return; }
+        if (!permit.CanShootBullet) { return; }
 
         onInput?.Invoke();
     }
@@ -191,6 +202,7 @@ public class AttackHoldHandler : IInputHandler
     private void OnPerformed(InputAction.CallbackContext context)
     {
         if (!permit.CanInput) { return; }
+        if (!permit.CanShootBullet) { return; }
 
         onPerfomred?.Invoke();
     }
@@ -198,6 +210,7 @@ public class AttackHoldHandler : IInputHandler
     private void OnCanceled(InputAction.CallbackContext context)
     {
         if (!permit.CanInput) { return; }
+        if (!permit.CanShootBullet) { return; }
 
         onCanceled?.Invoke();
     }

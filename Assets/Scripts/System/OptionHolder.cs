@@ -14,7 +14,7 @@ public class OptionHolder
     }
 
     // マウス感度
-    ReactiveProperty<float> mouseSensitivity = new ReactiveProperty<float>(0.5f);
+    ReactiveProperty<float> mouseSensitivity = new ReactiveProperty<float>(0.35f);
     public IReadOnlyReactiveProperty<float> MouseSensitivityReactiveProperty { get { return mouseSensitivity; } }
     public void SetMouseSensitivity(float value)
     {
@@ -30,7 +30,7 @@ public class OptionHolder
     }
 
     // 矢印キー感度
-    ReactiveProperty<float> arrawSensitivity = new ReactiveProperty<float>(0.5f);
+    ReactiveProperty<float> arrawSensitivity = new ReactiveProperty<float>(0.35f);
     public IReadOnlyReactiveProperty<float> ArrawSensitivityReactiveProperty { get { return arrawSensitivity; } }
     public void SetArrawSensitivity(float value)
     {
@@ -46,7 +46,7 @@ public class OptionHolder
     }
 
     // マウス感度
-    ReactiveProperty<float> spaceSensitivity = new ReactiveProperty<float>(0.5f);
+    ReactiveProperty<float> spaceSensitivity = new ReactiveProperty<float>(0.35f);
     public IReadOnlyReactiveProperty<float> SpaceSensitivityReactiveProperty { get { return spaceSensitivity; } }
     public void SetSpaceSensitivity(float value)
     {

@@ -376,7 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 1
   HPInit: 1
-  attackInit: 5
+  attackInit: 8
   speedInit: 200
   OnChangeHP:
     m_PersistentCalls:
@@ -396,7 +396,7 @@ MonoBehaviour:
   OnChangeAttack:
     m_PersistentCalls:
       m_Calls: []
-  OnChangeAnswer:
+  OnChangeQuestion:
     m_PersistentCalls:
       m_Calls: []
   OnChangeSpeed:
