@@ -39,6 +39,8 @@ namespace ResultUI
         /// <returns></returns>
         protected string GetAnswersLaw(string[] answers)
         {
+            if(answers == null) { return ""; }
+
             string answerText = "";
             for (int i = 0; i < answers.Length; i++)
             {

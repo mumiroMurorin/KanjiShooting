@@ -40,7 +40,7 @@ namespace ResultUI
             int answerNum = results.Length;
             float delayPerResult = duration / answerNum;
 
-            scrollrect.horizontal = false;
+            scrollrect.vertical = false;
 
             // アンサーボックスのスポーン
             foreach (AnswerStatus answer in results)
@@ -57,7 +57,7 @@ namespace ResultUI
 
             // 一番上まで戻る
             scrollrect.DOVerticalNormalizedPos(1, backOfTopDuration)
-                .OnComplete(() => { scrollrect.horizontal = true; });
+                .OnComplete(() => { scrollrect.vertical = true; });
         }
 
         /// <summary>

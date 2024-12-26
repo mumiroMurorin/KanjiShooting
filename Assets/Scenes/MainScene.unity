@@ -5439,17 +5439,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
   m_PrefabInstance: {fileID: 939705506}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &939705508 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: ba4650636268a4d4c8a4cf7b7e9c42e4, type: 3}
-  m_PrefabInstance: {fileID: 939705506}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &960936041
 GameObject:
   m_ObjectHideFlags: 0
@@ -7020,7 +7009,7 @@ MonoBehaviour:
   questionSelector:
     rid: 2752144884801208323
   waveStatuses:
-  - rid: 2752145325818642434
+  - rid: 4034037045329920000
   references:
     version: 2
     RefIds:
@@ -7028,22 +7017,16 @@ MonoBehaviour:
       type: {class: QuestionSelectorFromCSV, ns: , asm: Assembly-CSharp}
       data:
         questionFilters:
-        - {fileID: 11400000, guid: 29db3524f54bbd045bf88115ccc16257, type: 2}
-    - rid: 2752145325818642434
-      type: {class: WaveStatusRandom, ns: , asm: Assembly-CSharp}
+        - {fileID: 11400000, guid: e3cf8e841126e154d92a9469f678abec, type: 2}
+    - rid: 4034037045329920000
+      type: {class: WaveStatusGeneral, ns: , asm: Assembly-CSharp}
       data:
-        statusName: General or Heart or Bomb
-        enemyPlobabilities:
-        - spawner: {fileID: 1758779799}
-          weight: 1
-        - spawner: {fileID: 2011812388}
-          weight: 1
-        - spawner: {fileID: 939705508}
-          weight: 1
-        filter: {fileID: 11400000, guid: 29db3524f54bbd045bf88115ccc16257, type: 2}
+        statusName: 
+        spawner: {fileID: 1758779799}
+        filter: {fileID: 11400000, guid: e3cf8e841126e154d92a9469f678abec, type: 2}
         spawnSelector:
-          obj: {fileID: 6264959168519404185}
-        amountCurve:
+          obj: {fileID: 1714462524}
+        curve:
           serializedVersion: 2
           m_Curve:
           - serializedVersion: 3
@@ -11955,17 +11938,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5154973234452232421, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
   m_PrefabInstance: {fileID: 2011812386}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2011812388 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5154973234452232418, guid: 2f9e522a4c229d64d90ec1213a2190a7, type: 3}
-  m_PrefabInstance: {fileID: 2011812386}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7828b0443c7443749a1f52afba5d3e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2017784875
 GameObject:
   m_ObjectHideFlags: 0

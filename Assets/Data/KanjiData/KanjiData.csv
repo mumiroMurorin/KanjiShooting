@@ -1,6 +1,6 @@
 ﻿漢字,読み仮名,答え,レベル,部首,タグ
 把握,,はあく,Level2,Unset,Unset
-依存症,,いぞんしょう,Level2,Unset,Unset
+依存症,,いぞんしょう、いそんしょう,Level2,Unset,Unset
 帰依,,きい,Level2,Unset,Unset
 威圧,,いあつ,Level2,Unset,Unset
 行為,,こうい,Level2,Unset,Unset
@@ -123,7 +123,7 @@
 彩る,,いろどる,Level2,Unset,Unset
 お歳暮,,おせいぼ,Level2,Unset,Unset
 搭載,,とうさい,Level2,Unset,Unset
-錠剤,,ざいじょう,Level2,Unset,Unset
+錠剤,,じょうざい,Level2,Unset,Unset
 咲く,,さく,Level2,Unset,Unset
 惨敗,,ざんぱい,Level2,Unset,Unset
 惨め,,みじめ,Level2,Unset,Unset
@@ -317,7 +317,7 @@
 弾痕,,だんこん,Level3,Unset,Unset
 音沙汰,,おとさた,Level3,Unset,Unset
 挫傷,,ざしょう,Level3,Unset,Unset
-拍手喝采,,はきしゅかっさい,Level3,Unset,Unset
+拍手喝采,,はくしゅかっさい,Level3,Unset,Unset
 要塞,,ようさい,Level3,Unset,Unset
 柵,,さく、しがらみ,Level3,Unset,Unset
 羅刹,,らせつ,Level3,Unset,Unset
@@ -370,15 +370,13 @@
 綻びる,,ほころびる,Level3,Unset,Unset
 焼酎,,しょうちゅう,Level3,Unset,Unset
 肘,,ひじ,Level3,Unset,Unset
-嘲笑,,ちょうしょう,Level3,Unset,Unset
-嘲笑う,,あざわらう,Level3,Unset,Unset
 進捗,,しんちょく,Level3,Unset,Unset
-頸椎,,せきつい,Level3,Unset,Unset
+頸椎,,けいつい,Level3,Unset,Unset
 千羽鶴,,せんばづる,Level3,Unset,Unset
 諦める,,あきらめる,Level3,Unset,Unset
 溺愛,,できあい,Level3,Unset,Unset
 装填,,そうてん,Level3,Unset,Unset
-填める,,はめる,Level3,Unset,Unset
+填める,,はめる、うずめる,Level3,Unset,Unset
 賭博,,とばく,Level3,Unset,Unset
 瞳孔,,どうこう,Level3,Unset,Unset
 頓着,,とんちゃく,Level3,Unset,Unset
@@ -445,7 +443,7 @@
 齟齬,,そご,Level4,Unset,Unset
 辟易,,へきえき,Level4,Unset,Unset
 所謂,,いわゆる,Level4,Unset,Unset
-婉曲,,わんきょく,Level4,Unset,Unset
+婉曲,,えんきょく,Level4,Unset,Unset
 囲炉裏,,いろり,Level4,Unset,Unset
 凡そ,,およそ、おおよそ,Level4,Unset,Unset
 甚だ,,はなはだ,Level4,Unset,Unset
@@ -476,7 +474,7 @@
 一揖,,いちゆう,Level4,Unset,Unset
 禾穀,,かこく,Level4,Unset,Unset
 快哉,,かいさい,Level4,Unset,Unset
-嚇灼,,かくしゃく,Level4,Unset,Unset
+赫灼,,かくしゃく,Level4,Unset,Unset
 茅屋,,ぼうおく,Level4,Unset,Unset
 御萱堂,,ごけんどう,Level4,Unset,Unset
 澱,,おり、よど,Level4,Unset,Unset
@@ -488,7 +486,7 @@
 矧ぐ,,はぐ,Level4,Unset,Unset
 硲,,はざま,Level4,Unset,Unset
 籾,,もみ,Level4,Unset,Unset
-堆く,,うずたかく,Level4,Unset,Unset
+堆い,,うずたかい,Level4,Unset,Unset
 嘉する,,よみする,Level4,Unset,Unset
 魁,,さきがけ,Level4,Unset,Unset
 廓,,くるわ,Level4,Unset,Unset
@@ -498,7 +496,6 @@
 徽章,,きしょう,Level4,Unset,Unset
 弓箭,,きゅうせん,Level4,Unset,Unset
 熊掌,,ゆうしょう,Level4,Unset,Unset
-祁寒,,きかん,Level4,Unset,Unset
 夙夜,,しゅくや,Level4,Unset,Unset
 後胤,,こういん,Level4,Unset,Unset
 嚇怒,,かくど,Level4,Unset,Unset
@@ -554,7 +551,7 @@
 肖る,,かたどる,Level4,Unset,Unset
 屯する,,たむろする,Level4,Unset,Unset
 閲する,,けみする,Level4,Unset,Unset
-凝り,,しこり,Level4,Unset,Unset
+凝り,,こり、しこり,Level4,Unset,Unset
 邪,,よこしま,Level4,Unset,Unset
 辱い,,かたじけない,Level4,Unset,Unset
 何某,,なにがし,Level4,Unset,Unset
@@ -591,7 +588,7 @@
 海鷂魚,,えい,Level5,Unset,Fish
 追河,,おいかわ,Level3,Unset,Fish
 虎魚,,おこぜ,Level4,Unset,Fish
-鰍,,かじか,Level4,Unset,Fish
+鰍,,かじか、いなだ、どじょう,Level4,Unset,Fish
 鰹,,かつお,Level3,Unset,Fish
 梭魚,,かます,Level4,Unset,Fish
 鰈,,かれい,Level4,Unset,Fish
@@ -643,7 +640,7 @@
 鴨,,かも,Level4,Unset,Bird
 鴎,,かもめ,Level4,Unset,Bird
 烏,,からす,Level3,Unset,Bird
-雁,,がん,Level3,Unset,Bird
+雁,,がん、かり,Level3,Unset,Bird
 軽鴨,,かるがも,Level4,Unset,Bird
 翡翠,,かわせみ、ひすい,Level4,Unset,Bird
 雉子,,きじ,Level4,Unset,Bird
@@ -679,7 +676,7 @@
 鷦鷯,,みそさざい,Level5,Unset,Bird
 障泥烏賊,,あおりいか,Level4,Unset,Fish
 錨,,いかり,Level4,Unset,Product
-錘,,おもり,Level4,Unset,Product
+錘,,おもり、つむ,Level4,Unset,Product
 帷子,,かたびら,Level4,Unset,Product
 剃刀,,かみそり,Level4,Unset,Product
 鉋,,かんな,Level4,Unset,Product
@@ -706,7 +703,7 @@
 鉈,,なた,Level4,Unset,Product
 梯子,,はしご,Level4,Unset,Product
 鋏,,はさみ,Level4,Unset,Product
-発条,,ばね,Level4,Unset,Product
+発条,,ばね、ぜんまい,Level4,Unset,Product
 抽斗,,ひきだし,Level4,Unset,Product
 箒,,ほうき,Level4,Unset,Product
 雪洞,,ぼんぼり,Level4,Unset,Product
@@ -719,7 +716,6 @@
 耄れ,,おいぼれ,Level5,Unset,Unset
 蛩,,こおろぎ,Level5,Unset,Unset
 潺,,せせらぎ,Level5,Unset,Unset
-戇か,,おろか,Level5,Unset,Unset
 蕣,,あさがお,Level5,Unset,Unset
 蟶,,まて、まてがい,Level5,Unset,Unset
 騅,,あしげ,Level5,Unset,Unset
