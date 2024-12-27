@@ -13,16 +13,6 @@ namespace Sound
     public enum BGM_Type
     {
         Title = 10,
-        Battle1 = 100,
-        Battle2 = 101,
-        Battle3 = 102,
-        Battle4 = 103,
-        Battle5 = 104,
-        Battle6 = 105,
-        Battle7 = 106,
-        Battle8 = 107,
-        Battle9 = 108,
-        Battle10 = 109,
         Result = 800,
         SILENCE = 999, // ñ≥âπèÛë‘
     }

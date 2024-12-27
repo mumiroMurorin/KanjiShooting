@@ -92,7 +92,6 @@ public class InputManager : MonoBehaviour, ICanInput
     {
         if(answer.Length == 0) { CanShootBullet = false; }
         else { CanShootBullet = true; }
-        Debug.Log($"‚«‚¿‚á: {CanShootBullet}");
     }
 
     private void OnDestroy()

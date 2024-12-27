@@ -7,6 +7,7 @@ using VContainer;
 public abstract class WaveManager : MonoBehaviour
 {
     [SerializeField] protected float maxTime = 30f;
+    [SerializeReference, SubclassSelector] protected IWaveStatus[] waveStatuses;
 
     //WAVE終了時のコールバック
     private Subject<Unit> onEndWaveSubject = new Subject<Unit>();
@@ -21,7 +22,6 @@ public abstract class WaveManager : MonoBehaviour
     protected Transform PlayerTransform;
     protected bool isWorking = false;
     protected float time;
-    protected float intervalCount;
 
     ScoreHolder scoreHolder;
 
@@ -37,7 +37,7 @@ public abstract class WaveManager : MonoBehaviour
     public void Initialize(Transform playerTransform)
     {
         time = 0;
-        intervalCount = float.MaxValue;
+        //intervalCount = float.MaxValue;
         this.PlayerTransform = playerTransform;
 
         Bind();
@@ -84,8 +84,13 @@ public abstract class WaveManager : MonoBehaviour
 
         //時間の加算
         time += Time.deltaTime;
-        intervalCount += Time.deltaTime;
         scoreHolder.AddTime(Time.deltaTime);
+
+        // それぞれのWaveStatusのカウントを進める
+        foreach(IWaveStatus waveStatus in waveStatuses)
+        {
+            waveStatus.CountTime(Time.deltaTime);
+        }
 
         //それぞれの処理へ
         AfterUpdate();

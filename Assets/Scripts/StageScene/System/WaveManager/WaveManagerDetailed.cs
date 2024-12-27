@@ -5,11 +5,9 @@ using Kanji;
 
 public class WaveManagerDetailed : WaveManager
 {
-    [SerializeField] float spawnInterval;
     [SerializeField] KanjiObjectSpawner kanjiSpawner;
-    [SerializeField] Sound.BGM_Type bgmType;
     [SerializeReference, SubclassSelector] IQuestionSelector questionSelector;
-    [SerializeReference, SubclassSelector] IWaveStatus[] waveStatuses;
+    [SerializeField] AudioClip bgm;
 
     /// <summary>
     /// 初期化
@@ -31,7 +29,7 @@ public class WaveManagerDetailed : WaveManager
     public override void StartWave()
     {
         isWorking = true;
-        Sound.SoundManager.Instance.PlayBGM(bgmType); //BGMの再生
+        Sound.SoundManager.Instance.PlayBGM(bgm); //BGMの再生
     }
 
     /// <summary>
@@ -61,12 +59,7 @@ public class WaveManagerDetailed : WaveManager
 
     protected override void AfterUpdate()
     {
-        //敵をスポーンさせる
-        if (intervalCount > spawnInterval)
-        {
-            intervalCount = 0;
-            SpawnEnemy();
-        }
+        SpawnEnemy();
 
         //Wave終了
         if (time > maxTime)

@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Kanji;
 
-public class GeneralWaveManager : WaveManager
+public class WaveManagerGeneral : WaveManager
 {
-    [SerializeField] float spawnInterval;
-
-    [SerializeReference, SubclassSelector] IWaveStatus[] waveStatuses;
     [SerializeField] QuestionFilter questionFilter;
     [SerializeField] KanjiObjectSpawner kanjiSpawner;
     [SerializeField] SerializeInterface<IQuestionSelector> questionSelector;
-    [SerializeField] Sound.BGM_Type bgmType;
+    [SerializeField] AudioClip bgm;
 
     /// <summary>
     /// 初期化
@@ -31,7 +28,7 @@ public class GeneralWaveManager : WaveManager
     public override void StartWave()
     {
         isWorking = true;
-        Sound.SoundManager.Instance.PlayBGM(bgmType); //BGMの再生
+        Sound.SoundManager.Instance.PlayBGM(bgm); //BGMの再生
     }
 
     /// <summary>
@@ -61,12 +58,7 @@ public class GeneralWaveManager : WaveManager
 
     protected override void AfterUpdate()
     {
-        //敵をスポーンさせる
-        if (intervalCount > spawnInterval)
-        {
-            intervalCount = 0;
-            SpawnEnemy();
-        }
+        SpawnEnemy();
 
         //Wave終了
         if (time > maxTime)

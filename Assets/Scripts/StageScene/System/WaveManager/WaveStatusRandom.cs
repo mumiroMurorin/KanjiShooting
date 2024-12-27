@@ -17,6 +17,7 @@ class WaveStatusRandom : IWaveStatus
     }
 
     [SerializeField] string statusName;
+    [SerializeField] float interval;
     [SerializeField] EnemyProbability[] enemyPlobabilities;
     [SerializeField] QuestionFilter filter;
     [SerializeField] SerializeInterface<ISpawnpointSelector> spawnSelector;
@@ -25,6 +26,7 @@ class WaveStatusRandom : IWaveStatus
     IQuestionSelector questionSelector;
     KanjiObjectSpawner kanjiSpawner;
     float weightSum;
+    float intervalCount;
 
     public void Initialize(IQuestionSelector qSelector, KanjiObjectSpawner kSpawner)
     {
@@ -40,8 +42,18 @@ class WaveStatusRandom : IWaveStatus
 
     }
 
+    public void CountTime(float addTime)
+    {
+        intervalCount += addTime;
+    }
+
     public void SpawnEnemy(float timeRatio, EnemyInitializationData enemyInitializationData)
     {
+        // カウントがたまってないとき戻す
+        if (intervalCount < interval) { return; }
+
+        intervalCount = 0;
+
         for (int spawnNum = 0; spawnNum < amountCurve.Evaluate(timeRatio); spawnNum++)
         {
             // 抽選

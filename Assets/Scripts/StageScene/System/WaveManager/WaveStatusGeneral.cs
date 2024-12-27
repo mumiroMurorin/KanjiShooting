@@ -7,6 +7,7 @@ using Kanji;
 class WaveStatusGeneral : IWaveStatus
 {
     [SerializeField] string statusName;
+    [SerializeField] float interval;
     [SerializeField] EnemySpawner spawner;
     [SerializeField] QuestionFilter filter;
     [SerializeField] SerializeInterface<ISpawnpointSelector> spawnSelector;
@@ -15,16 +16,29 @@ class WaveStatusGeneral : IWaveStatus
     IQuestionSelector questionSelector;
     KanjiObjectSpawner kanjiSpawner;
 
+    float intervalCount;
+
     public void Initialize(IQuestionSelector qSelector, KanjiObjectSpawner kSpawner)
     {
         questionSelector = qSelector;
         kanjiSpawner = kSpawner;
+        intervalCount = float.MaxValue;
 
         spawner.Initialize();
     }
 
+    public void CountTime(float addTime)
+    {
+        intervalCount += addTime;
+    }
+
     public void SpawnEnemy(float timeRatio, EnemyInitializationData enemyInitializationData)
     {
+        // カウントがたまってないとき戻す
+        if (intervalCount < interval) { return; }
+
+        intervalCount = 0;
+
         for (int spawnNum = 0; spawnNum < curve.Evaluate(timeRatio); spawnNum++)
         {
             // 問題の選定

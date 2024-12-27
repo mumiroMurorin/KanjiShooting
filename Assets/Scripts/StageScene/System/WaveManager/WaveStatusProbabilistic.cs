@@ -7,6 +7,7 @@ using Kanji;
 class WaveStatusProbabilistic : IWaveStatus
 {
     [SerializeField] string statusName;
+    [SerializeField] float interval;
     [SerializeField] EnemySpawner spawner;
     [SerializeField] QuestionFilter filter;
     [SerializeField] SerializeInterface<ISpawnpointSelector> spawnSelector;
@@ -15,6 +16,8 @@ class WaveStatusProbabilistic : IWaveStatus
 
     IQuestionSelector questionSelector;
     KanjiObjectSpawner kanjiSpawner;
+    float intervalCount;
+
 
     public void Initialize(IQuestionSelector qSelector, KanjiObjectSpawner kSpawner)
     {
@@ -22,6 +25,11 @@ class WaveStatusProbabilistic : IWaveStatus
         kanjiSpawner = kSpawner;
 
         spawner.Initialize();
+    }
+
+    public void CountTime(float addTime)
+    {
+        intervalCount += addTime;
     }
 
     public void SpawnEnemy(float timeRatio, EnemyInitializationData enemyInitializationData)

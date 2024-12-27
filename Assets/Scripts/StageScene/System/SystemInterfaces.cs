@@ -242,6 +242,8 @@ public interface IWaveStatus
 {
     public void Initialize(IQuestionSelector qSelector, KanjiObjectSpawner kSpawner);
 
+    public void CountTime(float addTime);
+
     public void SpawnEnemy(float timeRatio, EnemyInitializationData enemyInitializationData);
 
     public void DespawnEnemy();
