@@ -34,28 +34,18 @@ public class KanjiObjectSpawner : MonoBehaviour
     /// äøéöÇÃèoåª
     /// </summary>
     /// <param name="pos"></param>
-    public GameObject SpawnKanji(QuestionData data)
+    public IKanjiObject SpawnKanji(QuestionData data)
     {
         GameObject parent = new GameObject(data.kanji);
         GameObject kanji = FlyingText.GetObject(data.kanji);
+
+        KanjiObjectGeneral kObject = parent.AddComponent<KanjiObjectGeneral>();
+
         kanji.transform.SetParent(parent.transform);
         kanji.transform.position = parent.transform.position;
         kanji.transform.rotation = isZaxisReversal ? parent.transform.rotation * Quaternion.Euler(0, 180f, 0f) : parent.transform.rotation;
+        kObject.SetGameObject(kanji);
 
-        return parent;
-    }
-
-    /// <summary>
-    /// äøéöÇÃèoåª
-    /// </summary>
-    /// <param name="pos"></param>
-    public GameObject SpawnKanji(QuestionData data, Transform parent)
-    {
-        GameObject obj = FlyingText.GetObject(data.kanji);
-        obj.transform.position = parent.position;
-        obj.transform.rotation = isZaxisReversal ? parent.rotation * Quaternion.Euler(0, 180f, 0f) : parent.rotation;
-        obj.transform.SetParent(parent);
-
-        return obj;
+        return kObject;
     }
 }

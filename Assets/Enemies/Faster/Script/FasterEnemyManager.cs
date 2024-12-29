@@ -94,7 +94,7 @@ public class FasterEnemyManager : EnemyManager, IAttachableItemOnDestroy, ISound
 
     private void SetOutline()
     {
-        outlineSettings.ApplyOutline(kanjiObject);
+        outlineSettings.ApplyOutline(kanjiObject.GameObject);
     }
 
     /// <summary>
@@ -102,8 +102,8 @@ public class FasterEnemyManager : EnemyManager, IAttachableItemOnDestroy, ISound
     /// </summary>
     private void SetWheel()
     {
-        float center = kanjiCollider.center.x;
-        float width = kanjiCollider.size.x;
+        float center = kanjiObject.KanjiCollider.center.x;
+        float width = kanjiObject.KanjiCollider.size.x;
 
         foreach(GameObject obj in wheelsRight)
         {

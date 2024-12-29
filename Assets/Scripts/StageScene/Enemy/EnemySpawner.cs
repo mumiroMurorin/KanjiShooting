@@ -8,7 +8,7 @@ public struct EnemyInitializationData
 {
     public Transform spawnPoint;
     public Transform target;
-    public GameObject kanjiObject;
+    public IKanjiObject kanjiObject;
     public QuestionData questionData;
     public ScoreHolder scoreHolder;
 }

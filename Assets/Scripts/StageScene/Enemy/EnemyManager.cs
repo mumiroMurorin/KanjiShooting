@@ -8,9 +8,9 @@ public abstract class EnemyManager : MonoBehaviour, IEnemy, IDamager
     [SerializeField] protected SerializeInterface<IForceAddable> Move;
     [SerializeField] protected SerializeInterface<IKanjiStatus> KanjiStatus;
     [SerializeField] protected Transform kanjiTransform;
+    [SerializeField] protected KanjiMaterial kanjiMaterial;
     
-    protected GameObject kanjiObject;
-    protected BoxCollider kanjiCollider;
+    protected IKanjiObject kanjiObject;
     protected Transform TargetTransform;
     protected QuestionData questionData;
     protected ScoreHolder scoreHolder;
@@ -24,7 +24,7 @@ public abstract class EnemyManager : MonoBehaviour, IEnemy, IDamager
         if(hp <= 0)
         {
             scoreHolder.IncrementKillCount(); // キル数をプラス
-            kanjiCollider.enabled = false;
+            kanjiObject.KanjiCollider.enabled = false;
             OnDeath();
         }
     }
@@ -48,12 +48,11 @@ public abstract class EnemyManager : MonoBehaviour, IEnemy, IDamager
     /// 漢字オブジェクトのセット
     /// </summary>
     /// <param name="kanjiObject"></param>
-    private void SetKanjiObject(GameObject kanjiObject)
+    private void SetKanjiObject(IKanjiObject kanjiObject)
     {
         this.kanjiObject = kanjiObject;
-        kanjiCollider = kanjiObject.GetComponentInChildren<BoxCollider>();
-        kanjiObject.transform.position = kanjiTransform.position;
-        kanjiObject.transform.SetParent(kanjiTransform);
+        kanjiObject.SetTransform(kanjiTransform);
+        kanjiObject.SetMaterials(kanjiMaterial);
     }
 
     /// <summary>

@@ -77,7 +77,7 @@ public class WeakestEnemyManager : EnemyManager , IAttachableItemOnDestroy, ISou
 
     private void SetOutline()
     {
-        outlineSettings.ApplyOutline(kanjiObject);
+        outlineSettings.ApplyOutline(kanjiObject.GameObject);
     }
 
     public void PlayOnShot(AudioClip audioClip)
