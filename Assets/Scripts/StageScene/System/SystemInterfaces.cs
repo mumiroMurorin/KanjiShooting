@@ -258,6 +258,18 @@ public interface ISpawnpointSelector
 }
 
 /// <summary>
+/// ステージの変遷を行う
+/// </summary>
+public interface IStageChanger
+{
+    /// <summary>
+    /// ステージ変遷トリガー
+    /// </summary>
+    /// <param name="callBackCompleted"></param>
+    public void ChangeStage(Action callBackCompleted);
+}
+
+/// <summary>
 /// 問題に対する解答情報
 /// </summary>
 public struct AnswerStatus
