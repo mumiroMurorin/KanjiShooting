@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SurvivalStrategy
   m_EditorClassIdentifier: 
   stageTitle: "\u751F\u5B58\u4F5C\u6226(\u03B2\u7248)"
+  sceneName: Stage_SurvivalStrategy
   difficulty: 1
   genre: "\u5168\u30B8\u30E3\u30F3\u30EB"
   stageItemBackSprite: {fileID: 21300000, guid: 2a53e87c4799f0f47a6cbfb922d0a0f2, type: 3}

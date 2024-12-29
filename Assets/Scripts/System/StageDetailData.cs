@@ -6,10 +6,14 @@ using UnityEngine;
 /// <summary>
 /// ステージの詳細データ
 /// </summary>
-public class StageDetailData : ScriptableObject
+public class StageDetailData : ScriptableObject , IStageTransitionData
 {
     [SerializeField] string stageTitle;
     public string StageTitle { get { return stageTitle; } }
+
+    [Header("シーン名")]
+    [SerializeField] string sceneName;
+    public string SceneName { get { return sceneName; } }
 
     [Header("難易度")]
     [SerializeField] int difficulty;
@@ -40,4 +44,12 @@ public class StageDetailData : ScriptableObject
     [Header("タイピングレベル")]
     [SerializeField] int typingLevel;
     public int TypingLevel { get { return typingLevel; } }
+}
+
+/// <summary>
+/// ステージ遷移の際に必要なデータ
+/// </summary>
+public interface IStageTransitionData
+{
+    string SceneName { get; }
 }

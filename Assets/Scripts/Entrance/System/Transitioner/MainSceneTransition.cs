@@ -4,31 +4,34 @@ using System.Threading;
 using EntranceTransition;
 using UnityEngine.Playables;
 using System;
+using UniRx;
 
 
 public class MainSceneTransition : IPhaseTransitioner
 {
-    const string MAIN_SCENE_NAME = "MainScene";
-
     IEntranceUIcontroller entranceUIcontroller;
+    IReadOnlyReactiveProperty<StageDetailData> stageTransitionData;
     PlayableDirector sortieDirector;
     AsyncOperation changeSceneAcync;
 
-    public MainSceneTransition(IEntranceUIcontroller uiController, PlayableDirector director)
+    public MainSceneTransition(IEntranceUIcontroller uiController, PlayableDirector director, IReadOnlyReactiveProperty<StageDetailData> stageData)
     {
         entranceUIcontroller = uiController;
         sortieDirector = director;
+        stageTransitionData = stageData;
     }
 
     public async UniTask ExecuteAsync(CancellationToken token)
     {
+        if (stageTransitionData == null) { return; }
+
         // BGMの停止
         Sound.SoundManager.Instance.StopBGM(true);
 
         // メインスレッドに戻す
         await UniTask.SwitchToMainThread();
         // オペレーションの登録
-        changeSceneAcync = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(MAIN_SCENE_NAME);
+        changeSceneAcync = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(stageTransitionData.Value.SceneName);
         changeSceneAcync.allowSceneActivation = false;
 
         try
