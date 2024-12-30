@@ -10,6 +10,7 @@ public class MainUIPresenter : MonoBehaviour
     [SerializeField] PlayerHPBarView playerHPBarView;
     [SerializeField] PlayerHPTextView playerHPTextView;
     [SerializeField] BulletReloadGageView bulletReloadGageView;
+    [SerializeField] ExplosionChargeGageView explosionChargeGageView;
     [SerializeField] SpecialChargeGaugeView specialChargeGaugeView;
     [SerializeField] KillCountTextView killCountTextView;
     [SerializeField] StageDataView stageDataView;
@@ -23,6 +24,7 @@ public class MainUIPresenter : MonoBehaviour
     [SerializeField] SerializeInterface<IStatus> playerStatus_model;
     [SerializeField] GunManager gunManager_model;
     [SerializeField] SerializeInterface<IBulletReloadCharger> bulletReloadCharger_model;
+    [SerializeField] SerializeInterface<IBulletShootCharger> explosionCharger_model;
 
     ScoreHolder scoreHolder;
 
@@ -70,6 +72,11 @@ public class MainUIPresenter : MonoBehaviour
         // 弾リロード時間 → リロードUI
         gunManager_model?.ReloadValue
             .Subscribe(bulletReloadGageView.OnChangeReloadValue)
+            .AddTo(this.gameObject);
+
+        // 自爆チャージ時間 → チャージUI
+        explosionCharger_model?.Value.ChargeCount
+            .Subscribe(explosionChargeGageView.OnChangeChargeValue)
             .AddTo(this.gameObject);
 
         // スペシャル弾チャージ時間 → チャージUI

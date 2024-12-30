@@ -16,7 +16,7 @@ public class DamageDetector : MonoBehaviour
 
         enteredObject = collision.gameObject;
 
-        //Debug.Log($"‚«‚¿‚á: {collision.gameObject.name}");
+        // Debug.Log($"‚«‚¿‚á: {collision.gameObject.name}");
 
         //ƒ_ƒ[ƒW‚ğ—^‚¦‚éˆ—
         if (isKanjiStatus) { damager.GiveDamage(status.Value as IKanjiStatus); }

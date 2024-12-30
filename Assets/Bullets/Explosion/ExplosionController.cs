@@ -18,6 +18,7 @@ public class ExplosionController : BulletController
     public override void Shoot()
     {
         isShooted = true;
+        rb.isKinematic = false;
 
         // インスタンス化して爆破
         Instantiate(bombPrefab, this.gameObject.transform.position, Quaternion.identity).GetComponent<BombController>().Bomb();

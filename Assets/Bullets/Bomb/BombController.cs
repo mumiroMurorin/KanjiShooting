@@ -12,7 +12,7 @@ public class BombController : MonoBehaviour, IDamager
     [SerializeField] float bombDuration;
     [SerializeField] float killDuration;
 
-    private void Start()
+    private void Awake()
     {
         bombCollider.enabled = false;
     }
