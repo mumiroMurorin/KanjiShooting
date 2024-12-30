@@ -3,7 +3,7 @@ using UnityEngine;
 using UniRx;
 using VContainer;
 
-public class ChargeGunManager : GunManager
+public class ChargeAndBombGunManager : GunManager
 {
     [SerializeField] SerializeInterface<IJapaneseInputHolder> inputHolder;
 
@@ -17,6 +17,10 @@ public class ChargeGunManager : GunManager
     [SerializeField] SerializeInterface<IBulletSpawner> specialSpawner;
     [SerializeField] SerializeInterface<IBulletShooter> specialShooter;
     [SerializeField] SerializeInterface<IBulletShootCharger> specialShootCharger;
+    [Header("ボム")]
+    [SerializeField] SerializeInterface<IBulletSpawner> bombSpawner;
+    [SerializeField] SerializeInterface<IBulletShooter> bombShooter;
+    [SerializeField] SerializeInterface<IBulletShootCharger> bombShootCharger;
 
     [Space(20)]
     [SerializeField] SerializeInterface<IChargeYomiganaSpawner> yomiganaSpawner;
@@ -33,17 +37,27 @@ public class ChargeGunManager : GunManager
     /// </summary>
     public void StartCharge()
     {
-        // 答えが入力されていないとき返す
-        if (inputHolder.Value.GetAnswer().Length <= 0)  { return; }
-
-        // チャージ開始
-        specialShootCharger.Value.StartCharge();
+        // 答えが入力されていないとき自爆チャージする
+        if (inputHolder.Value.GetAnswer().Length <= 0) 
+        {
+            bombShootCharger.Value.StartCharge();
+        }
+        // 答えが入力されているときはスペシャル弾のチャージ
+        else
+        {
+            specialShootCharger.Value.StartCharge();
+        }
     }
 
     public override void Shoot()
     {
-        if (inputHolder.Value.GetAnswer().Length == 0) { return; }  // 入力されていないとき返す
-        if (currentReloadValue.Value < 1f) { return; }   // 補充されてないとき返す
+        // 文字が入力されていない且つボムチャージされてないとき返す
+        if (inputHolder.Value.GetAnswer().Length <= 0 && 
+            bombShootCharger.Value.ChargeCount.Value < 1f) 
+        { return; }
+
+        // 補充されてないとき返す
+        if (currentReloadValue.Value < 1f) { return; }   
 
         // 特殊弾のチャージが溜まっていたら特殊弾装填
         if (specialShootCharger.Value.ChargeCount.Value >= 1) 
@@ -51,7 +65,13 @@ public class ChargeGunManager : GunManager
             BulletSpawner = specialSpawner.Value;
             BulletShooter = specialShooter.Value;
         }
-        // 弾ってなかったら一般弾を装填
+        // ボムのチャージが溜まっていたらボム装填
+        else if (bombShootCharger.Value.ChargeCount.Value >= 1)
+        {
+            BulletSpawner = bombSpawner.Value;
+            BulletShooter = bombShooter.Value;
+        }
+        // たまってなかったら一般弾を装填
         else 
         { 
             BulletSpawner = generalSpawner.Value;
@@ -67,6 +87,7 @@ public class ChargeGunManager : GunManager
         inputHolder.Value.ClearInput();
         currentReloadValue.Value = 0;
         specialShootCharger.Value.ResetCharge();
+        bombShootCharger.Value.ResetCharge();
     }
 
     private void Update()

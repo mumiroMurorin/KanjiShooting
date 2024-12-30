@@ -5,7 +5,7 @@ public class GeneralGunManager : GunManager
 {
     [Header("•œŠˆŠÔŠu(•b)")]
     [SerializeField] float reviveInterval;
-    [SerializeField] JapaneseInputManager inputManager;
+    [SerializeField] SerializeInterface<IJapaneseInputHolder> inputHolder;
 
     [SerializeField] SerializeInterface<IBulletSpawner> bulletSpawner;
     [SerializeField] SerializeInterface<IBulletShooter> bulletShooter;
@@ -25,7 +25,7 @@ public class GeneralGunManager : GunManager
         base.Shoot();
 
         // ƒŠƒ[ƒh
-        inputManager.ClearInput();
+        inputHolder.Value.ClearInput();
         currentReloadValue.Value = 0;
     }
 

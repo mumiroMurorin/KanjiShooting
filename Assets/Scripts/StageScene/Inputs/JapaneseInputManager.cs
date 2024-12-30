@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class JapaneseInputManager : MonoBehaviour
+public class JapaneseInputManager : MonoBehaviour, IJapaneseInputHolder
 {
     [SerializeField] UnityEvent<string> onChangeAnswer;
     [SerializeField] SerializeInterface<ICanInput> inputPermit;
@@ -67,4 +67,26 @@ public class JapaneseInputManager : MonoBehaviour
         japaneseInputHandler.Clear();
     }
 
+    /// <summary>
+    /// 入力されている答えを返す
+    /// </summary>
+    /// <returns></returns>
+    public string GetAnswer() 
+    { 
+        return japaneseInputHandler.GetResult();
+    } 
+}
+
+public interface IJapaneseInputHolder
+{
+    /// <summary>
+    /// 日本語入力のリセット
+    /// </summary>
+    public void ClearInput();
+
+    /// <summary>
+    /// 入力されている答えを返す
+    /// </summary>
+    /// <returns></returns>
+    public string GetAnswer();
 }

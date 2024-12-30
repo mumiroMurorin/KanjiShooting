@@ -10,7 +10,7 @@ class HiraganaObject
     public GameObject obj;
 }
 
-public class YomiganaSpawner : MonoBehaviour, IYomiganaSpawner
+public class YomiganaSpawner : MonoBehaviour, IChargeYomiganaSpawner
 {
     const int MAX_ANSWER_LENGTH = 15;
 
@@ -18,6 +18,8 @@ public class YomiganaSpawner : MonoBehaviour, IYomiganaSpawner
     [SerializeField] float size;
     [Header("文字間隔")]
     [SerializeField] float interval;
+    [Header("チャージエフェクト表示開始時間")]
+    [SerializeField] float startEffectTime;
     [Header("読み仮名オブジェクト")]
     [SerializeField] HiraganaObject[] yomiganaObjects;
 
@@ -117,21 +119,6 @@ public class YomiganaSpawner : MonoBehaviour, IYomiganaSpawner
             if (c) { c.ChargeComplete(); }
         }
     }
-
-    /*
-    /// <summary>
-    /// 読み仮名の1文字削除
-    /// </summary>
-    /// <param name="index"></param>
-    public void RemoveYomigana(int index)
-    {
-        if(yomigana.Length <= index) { Debug.LogError($"Out of Range: {index}"); }
-        if(index < 0) { Debug.LogError($"Out of Range: {index}"); }
-        yomigana.Remove(index, 1);
-
-
-    }
-    */
 
     /// <summary>
     /// ひらがなオブジェクトの出現(改善？)

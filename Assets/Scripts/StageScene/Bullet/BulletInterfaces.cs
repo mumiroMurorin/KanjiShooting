@@ -19,7 +19,10 @@ public interface IYomiganaSpawner
     public void OnChangeAnswer(string str);
 
     public void OnShoot();
+}
 
+public interface IChargeYomiganaSpawner : IYomiganaSpawner
+{
     public void OnChargeStart();
 
     public void OnChargeCancell();
@@ -50,7 +53,7 @@ public interface IBulletShootCharger : IBulletShooter
 {
     IReadOnlyReactiveProperty<float> ChargeCount { get; }
 
-    void Charge(float amount);
+    void StartCharge();
 
     void ResetCharge();
 

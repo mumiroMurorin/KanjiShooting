@@ -10,7 +10,7 @@ public class ChargeBulletShooter : MonoBehaviour, IBulletShootCharger
     [SerializeField] AudioClip shootSE;
 
     [SerializeField] SerializeInterface<IBulletReloadCharger> reloadCharger;
-    [SerializeField] SerializeInterface<IYomiganaSpawner> yomiganaSpawner;
+    [SerializeField] SerializeInterface<IChargeYomiganaSpawner> yomiganaSpawner;
 
     public BulletController Bullet { private get; set; }
 

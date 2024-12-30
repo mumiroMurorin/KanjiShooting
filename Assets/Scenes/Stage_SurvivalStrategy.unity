@@ -397,9 +397,9 @@ MonoBehaviour:
   waveStatuses:
   - rid: 2752145336727240704
   kanjiSpawner: {fileID: 1378339576}
-  bgmType: 102
   questionSelector:
     rid: 2752144884801208323
+  bgm: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -1460,9 +1460,9 @@ MonoBehaviour:
   waveStatuses:
   - rid: 2752145338042679298
   kanjiSpawner: {fileID: 1378339576}
-  bgmType: 106
   questionSelector:
     rid: 2752144884801208323
+  bgm: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -2760,9 +2760,9 @@ MonoBehaviour:
   - rid: 2752145336727240706
   - rid: 2752145344133595137
   kanjiSpawner: {fileID: 1378339576}
-  bgmType: 104
   questionSelector:
     rid: 2752144884801208323
+  bgm: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -3262,9 +3262,9 @@ MonoBehaviour:
   - rid: 2752145338042679298
   - rid: 2752145344133595141
   kanjiSpawner: {fileID: 1378339576}
-  bgmType: 108
   questionSelector:
     rid: 2752144884801208323
+  bgm: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -4391,9 +4391,9 @@ MonoBehaviour:
   waveStatuses:
   - rid: 2752145338042679297
   kanjiSpawner: {fileID: 1378339576}
-  bgmType: 105
   questionSelector:
     rid: 2752144884801208323
+  bgm: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -5340,9 +5340,9 @@ MonoBehaviour:
   waveStatuses:
   - rid: 2752145344133595140
   kanjiSpawner: {fileID: 1378339576}
-  bgmType: 107
   questionSelector:
     rid: 2752144884801208323
+  bgm: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -5909,9 +5909,9 @@ MonoBehaviour:
   - rid: 2752145251337502720
   - rid: 2752145251337502721
   kanjiSpawner: {fileID: 1378339576}
-  bgmType: 101
   questionSelector:
     rid: 2752144884801208323
+  bgm: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -6439,9 +6439,9 @@ MonoBehaviour:
   waveStatuses:
   - rid: 2752145224381497345
   kanjiSpawner: {fileID: 1378339576}
-  bgmType: 100
   questionSelector:
     rid: 2752144884801208323
+  bgm: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -7022,9 +7022,9 @@ MonoBehaviour:
   - rid: 4034037045329920000
   - rid: 7153147266326855680
   kanjiSpawner: {fileID: 1378339576}
-  bgmType: 103
   questionSelector:
     rid: 2752144884801208323
+  bgm: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -9495,9 +9495,9 @@ MonoBehaviour:
   - rid: 2752145344133595141
   - rid: 2752145344133595142
   kanjiSpawner: {fileID: 1378339576}
-  bgmType: 109
   questionSelector:
     rid: 2752144884801208323
+  bgm: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -11184,9 +11184,9 @@ MonoBehaviour:
   - rid: 2752145336727240705
   - rid: 2752145224381497351
   kanjiSpawner: {fileID: 1378339576}
-  bgmType: 103
   questionSelector:
     rid: 2752144884801208323
+  bgm: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -12850,6 +12850,10 @@ PrefabInstance:
       propertyPath: inputManager
       value: 
       objectReference: {fileID: 1625760094}
+    - target: {fileID: 5590933256780749376, guid: 5678d19bfd9c70a438ac6d4fa746f180, type: 3}
+      propertyPath: inputHolder.obj
+      value: 
+      objectReference: {fileID: 1625760091}
     - target: {fileID: 5847252666758270029, guid: 5678d19bfd9c70a438ac6d4fa746f180, type: 3}
       propertyPath: m_RootOrder
       value: 1

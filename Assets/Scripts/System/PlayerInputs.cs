@@ -80,6 +80,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""9bb713cc-aa56-488e-8e6d-2dfb756e6f2d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -236,6 +245,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""action"": ""RotateFromArraw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dc1e0d25-e70f-48b8-9ed0-56fd65eca809"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -250,6 +270,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_Player_RotatePermit = m_Player.FindAction("RotatePermit", throwIfNotFound: true);
         m_Player_RotateFromKey = m_Player.FindAction("RotateFromKey", throwIfNotFound: true);
         m_Player_RotateFromArraw = m_Player.FindAction("RotateFromArraw", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -315,6 +336,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RotatePermit;
     private readonly InputAction m_Player_RotateFromKey;
     private readonly InputAction m_Player_RotateFromArraw;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -325,6 +347,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @RotatePermit => m_Wrapper.m_Player_RotatePermit;
         public InputAction @RotateFromKey => m_Wrapper.m_Player_RotateFromKey;
         public InputAction @RotateFromArraw => m_Wrapper.m_Player_RotateFromArraw;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -352,6 +375,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @RotateFromArraw.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateFromArraw;
                 @RotateFromArraw.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateFromArraw;
                 @RotateFromArraw.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateFromArraw;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -374,6 +400,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @RotateFromArraw.started += instance.OnRotateFromArraw;
                 @RotateFromArraw.performed += instance.OnRotateFromArraw;
                 @RotateFromArraw.canceled += instance.OnRotateFromArraw;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -386,5 +415,6 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnRotatePermit(InputAction.CallbackContext context);
         void OnRotateFromKey(InputAction.CallbackContext context);
         void OnRotateFromArraw(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
