@@ -357,4 +357,32 @@ public class PlayerRotateFromArrawHandler : IInputHandler
 
         onInput?.Invoke(Vector2.zero);
     }
+
+    
+}
+
+/// <summary>
+/// ƒQ[ƒ€‚ğˆê’â~‚·‚é
+/// </summary>
+public class PauseGameHandler : IInputHandler
+{
+    [SerializeField] UnityEvent onInput;
+    ICanInput permit;
+
+    public void Initialize(ICanInput handler)
+    {
+        permit = handler;
+    }
+
+    public void Bind(PlayerInputs inputs)
+    {
+        inputs.Player.Pause.started += OnAction;
+    }
+
+    private void OnAction(InputAction.CallbackContext context)
+    {
+        if (!permit.CanInput) { return; }
+
+        onInput?.Invoke();
+    }
 }

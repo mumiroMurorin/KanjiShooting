@@ -6,7 +6,7 @@ using Sound;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 
-namespace EntranceUI
+namespace OptionUI
 {
     public class SEVolumeView : MonoBehaviour
     {

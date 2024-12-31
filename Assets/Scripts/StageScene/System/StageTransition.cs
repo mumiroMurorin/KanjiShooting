@@ -16,6 +16,7 @@ namespace StageTransition
         Loading,
         Fighting,
         StageFinish,
+        Pause
     }
 
     /// <summary>

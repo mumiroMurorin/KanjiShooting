@@ -8,8 +8,10 @@ namespace StageUI
 {
     public class ExplosionChargeGageView : MonoBehaviour
     {
+        [Header("ImageMask")]
+        [SerializeField] Image imageMask;
         [Header("ChargeImage")]
-        [SerializeField] Image image;
+        [SerializeField] Image chargeImage;
         [Header("RatioToColor")]
         [SerializeField] Gradient gradient;
         [Header("表示時間")]
@@ -20,7 +22,7 @@ namespace StageUI
 
         private void Start()
         {
-            image.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -29,9 +31,10 @@ namespace StageUI
         /// <param name="value"></param>
         public void OnChangeChargeValue(float value)
         {
-            image.gameObject.SetActive(true);
-            image.fillAmount = value;
-            image.color = gradient.Evaluate(value);
+            this.gameObject.SetActive(true);
+            imageMask.gameObject.SetActive(true);
+            imageMask.fillAmount = value;
+            chargeImage.color = gradient.Evaluate(value);
 
             // 0になったらゲージを消す
             // (自爆時かキャンセル時)
@@ -75,7 +78,7 @@ namespace StageUI
 
         public void SetDeactive()
         {
-            image.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
         }
 
         private void OnDestroy()

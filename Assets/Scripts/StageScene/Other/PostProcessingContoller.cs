@@ -17,7 +17,8 @@ public class PostProcessingContoller : MonoBehaviour
     [Header("死亡時")]
     [SerializeReference, SubclassSelector] IPostProcessingEffect[] gameOverEffects;
     [SerializeField] SerializeInterface<IStatus> playerStatus;
-
+    [Header("ポーズ時")]
+    [SerializeReference, SubclassSelector] IPostProcessingEffect[] pauseEffects;
 
     List<IPostProcessingEffect> allEffect;
 
@@ -32,6 +33,7 @@ public class PostProcessingContoller : MonoBehaviour
         allEffect = new List<IPostProcessingEffect>();
         allEffect.AddRange(dyingEffects);
         allEffect.AddRange(gameOverEffects);
+        allEffect.AddRange(pauseEffects);
 
         foreach (IPostProcessingEffect effect in allEffect)
         {
@@ -66,6 +68,24 @@ public class PostProcessingContoller : MonoBehaviour
             .Subscribe(_ =>
             {
                 foreach (var effect in dyingEffects) { effect.SetEnableEffect(false); }
+            })
+            .AddTo(this.gameObject);
+
+        // ポーズ時ポストエフェクトオン
+        StageManager.Instance.CurrentStageStatusreactiveproperty
+            .Where(value => value == StageTransition.StageStatus.Pause)
+            .Subscribe(_ =>
+            {
+                foreach (var effect in pauseEffects) { effect.SetEnableEffect(true); }
+            })
+            .AddTo(this.gameObject);
+
+        // ゲーム再開時ポストエフェクトオフ
+        StageManager.Instance.CurrentStageStatusreactiveproperty
+            .Where(value => value != StageTransition.StageStatus.Pause)
+            .Subscribe(_ =>
+            {
+                foreach (var effect in pauseEffects) { effect.SetEnableEffect(false); }
             })
             .AddTo(this.gameObject);
     }
@@ -224,5 +244,38 @@ public class ColorGrandingEffect : IPostProcessingEffect
     {
         if (colorGranding == null) { return; }
         colorGranding.enabled.value = isEnabled;
+    }
+}
+
+public class DepthOfFieldEffect : IPostProcessingEffect
+{
+    DepthOfField depthOfField;
+
+    [SerializeField] float distance;
+
+    public void AddTime(float value)
+    {
+
+    }
+
+    public void SetProfile(PostProcessProfile profile)
+    {
+        if (!profile.TryGetSettings(out depthOfField))
+        {
+            Debug.Log("DepthOfField is not set");
+            return;
+        }
+    }
+
+    public void ApplyEffect()
+    {
+        if (depthOfField == null) { return; }
+        depthOfField.focusDistance.value = distance;
+    }
+
+    public void SetEnableEffect(bool isEnabled)
+    {
+        if (depthOfField == null) { return; }
+        depthOfField.enabled.value = isEnabled;
     }
 }

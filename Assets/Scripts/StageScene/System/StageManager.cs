@@ -5,7 +5,7 @@ using UniRx;
 using StageTransition;
 using VContainer;
 
-public class StageManager : LocalSingletonMonoBehaviour<StageManager>
+public class StageManager : LocalSingletonMonoBehaviour<StageManager> , ITimeController
 {
     const StageSceneTag FIRST_STAGESCENE = StageSceneTag.Fighting;
     const StageStatus FIRST_STAGESTATUS = StageStatus.Loading;
@@ -177,6 +177,30 @@ public class StageManager : LocalSingletonMonoBehaviour<StageManager>
     {
         Debug.Log($"【System】ステータス変更: {status}");
         currentStageStatus.Value = status; 
+    }
+
+    /// <summary>
+    /// ゲームの一時停止
+    /// </summary>
+    public void PauseTime()
+    {
+        Sound.SoundManager.Instance.PauseBGM();
+        currentStageStatus.Value = StageStatus.Pause;
+
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+    }
+
+    /// <summary>
+    /// ゲーム再開
+    /// </summary>
+    public void ResumeTime()
+    {
+        Sound.SoundManager.Instance.ResumeBGM();
+        currentStageStatus.Value = StageStatus.Fighting;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1;
     }
 
     private void OnDestroy()

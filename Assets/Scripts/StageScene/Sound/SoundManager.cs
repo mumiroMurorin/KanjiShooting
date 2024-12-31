@@ -79,7 +79,7 @@ namespace Sound
             optionHolder = holder;
         }
 
-        private void Start()
+        private new void Awake()
         {
             // BGM—p AudioSource’Ç‰Á
             bgmSources[0] = gameObject.AddComponent<AudioSource>();

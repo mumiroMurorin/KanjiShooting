@@ -270,6 +270,16 @@ public interface IStageChanger
 }
 
 /// <summary>
+/// ŠÔ‚ğ‘€‚é
+/// </summary>
+public interface ITimeController
+{
+    void PauseTime();
+
+    void ResumeTime();
+}
+
+/// <summary>
 /// –â‘è‚É‘Î‚·‚é‰ğ“šî•ñ
 /// </summary>
 public struct AnswerStatus

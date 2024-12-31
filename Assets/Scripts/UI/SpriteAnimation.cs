@@ -6,7 +6,7 @@ using System.Threading;
 
 public class SpriteAnimation : MonoBehaviour
 {
-    [SerializeField] Image image; // Image コンポーネント
+    [SerializeField] Image[] images; // Image コンポーネント
     [SerializeField] Sprite[] frames; // 分割したスプライトを配列に入れる
     [SerializeField] float frameRate = 0.1f; // フレーム間の間隔（秒）
 
@@ -25,7 +25,11 @@ public class SpriteAnimation : MonoBehaviour
         {
             if (token.IsCancellationRequested) { break; }
 
-            image.sprite = frames[currentFrame]; // 現在のフレームを表示
+            foreach(Image i in images)
+            {
+                // 現在のフレームを表示
+                i.sprite = frames[currentFrame]; 
+            }
             currentFrame = (currentFrame + 1) % frames.Length; // 次のフレームへ
             await UniTask.WaitForSeconds(frameRate, cancellationToken: token);
         }

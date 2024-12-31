@@ -19,6 +19,7 @@ public class MainUIPresenter : MonoBehaviour
     [SerializeField] DamageEffectView damageEffectView;
     [SerializeField] PreviousWaveView previousWaveView;
     [SerializeField] NextWaveView nextWaveView;
+    [SerializeField] BackGameButtonView backGameButtonView;
     [SerializeField] AnswerBoxSpawner[] answerBoxSpawners;
 
     [SerializeField] SerializeInterface<IStatus> playerStatus_model;
@@ -42,7 +43,7 @@ public class MainUIPresenter : MonoBehaviour
 
     private void SetEvents()
     {
-
+        backGameButtonView.OnBackGameButtonClickedListener += () => StageManager.Instance.ResumeTime();
     }
 
     private void Bind()
@@ -99,6 +100,7 @@ public class MainUIPresenter : MonoBehaviour
             .Subscribe(waveTextView.OnChangeWaveCount)
             .AddTo(this.gameObject);
 
+        // Waveカウント → Wave遷移アニメーション
         scoreHolder.WaveCountReactiveProperty
             .Subscribe(count => 
             {

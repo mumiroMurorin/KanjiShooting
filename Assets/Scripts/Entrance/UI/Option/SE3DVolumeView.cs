@@ -5,7 +5,7 @@ using TMPro;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 
-namespace EntranceUI
+namespace OptionUI
 {
     public class SE3DVolumeView : MonoBehaviour
     {

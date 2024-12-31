@@ -3,7 +3,7 @@ using System;
 using UnityEngine.UI;
 using TMPro;
 
-namespace EntranceUI
+namespace OptionUI
 {
     public class SpaceSensitivityView : MonoBehaviour
     {
