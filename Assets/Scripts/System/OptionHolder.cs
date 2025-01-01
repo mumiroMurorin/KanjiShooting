@@ -6,11 +6,11 @@ using UniRx;
 public class OptionHolder
 {
     // マウス有効？
-    ReactiveProperty<bool> isMouseValidity = new ReactiveProperty<bool>(true);
-    public IReadOnlyReactiveProperty<bool> IsMouseValidityReactiveProperty { get { return isMouseValidity; } }
+    ReactiveProperty<bool> mouseValidity = new ReactiveProperty<bool>(true);
+    public IReadOnlyReactiveProperty<bool> MouseValidityReactiveProperty { get { return mouseValidity; } }
     public void SetMouseValidity(bool isValid)
     {
-        isMouseValidity.Value = isValid;
+        mouseValidity.Value = isValid;
     }
 
     // マウス感度
@@ -22,11 +22,11 @@ public class OptionHolder
     }
 
     // 矢印キー有効？
-    ReactiveProperty<bool> isArrawValidity = new ReactiveProperty<bool>(true);
-    public IReadOnlyReactiveProperty<bool> IsArrawValidityReactiveProperty { get { return isArrawValidity; } }
+    ReactiveProperty<bool> arrawValidity = new ReactiveProperty<bool>(true);
+    public IReadOnlyReactiveProperty<bool> IsArrawValidityReactiveProperty { get { return arrawValidity; } }
     public void SetArrawValidity(bool isValid)
     {
-        isArrawValidity.Value = isValid;
+        arrawValidity.Value = isValid;
     }
 
     // 矢印キー感度
@@ -37,12 +37,12 @@ public class OptionHolder
         arrawSensitivity.Value = value;
     }
 
-    //スペースキー有効？
-    ReactiveProperty<bool> isSpaceValidity = new ReactiveProperty<bool>(true);
-    public IReadOnlyReactiveProperty<bool> IsSpaceValidityReactiveProperty { get { return isSpaceValidity; } }
+    // スペースキー有効？
+    ReactiveProperty<bool> spaceValidity = new ReactiveProperty<bool>(true);
+    public IReadOnlyReactiveProperty<bool> IsSpaceValidityReactiveProperty { get { return spaceValidity; } }
     public void SetSpaceValidity(bool isValid)
     {
-        isSpaceValidity.Value = isValid;
+        spaceValidity.Value = isValid;
     }
 
     // マウス感度
@@ -75,5 +75,24 @@ public class OptionHolder
     public void SetSE3DVolume(float value)
     {
         se3DVolume.Value = value;
+    }
+
+    // 解答表示時間
+    ReactiveProperty<float> answerDispleyTime = new ReactiveProperty<float>(1f);
+    ReactiveProperty<float> answerDispleyTimeNormalized = new ReactiveProperty<float>(0.33334f);
+    public IReadOnlyReactiveProperty<float> AnswerDispleyTime { get { return answerDispleyTime; } }
+    public IReadOnlyReactiveProperty<float> AnswerDispleyTimeNormalized { get { return answerDispleyTimeNormalized; } }
+    public void SetAnswerDisplayTime(float normalizedValue)
+    {
+        answerDispleyTimeNormalized.Value = normalizedValue;
+        answerDispleyTime.Value = normalizedValue * 3f;
+    }
+
+    // 解答表示有効？
+    ReactiveProperty<bool> answerDisplayValidity = new ReactiveProperty<bool>(true);
+    public IReadOnlyReactiveProperty<bool> AnswerDisplayValidityReactiveProperty { get { return answerDisplayValidity; } }
+    public void SetAnswerDisplayValidity(bool isValid)
+    {
+        answerDisplayValidity.Value = isValid;
     }
 }

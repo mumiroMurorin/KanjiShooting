@@ -15,6 +15,8 @@ namespace StageUI
         [SerializeField] TextMeshProUGUI answerTmp;
         [SerializeField] int maxAnswerStringLength = 12;
 
+        protected float displayDuration;
+
         private void Start()
         {
             AfterSpawn();
@@ -24,13 +26,16 @@ namespace StageUI
         /// 答えのセット
         /// </summary>
         /// <param name="questionData"></param>
-        public void SetAnswer(QuestionData questionData)
+        public void SetAnswer(QuestionData questionData, float displayDuration)
         {
             //漢字の代入
             kanjiTmp.text = questionData.kanji;
 
             //答えの代入
             answerTmp.text = GetAnswersLaw(questionData.answers);
+
+            // 表示時間の代入
+            this.displayDuration = displayDuration;
         }
 
         /// <summary>

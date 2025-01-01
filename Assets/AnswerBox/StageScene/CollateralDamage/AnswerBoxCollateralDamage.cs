@@ -7,7 +7,7 @@ namespace StageUI
 {
     public class AnswerBoxCollateralDamage : AnswerBoxView
     {
-        [SerializeField] float displayDuration;
+        // [SerializeField] float displayDuration;
         [SerializeField] Animator anim;
 
         CancellationTokenSource cts;

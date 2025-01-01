@@ -14,6 +14,7 @@ public class OptionUIPresenter : MonoBehaviour
     [SerializeField] MouseSensitivityView mouseSensitivityView;
     [SerializeField] ArrawSensitivityView arrawSensitivityView;
     [SerializeField] SpaceSensitivityView spaceSensitivityView;
+    [SerializeField] AnswerDisplayTimeView answerDisplayTimeView;
 
     OptionHolder optionHolder;
 
@@ -53,6 +54,11 @@ public class OptionUIPresenter : MonoBehaviour
         spaceSensitivityView.OnChangeSensitivityListener += (value) => { OnSpaceSensitivityChanged(value); };
         // スペース有効
         spaceSensitivityView.OnChangeValidValueListener += (value) => { OnSpaceValidityChanged(value); };
+
+        // 表示時間
+        answerDisplayTimeView.OnChangeTimeListener += (value) => { OnAnswerDisplayTimeChanged(value); };
+        // 表示有効
+        answerDisplayTimeView.OnChangeValidityListener += (value) => { OnAnswerDisplayValidityChanged(value); };
     }
 
     /// <summary>
@@ -81,7 +87,7 @@ public class OptionUIPresenter : MonoBehaviour
             .AddTo(this.gameObject);
 
         // マウス有効? →
-        optionHolder.IsMouseValidityReactiveProperty
+        optionHolder.MouseValidityReactiveProperty
             .Subscribe(value => mouseSensitivityView.OnValidityChanged(value))
             .AddTo(this.gameObject);
 
@@ -103,6 +109,21 @@ public class OptionUIPresenter : MonoBehaviour
         // スペースキー有効? →
         optionHolder.IsSpaceValidityReactiveProperty
             .Subscribe(value => spaceSensitivityView.OnValidityChanged(value))
+            .AddTo(this.gameObject);
+
+        // 解答表示時間 →
+        optionHolder.AnswerDispleyTimeNormalized
+            .Subscribe(value => answerDisplayTimeView.OnTimeValueChanged(value))
+            .AddTo(this.gameObject);
+
+        // 解答表示時間 →
+        optionHolder.AnswerDispleyTime
+            .Subscribe(value => answerDisplayTimeView.OnTimeChanged(value))
+            .AddTo(this.gameObject);
+
+        // 解答表示有効? →
+        optionHolder.AnswerDisplayValidityReactiveProperty
+            .Subscribe(value => answerDisplayTimeView.OnValidityChanged(value))
             .AddTo(this.gameObject);
     }
 
@@ -134,7 +155,6 @@ public class OptionUIPresenter : MonoBehaviour
     {
         optionHolder.SetSE3DVolume(value);
     }
-
 
     /// <summary>
     /// マウス感度が変えられた時
@@ -188,5 +208,23 @@ public class OptionUIPresenter : MonoBehaviour
     private void OnSpaceValidityChanged(bool isValid)
     {
         optionHolder.SetSpaceValidity(isValid);
+    }
+
+    /// <summary>
+    /// 解答表示時間が変えられた時
+    /// </summary>
+    /// <param name="value"></param>
+    private void OnAnswerDisplayTimeChanged(float value)
+    {
+        optionHolder.SetAnswerDisplayTime(value);
+    }
+
+    /// <summary>
+    /// 解答表示が変えられたとき
+    /// </summary>
+    /// <param name="isValid"></param>
+    private void OnAnswerDisplayValidityChanged(bool isValid)
+    {
+        optionHolder.SetAnswerDisplayValidity(isValid);
     }
 }

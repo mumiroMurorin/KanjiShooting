@@ -28,11 +28,13 @@ public class MainUIPresenter : MonoBehaviour
     [SerializeField] SerializeInterface<IBulletShootCharger> explosionCharger_model;
 
     ScoreHolder scoreHolder;
+    OptionHolder optionHolder;
 
     [Inject]
-    public void Construct(ScoreHolder holder)
+    public void Construct(ScoreHolder scoreHolder, OptionHolder optionHolder)
     {
-        scoreHolder = holder;
+        this.scoreHolder = scoreHolder;
+        this.optionHolder = optionHolder;
     }
 
     private void Start()
@@ -126,7 +128,10 @@ public class MainUIPresenter : MonoBehaviour
     /// <param name="answerState"></param>
     private void SpawnAnswerBox(AnswerStatus answerStatus)
     {
-        foreach(AnswerBoxSpawner a in answerBoxSpawners)
+        if (!optionHolder.AnswerDisplayValidityReactiveProperty.Value) { return; }
+        
+        answerStatus.answerDisplayTime = optionHolder.AnswerDispleyTime.Value;
+        foreach (AnswerBoxSpawner a in answerBoxSpawners)
         {
             if (a.CanSpawn(answerStatus)) 
             { 

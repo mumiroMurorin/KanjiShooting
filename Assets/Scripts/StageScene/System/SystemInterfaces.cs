@@ -286,6 +286,7 @@ public struct AnswerStatus
 {
     public QuestionData questionData;
     public AnswerState state;
+    public float answerDisplayTime;
 }
 
 /// <summary>

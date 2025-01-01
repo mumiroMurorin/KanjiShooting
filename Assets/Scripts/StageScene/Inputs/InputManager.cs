@@ -141,7 +141,7 @@ public class PlayerRotateHandler : IInputHandler
     private void OnAction(InputAction.CallbackContext context)
     {
         if (!permit.CanInput) { return; }
-        if (!permit.Option.IsMouseValidityReactiveProperty.Value) { return; }
+        if (!permit.Option.MouseValidityReactiveProperty.Value) { return; }
 
         float magnitude = permit.Option.MouseSensitivityReactiveProperty.Value;
 

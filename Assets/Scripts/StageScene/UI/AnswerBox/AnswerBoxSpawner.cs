@@ -27,7 +27,7 @@ namespace StageUI
             //インスタンス化
             GameObject obj = Instantiate(answerBoxPrefab, answerBoxParent);
             AnswerBoxView answerBoxView = obj.GetComponent<AnswerBoxView>();
-            answerBoxView.SetAnswer(answerStatus.questionData);
+            answerBoxView.SetAnswer(answerStatus.questionData, answerStatus.answerDisplayTime);
 
             return answerBoxView;
         }
