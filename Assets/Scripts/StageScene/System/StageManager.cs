@@ -107,6 +107,13 @@ public class StageManager : LocalSingletonMonoBehaviour<StageManager> , ITimeCon
         sceneTransitionManager.AddPhaseTransitioner(StageSceneTag.StageFailed, GenerateScenePhaseTransitionManager(stagePhaseTransitioners));
         stagePhaseTransitioners = new List<IPhaseTransitioner>();
 
+        // ステージ中断
+        // メインメニューに戻る
+        stagePhaseTransitioners.Add(new BackEntranceTransition(timelineManager.GetPlayableDirector("Entrance"), scoreHolder));
+
+        //シーンの追加
+        sceneTransitionManager.AddPhaseTransitioner(StageSceneTag.Interrupt, GenerateScenePhaseTransitionManager(stagePhaseTransitioners));
+        stagePhaseTransitioners = new List<IPhaseTransitioner>();
     }
 
     /// <summary>

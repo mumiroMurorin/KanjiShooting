@@ -6,20 +6,28 @@ using System;
 
 namespace StageTransition
 {
-    public class ResultSceneTransition : IPhaseTransitioner
+    public class BackEntranceTransition : IPhaseTransitioner
     {
-        const string RESULT_SCENE_NAME = "ResultScene";
+        const string RESULT_SCENE_NAME = "Entrance";
 
         PlayableDirector sceneChangeDirector;
         AsyncOperation changeSceneAcync;
+        ScoreHolder scoreHolder;
 
-        public ResultSceneTransition(PlayableDirector director)
+        public BackEntranceTransition(PlayableDirector director, ScoreHolder holder)
         {
             sceneChangeDirector = director;
+            scoreHolder = holder;
         }
 
         public async UniTask ExecuteAsync(CancellationToken token)
         {
+            // 時を進める
+            Time.timeScale = 1;
+
+            // エントランスはステージセレクトから
+            scoreHolder.InitialEntranceMenuStatus = EntranceTransition.MenuStatus.StageSelectFromOtherScene;
+
             // メインスレッドに戻す
             await UniTask.SwitchToMainThread();
 
@@ -63,11 +71,11 @@ namespace StageTransition
             if (token.IsCancellationRequested) { throw new Exception("シーン読み込みが中断されました"); }
 
             // 読み込みの開始
-            Debug.Log("【System】リザルトシーン読み込み開始");
+            Debug.Log("【System】エントランスシーン読み込み開始");
             await sceneChangeOperation;
 
-            Debug.Log("【System】リザルトシーン読み込み完了");
+            Debug.Log("【System】エントランスシーン読み込み完了");
         }
     }
-}
 
+}

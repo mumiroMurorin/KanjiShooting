@@ -1,36 +1,39 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
-using ResultTransition;
 using UnityEngine.Playables;
 
-public class StartSceneTransition : IPhaseTransitioner
+namespace ResultTransition
 {
-    IResultUIcontroller resultUIcontroller;
-    PlayableDirector startSceneDirector;
-
-    public StartSceneTransition(IResultUIcontroller uiController, PlayableDirector director)
+    public class StartSceneTransition : IPhaseTransitioner
     {
-        resultUIcontroller = uiController;
-        startSceneDirector = director;
-    }
+        IResultUIcontroller resultUIcontroller;
+        PlayableDirector startSceneDirector;
 
-    public async UniTask ExecuteAsync(CancellationToken token)
-    {
-        resultUIcontroller.ActiveUIGroup(MenuStatus.StartScene);
-
-        if (startSceneDirector != null)
+        public StartSceneTransition(IResultUIcontroller uiController, PlayableDirector director)
         {
-            startSceneDirector.Play();
-
-            // タイトル演出終了まで待ち
-            await UniTask.WaitUntil(() => startSceneDirector.state != PlayState.Playing, cancellationToken: token);
+            resultUIcontroller = uiController;
+            startSceneDirector = director;
         }
 
-        // BGM再生
-        Sound.SoundManager.Instance.PlayBGM(Sound.BGM_Type.Result);
+        public async UniTask ExecuteAsync(CancellationToken token)
+        {
+            resultUIcontroller.ActiveUIGroup(MenuStatus.StartScene);
 
-        // ステージステータスの変更
-        ResultManager.Instance.SetMenuStatus(MenuStatus.Result);
+            if (startSceneDirector != null)
+            {
+                startSceneDirector.Play();
+
+                // タイトル演出終了まで待ち
+                await UniTask.WaitUntil(() => startSceneDirector.state != PlayState.Playing, cancellationToken: token);
+            }
+
+            // BGM再生
+            Sound.SoundManager.Instance.PlayBGM(Sound.BGM_Type.Result);
+
+            // ステージステータスの変更
+            ResultManager.Instance.SetMenuStatus(MenuStatus.Result);
+        }
     }
+
 }

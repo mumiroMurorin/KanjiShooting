@@ -4,20 +4,23 @@ using System.Threading;
 using EntranceTransition;
 using UnityEngine.Playables;
 
-
-public class MainMenuTransition : IPhaseTransitioner
+namespace EntranceTransition
 {
-    IEntranceUIcontroller entranceUIController;
-
-    public MainMenuTransition(IEntranceUIcontroller uiController)
+    public class MainMenuTransition : IPhaseTransitioner
     {
-        entranceUIController = uiController;
+        IEntranceUIController entranceUIController;
+
+        public MainMenuTransition(IEntranceUIController uiController)
+        {
+            entranceUIController = uiController;
+        }
+
+        public async UniTask ExecuteAsync(CancellationToken token)
+        {
+            // UIÇÃï\é¶èàóù
+            entranceUIController.ActiveUIGroup(MenuStatus.MainMenu);
+            await UniTask.Delay(0, cancellationToken: token);
+        }
     }
 
-    public async UniTask ExecuteAsync(CancellationToken token)
-    {
-        // UIÇÃï\é¶èàóù
-        entranceUIController.ActiveUIGroup(MenuStatus.MainMenu);
-        await UniTask.Delay(0, cancellationToken: token);
-    }
 }

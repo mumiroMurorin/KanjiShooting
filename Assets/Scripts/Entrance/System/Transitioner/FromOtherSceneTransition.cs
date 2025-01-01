@@ -1,37 +1,39 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
-using EntranceTransition;
 using UnityEngine.Playables;
 
-
-public class FromOtherSceneTransition : IPhaseTransitioner
+namespace EntranceTransition
 {
-    PlayableDirector finishLoadDirector;
-    IEntranceUIcontroller entranceUIController;
-
-    public FromOtherSceneTransition(IEntranceUIcontroller uiController, PlayableDirector director)
+    public class FromOtherSceneTransition : IPhaseTransitioner
     {
-        entranceUIController = uiController;
-        finishLoadDirector = director;
-    }
+        PlayableDirector finishLoadDirector;
+        IEntranceUIController entranceUIController;
 
-    public async UniTask ExecuteAsync(CancellationToken token)
-    {
-        entranceUIController.ActiveUIGroup(MenuStatus.StageSelect);
-
-        if(finishLoadDirector != null)
+        public FromOtherSceneTransition(IEntranceUIController uiController, PlayableDirector director)
         {
-            finishLoadDirector.Play();
-
-            // ロード演出終了まで待ち
-            await UniTask.WaitUntil(() => finishLoadDirector.state != PlayState.Playing, cancellationToken: token);
+            entranceUIController = uiController;
+            finishLoadDirector = director;
         }
 
-        // ステージステータスの変更
-        EntranceManager.Instance.SetMenuStatus(MenuStatus.StageSelect);
+        public async UniTask ExecuteAsync(CancellationToken token)
+        {
+            entranceUIController.ActiveUIGroup(MenuStatus.StageSelect);
 
-        // タイトル音楽再生
-        Sound.SoundManager.Instance.PlayBGM(Sound.BGM_Type.Title);
+            if (finishLoadDirector != null)
+            {
+                finishLoadDirector.Play();
+
+                // ロード演出終了まで待ち
+                await UniTask.WaitUntil(() => finishLoadDirector.state != PlayState.Playing, cancellationToken: token);
+            }
+
+            // ステージステータスの変更
+            EntranceManager.Instance.SetMenuStatus(MenuStatus.StageSelect);
+
+            // タイトル音楽再生
+            Sound.SoundManager.Instance.PlayBGM(Sound.BGM_Type.Title);
+        }
     }
+
 }

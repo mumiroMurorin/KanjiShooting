@@ -1,23 +1,26 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
-using EntranceTransition;
 using UnityEngine.Playables;
 
 
-public class StageSelectTransition : IPhaseTransitioner
+namespace EntranceTransition
 {
-    IEntranceUIcontroller entranceUIController;
-
-    public StageSelectTransition(IEntranceUIcontroller uiController)
+    public class StageSelectTransition : IPhaseTransitioner
     {
-        entranceUIController = uiController;
+        IEntranceUIController entranceUIController;
+
+        public StageSelectTransition(IEntranceUIController uiController)
+        {
+            entranceUIController = uiController;
+        }
+
+        public async UniTask ExecuteAsync(CancellationToken token)
+        {
+            // UIÇÃï\é¶èàóù
+            entranceUIController.ActiveUIGroup(MenuStatus.StageSelect);
+            await UniTask.Delay(0, cancellationToken: token);
+        }
     }
 
-    public async UniTask ExecuteAsync(CancellationToken token)
-    {
-        // UIÇÃï\é¶èàóù
-        entranceUIController.ActiveUIGroup(MenuStatus.StageSelect);
-        await UniTask.Delay(0, cancellationToken: token);
-    }
 }

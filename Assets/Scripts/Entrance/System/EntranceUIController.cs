@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EntranceTransition;
 
-public class EntranceUIController : MonoBehaviour , IEntranceUIcontroller
+public class EntranceUIController : MonoBehaviour , IEntranceUIController
 {
     [System.Serializable]
     class UIGroup

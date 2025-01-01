@@ -3,26 +3,29 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 using StageTransition;
 
-
-public class StageFailedStartTransition : IPhaseTransitioner
+namespace StageTransition
 {
-    ScoreHolder scoreHolder;
-
-    public StageFailedStartTransition(ScoreHolder holder)
+    public class StageFailedStartTransition : IPhaseTransitioner
     {
-        scoreHolder = holder;
+        ScoreHolder scoreHolder;
+
+        public StageFailedStartTransition(ScoreHolder holder)
+        {
+            scoreHolder = holder;
+        }
+
+        public async UniTask ExecuteAsync(CancellationToken token)
+        {
+            Debug.Log("【System】GameOver処理開始");
+
+            //スコア記録
+            scoreHolder.RecordSurvivalTimeScoreForUnityRoom();
+            //BGMのフェードアウト
+            Sound.SoundManager.Instance.StopBGM(true);
+            StageManager.Instance.ChangeStageStatus(StageStatus.StageFinish);
+
+            await UniTask.Delay(1, cancellationToken: token);
+        }
     }
 
-    public async UniTask ExecuteAsync(CancellationToken token)
-    {
-        Debug.Log("【System】GameOver処理開始");
-        
-        //スコア記録
-        scoreHolder.RecordSurvivalTimeScoreForUnityRoom();
-        //BGMのフェードアウト
-        Sound.SoundManager.Instance.StopBGM(true);
-        StageManager.Instance.ChangeStageStatus(StageStatus.StageFinish);
-
-        await UniTask.Delay(1, cancellationToken: token);
-    }
 }

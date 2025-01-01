@@ -51,7 +51,7 @@ namespace EntranceTransition
         }
     }
 
-    public interface IEntranceUIcontroller
+    public interface IEntranceUIController
     {
         public void ActiveUIGroup(MenuStatus status);
     }

@@ -277,8 +277,8 @@ namespace Sound
         /// </summary>
         public void PauseBGM()
         {
-            bgmSources[0].Stop();
-            bgmSources[1].Stop();
+            bgmSources[0].Pause();
+            bgmSources[1].Pause();
         }
 
         /// <summary>

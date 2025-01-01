@@ -20,6 +20,7 @@ public class MainUIPresenter : MonoBehaviour
     [SerializeField] PreviousWaveView previousWaveView;
     [SerializeField] NextWaveView nextWaveView;
     [SerializeField] BackGameButtonView backGameButtonView;
+    [SerializeField] BackMainMenuButtonView backMainMenuButtonView;
     [SerializeField] AnswerBoxSpawner[] answerBoxSpawners;
 
     [SerializeField] SerializeInterface<IStatus> playerStatus_model;
@@ -45,7 +46,11 @@ public class MainUIPresenter : MonoBehaviour
 
     private void SetEvents()
     {
+        // 「ゲームに戻る」ボタン
         backGameButtonView.OnBackGameButtonClickedListener += () => StageManager.Instance.ResumeTime();
+
+        // 「ステージ中断」ボタン
+        backMainMenuButtonView.OnBackMainMenuButtonClickedListener += () => OnBackMainMenuButtonPushed();
     }
 
     private void Bind()
@@ -140,4 +145,13 @@ public class MainUIPresenter : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// 「メインメニューに戻る」ボタンがクリックされたとき
+    /// </summary>
+    private void OnBackMainMenuButtonPushed()
+    {
+        StageManager.Instance.ChangeStageScene(StageTransition.StageSceneTag.Interrupt);
+    }
+
 }

@@ -51,10 +51,14 @@ public class ChargeAndBombGunManager : GunManager
 
     public override void Shoot()
     {
-        // 文字が入力されていない且つボムチャージされてないとき返す
+        // 文字が入力されていない且つボムチャージされてないとき
         if (inputHolder.Value.GetAnswer().Length <= 0 && 
             bombShootCharger.Value.ChargeCount.Value < 1f) 
-        { return; }
+        {
+            // リセットして返す
+            bombShootCharger.Value.ResetCharge();
+            return;
+        }
 
         // 補充されてないとき返す
         if (currentReloadValue.Value < 1f) { return; }   

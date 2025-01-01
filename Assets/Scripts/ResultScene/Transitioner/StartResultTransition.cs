@@ -1,34 +1,37 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
-using ResultTransition;
 using UnityEngine.Playables;
 
-public class StartResultTransition : IPhaseTransitioner
+namespace ResultTransition
 {
-    IResultUIcontroller resultUIcontroller;
-    PlayableDirector resultDirector;
-
-    public StartResultTransition(IResultUIcontroller uiController, PlayableDirector director)
+    public class StartResultTransition : IPhaseTransitioner
     {
-        resultUIcontroller = uiController;
-        resultDirector = director;
-    }
+        IResultUIcontroller resultUIcontroller;
+        PlayableDirector resultDirector;
 
-    public async UniTask ExecuteAsync(CancellationToken token)
-    {
-        resultUIcontroller.ActiveUIGroup(MenuStatus.Result);
-
-        // カーソルを動かせるようにする
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
-        if (resultDirector != null)
+        public StartResultTransition(IResultUIcontroller uiController, PlayableDirector director)
         {
-            resultDirector.Play();
+            resultUIcontroller = uiController;
+            resultDirector = director;
+        }
 
-            // タイトル演出終了まで待ち
-            await UniTask.WaitUntil(() => resultDirector.state != PlayState.Playing, cancellationToken: token);
+        public async UniTask ExecuteAsync(CancellationToken token)
+        {
+            resultUIcontroller.ActiveUIGroup(MenuStatus.Result);
+
+            // カーソルを動かせるようにする
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            if (resultDirector != null)
+            {
+                resultDirector.Play();
+
+                // タイトル演出終了まで待ち
+                await UniTask.WaitUntil(() => resultDirector.state != PlayState.Playing, cancellationToken: token);
+            }
         }
     }
+
 }

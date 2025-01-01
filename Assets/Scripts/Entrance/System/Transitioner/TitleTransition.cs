@@ -1,37 +1,39 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
-using EntranceTransition;
 using UnityEngine.Playables;
 
-
-public class TitleTransition : IPhaseTransitioner
+namespace EntranceTransition
 {
-    PlayableDirector titleDirector;
-    IEntranceUIcontroller entranceUIController;
-
-    public TitleTransition(IEntranceUIcontroller uiController, PlayableDirector director)
+    public class TitleTransition : IPhaseTransitioner
     {
-        entranceUIController = uiController; 
-        titleDirector = director;
-    }
+        PlayableDirector titleDirector;
+        IEntranceUIController entranceUIController;
 
-    public async UniTask ExecuteAsync(CancellationToken token)
-    {
-        entranceUIController.ActiveUIGroup(MenuStatus.Title);
-
-        if (titleDirector != null)
+        public TitleTransition(IEntranceUIController uiController, PlayableDirector director)
         {
-            titleDirector.Play();
-
-            // タイトル演出終了まで待ち
-            await UniTask.WaitUntil(() => titleDirector.state != PlayState.Playing, cancellationToken: token);
+            entranceUIController = uiController;
+            titleDirector = director;
         }
 
-        // ステージステータスの変更
-        EntranceManager.Instance.SetMenuStatus(MenuStatus.MainMenu);
+        public async UniTask ExecuteAsync(CancellationToken token)
+        {
+            entranceUIController.ActiveUIGroup(MenuStatus.Title);
 
-        // タイトル音楽再生
-        Sound.SoundManager.Instance.PlayBGM(Sound.BGM_Type.Title);
+            if (titleDirector != null)
+            {
+                titleDirector.Play();
+
+                // タイトル演出終了まで待ち
+                await UniTask.WaitUntil(() => titleDirector.state != PlayState.Playing, cancellationToken: token);
+            }
+
+            // ステージステータスの変更
+            EntranceManager.Instance.SetMenuStatus(MenuStatus.MainMenu);
+
+            // タイトル音楽再生
+            Sound.SoundManager.Instance.PlayBGM(Sound.BGM_Type.Title);
+        }
     }
+
 }

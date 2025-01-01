@@ -8,7 +8,8 @@ namespace StageTransition
     public enum StageSceneTag
     {
         Fighting,
-        StageFailed
+        StageFailed,
+        Interrupt
     }
 
     public enum StageStatus
