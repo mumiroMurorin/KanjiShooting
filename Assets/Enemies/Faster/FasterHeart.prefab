@@ -251,8 +251,8 @@ MonoBehaviour:
     obj: {fileID: 1692011733723930300}
   kanjiTransform: {fileID: 8476182219595597554}
   kanjiMaterial:
-    defaultMaterial: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
-    edgeMaterial: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
+    defaultMaterial: {fileID: 2100000, guid: ee47644675828514c8b999edaa99ee59, type: 2}
+    edgeMaterial: {fileID: 2100000, guid: 4a2abd4f67aefc24b9c6cca2d197adc7, type: 2}
   animator: {fileID: 3407043886784197692}
   wheelsRight:
   - {fileID: 1016098337302470829}
