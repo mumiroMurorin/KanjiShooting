@@ -359,6 +359,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 1
+    functionName: PlayOnShot
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: c2bfa9ce2a2d7304ebc28f9e9efbf9b0, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.4666667
     functionName: PermitMoveTrigger
     data: 

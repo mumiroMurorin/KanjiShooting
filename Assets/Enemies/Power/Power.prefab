@@ -199,13 +199,13 @@ MonoBehaviour:
     edgeMaterial: {fileID: 2100000, guid: 52c9083b299dfa3479caa56bb9f0a98c, type: 2}
   animator: {fileID: 3407043886784197692}
   outlineSettings:
-    color: {r: 1, g: 0, b: 0.32282925, a: 1}
+    color: {r: 1, g: 0, b: 0, a: 1}
     width: 3
     resources: {fileID: 11400000, guid: d28e70f030b1a634db9a6a6d5478ef19, type: 2}
     flags: 2
     ignoreRayerMask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 16384
   shakeSettingsAttack:
     isLoop: 0
     isFade: 1

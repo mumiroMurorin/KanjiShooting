@@ -152,17 +152,17 @@ MonoBehaviour:
     obj: {fileID: 1692011733723930300}
   kanjiTransform: {fileID: 8476182219595597554}
   kanjiMaterial:
-    defaultMaterial: {fileID: 2100000, guid: 333a08b54ec5eec4f84f74d910ad751e, type: 2}
+    defaultMaterial: {fileID: 2100000, guid: e732f6b91ca31468da65644c28570d08, type: 2}
     edgeMaterial: {fileID: 2100000, guid: d9118644cf18d114abae307878884709, type: 2}
   animator: {fileID: 3407043886784197692}
   outlineSettings:
-    color: {r: 1, g: 0.05882353, b: 0.05882353, a: 1}
+    color: {r: 1, g: 0, b: 0, a: 1}
     width: 3
     resources: {fileID: 11400000, guid: d28e70f030b1a634db9a6a6d5478ef19, type: 2}
     flags: 2
     ignoreRayerMask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 16384
   shakeSettings:
     isLoop: 0
     isFade: 1

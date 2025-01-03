@@ -639,6 +639,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 1
+    functionName: PlayOnShot
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 0d40a058c1686f74892ff37438320fa4, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.2166667
     functionName: SwitchWingAnimation
     data: 
