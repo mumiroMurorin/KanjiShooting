@@ -1,0 +1,204 @@
+fileFormatVersion: 2
+guid: b869738b0cc98fd4b9489c697e6abb08
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      74: 5487420096008090802
+    second: Fish02.001Action.003
+  - first:
+      74: -8884040681410711724
+    second: SphereAction.002
+  - first:
+      74: 4634847506301230368
+    second: C_Living_Manta.001Action
+  - first:
+      74: 8222017464324952854
+    second: C_Living_Manta.002Action
+  - first:
+      74: 4593692749174787289
+    second: SeaTurtleAction
+  - first:
+      74: 6624873865164572626
+    second: PlaneAction.001
+  - first:
+      74: 1691053689828234598
+    second: PlaneAction.002
+  - first:
+      74: 8710635975119150308
+    second: PlaneAction.003
+  - first:
+      74: -8515981566370767928
+    second: PlaneAction.010
+  - first:
+      74: -7638383462102113188
+    second: PlaneAction.011
+  - first:
+      74: -4330598501224378056
+    second: PlaneAction.012
+  - first:
+      74: 8152897085222997980
+    second: PlaneAction.013
+  - first:
+      74: -665408837788942307
+    second: PlaneAction.015
+  - first:
+      74: -8713715404621807171
+    second: PlaneAction.016
+  - first:
+      74: -2742598489805412765
+    second: PlaneAction.017
+  - first:
+      74: 8947812355705235207
+    second: PlaneAction.018
+  - first:
+      74: -7727453296403405075
+    second: Fish02.001Action.002
+  - first:
+      74: 2224796316963993240
+    second: Fish02.001Action.001
+  - first:
+      74: 9186726153298886788
+    second: Fish02.001Action
+  - first:
+      74: 8060538652905188762
+    second: Fish02.001Action.004
+  - first:
+      74: 879074203860605885
+    second: Fish02.001Action.005
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: A_Sea
+    second: {fileID: 2100000, guid: 4940349706eba304ca8a5775ef93f07f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: B02_Wave
+    second: {fileID: 2100000, guid: 148fb4d0b940c44428dd9d81b786364f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: C_Bubble
+    second: {fileID: 2100000, guid: 5f56a3e84e81dd64b9426fbf4154e229, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: C_JerryFish
+    second: {fileID: 2100000, guid: 9a54c5deeabebde49b0503816a9bfddc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: C_Opacity
+    second: {fileID: 2100000, guid: a5c2b87812cd0d64d8d0f938e017ad38, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: D_Field
+    second: {fileID: 2100000, guid: cb32b062bc62ef7419e6d0d627f4355e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: E_Transparent
+    second: {fileID: 2100000, guid: 784c5da0e2cac0b419cbb8341e03744b, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

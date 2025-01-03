@@ -254,7 +254,7 @@ MonoBehaviour:
   maxHP: 1
   HPInit: 1
   attackInit: 5
-  speedInit: 50
+  speedInit: 60
   OnChangeHP:
     m_PersistentCalls:
       m_Calls:
