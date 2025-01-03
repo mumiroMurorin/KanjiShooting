@@ -177,7 +177,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1.1666666
+        time: 2.5
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -234,7 +234,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.1666666
+    m_StopTime: 2.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -578,7 +578,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1.1666666
+        time: 2.5
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -605,7 +605,7 @@ AnimationClip:
     intParameter: 2
     messageOptions: 0
   - time: 0
-    functionName: ProhibitMoveTrigger
+    functionName: ProhibitMoveTriggerAttacking
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -633,20 +633,13 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.46666667
-    functionName: VibrateTrigger
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0.5
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.46666667
     functionName: PlayOnShot
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: beb3f711d8da0534db761ec59f3e3f90, type: 3}
+    objectReferenceParameter: {fileID: 8300000, guid: 4116e9a2cc0df5441b55f5c62a5d42b9, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.1666666
+  - time: 2.5
     functionName: DestroyTrigger
     data: 
     objectReferenceParameter: {fileID: 0}

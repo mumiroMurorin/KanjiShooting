@@ -733,7 +733,7 @@ AnimationClip:
     intParameter: 2
     messageOptions: 0
   - time: 0
-    functionName: ProhibitMoveTrigger
+    functionName: ProhibitMoveTriggerAttacking
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

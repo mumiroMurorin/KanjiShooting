@@ -206,13 +206,6 @@ MonoBehaviour:
     ignoreRayerMask:
       serializedVersion: 2
       m_Bits: 0
-  shakeSettings:
-    isLoop: 0
-    isFade: 1
-    duration: 0.5
-    strength: 1
-    vibrato: 32
-    randomness: 90
   soundPlayer: {fileID: 6236512069226411213}
 --- !u!1 &1692011733723930300
 GameObject:
@@ -260,8 +253,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 1
   HPInit: 1
-  attackInit: 12
-  speedInit: 75
+  attackInit: 5
+  speedInit: 50
   OnChangeHP:
     m_PersistentCalls:
       m_Calls:
@@ -382,7 +375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6208583619813186877
 Transform:
   m_ObjectHideFlags: 0

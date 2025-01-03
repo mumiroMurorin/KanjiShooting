@@ -106,13 +106,22 @@ public class WeakestEnemyManager : EnemyManager , IAttachableItemOnDestroy, ISou
     }
 
     /// <summary>
-    /// ˆÚ“®‹Ö~‚³‚¹‚éƒgƒŠƒK[
+    /// UŒ‚ˆÚ“®‹Ö~‚³‚¹‚éƒgƒŠƒK[
     /// </summary>
-    public void ProhibitMoveTrigger()
+    public void ProhibitMoveTriggerAttacking()
+    {
+        isMoving = false;
+    }
+
+    /// <summary>
+    /// “¢”°ˆÚ“®‹Ö~‚³‚¹‚éƒgƒŠƒK[
+    /// </summary>
+    public void ProhibitMoveTriggerDestroying()
     {
         Move?.Value.SetActive(false);
         isMoving = false;
     }
+
 
     /// <summary>
     /// Á–Å‚ÌƒgƒŠƒK[

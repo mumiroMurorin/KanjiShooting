@@ -10,8 +10,6 @@ public class GhostEnemyManager : EnemyManager , IAttachableItemOnDestroy, ISound
 
     [Header("ƒAƒEƒgƒ‰ƒCƒ“")]
     [SerializeField] OutlineSettings outlineSettings;
-    [Header("ƒAƒ^ƒbƒN‚Ìk‚¦")]
-    [SerializeField] ShakeSettings shakeSettings;
 
     [Header("‰¹º")]
     [SerializeField] SoundPlayer soundPlayer;
@@ -106,9 +104,17 @@ public class GhostEnemyManager : EnemyManager , IAttachableItemOnDestroy, ISound
     }
 
     /// <summary>
-    /// ˆÚ“®‹Ö~‚³‚¹‚éƒgƒŠƒK[
+    /// UŒ‚ˆÚ“®‹Ö~‚³‚¹‚éƒgƒŠƒK[
     /// </summary>
-    public void ProhibitMoveTrigger()
+    public void ProhibitMoveTriggerAttacking()
+    {
+        isMoving = false;
+    }
+
+    /// <summary>
+    /// “¢”°ˆÚ“®‹Ö~‚³‚¹‚éƒgƒŠƒK[
+    /// </summary>
+    public void ProhibitMoveTriggerDestroying()
     {
         Move?.Value.SetActive(false);
         isMoving = false;
@@ -131,13 +137,5 @@ public class GhostEnemyManager : EnemyManager , IAttachableItemOnDestroy, ISound
 
         //‚Ù‚ñ‚ÅÁ‚¦‚½‚è‚È‚ñ‚¾‚è
         AfterGiveDamage();
-    }
-
-    /// <summary>
-    /// UŒ‚‚É‘Ì‚ğk‚í‚¹‚éƒgƒŠƒK[
-    /// </summary>
-    public void VibrateTrigger()
-    {
-        shakeSettings.ApplyShake(this.transform);
     }
 }

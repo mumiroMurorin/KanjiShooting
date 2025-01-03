@@ -107,9 +107,17 @@ public class BirdEnemyManager : EnemyManager , IAttachableItemOnDestroy, ISoundP
     }
 
     /// <summary>
-    /// ˆÚ“®‹Ö~‚³‚¹‚éƒgƒŠƒK[
+    /// UŒ‚ˆÚ“®‹Ö~‚³‚¹‚éƒgƒŠƒK[
     /// </summary>
-    public void ProhibitMoveTrigger()
+    public void ProhibitMoveTriggerAttacking()
+    {
+        isMoving = false;
+    }
+
+    /// <summary>
+    /// “¢”°ˆÚ“®‹Ö~‚³‚¹‚éƒgƒŠƒK[
+    /// </summary>
+    public void ProhibitMoveTriggerDestroying()
     {
         Move?.Value.SetActive(false);
         isMoving = false;
