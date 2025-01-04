@@ -24,7 +24,9 @@ namespace Sound
         ButtonClicked1 = 21,
         ButtonClicked2 = 22,
         ButtonClicked3 = 23,
-        BackButtonClicked1 = 31
+        BackButtonClicked1 = 31,
+        Correct = 100,
+        Incorrect = 110,
     }
 
     /// <summary>

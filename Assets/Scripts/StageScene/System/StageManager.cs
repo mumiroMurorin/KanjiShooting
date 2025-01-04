@@ -122,7 +122,6 @@ public class StageManager : LocalSingletonMonoBehaviour<StageManager> , ITimeCon
     /// <param name="status"></param>
     public void AddAnswerStatus(AnswerStatus status)
     {
-        // ÉçÉOÇÃê∂ê¨
         string log = "";
         switch (status.state)
         {

@@ -12,6 +12,7 @@ public class MainUIPresenter : MonoBehaviour
     [SerializeField] BulletReloadGageView bulletReloadGageView;
     [SerializeField] ExplosionChargeGageView explosionChargeGageView;
     [SerializeField] SpecialChargeGaugeView specialChargeGaugeView;
+    [SerializeField] SpecialActionGuideView specialActionGuideView;
     [SerializeField] KillCountTextView killCountTextView;
     [SerializeField] StageDataView stageDataView;
     [SerializeField] WaveTextView waveTextView;
@@ -27,6 +28,7 @@ public class MainUIPresenter : MonoBehaviour
     [SerializeField] GunManager gunManager_model;
     [SerializeField] SerializeInterface<IBulletReloadCharger> bulletReloadCharger_model;
     [SerializeField] SerializeInterface<IBulletShootCharger> explosionCharger_model;
+    [SerializeField] SerializeInterface<IJapaneseInputHolder> inputHolder;
 
     ScoreHolder scoreHolder;
     OptionHolder optionHolder;
@@ -87,9 +89,18 @@ public class MainUIPresenter : MonoBehaviour
             .Subscribe(explosionChargeGageView.OnChangeChargeValue)
             .AddTo(this.gameObject);
 
-        // スペシャル弾チャージ時間 → チャージUI
+        // スペシャル弾チャージ → チャージUI
         bulletReloadCharger_model?.Value.ChargeCount
             .Subscribe(specialChargeGaugeView.OnChangeChargeValue)
+            .AddTo(this.gameObject);
+
+        // スペシャル弾チャージ → アクションガイドUI
+        bulletReloadCharger_model?.Value.ChargeCount
+            .Subscribe(specialActionGuideView.OnChangeChargeValue)
+            .AddTo(this.gameObject);
+
+        inputHolder.Value.AnswerReactiveProperty
+            .Subscribe(answer => specialActionGuideView.OnChangeActionMode(answer.Length > 0))
             .AddTo(this.gameObject);
 
         // キルカウントスコア → キルカウントテキスト
