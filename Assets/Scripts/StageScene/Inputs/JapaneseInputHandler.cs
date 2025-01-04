@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
+using UniRx;
 
 public class JapaneseInputHandler
 {
     const int MAX_ANSWER_LENGTH = 15;
     const int MAX_UNIT_CHARNUM = 4;
-    private string result = "";
+    private ReactiveProperty<string> result = new ReactiveProperty<string>("");
+
+    public IReadOnlyReactiveProperty<string> AnswerReactiveProperty { get { return result; } }
 
     // ローマ字からひらがなへの対応表
     private readonly Dictionary<string, string> romajiToHiragana = new Dictionary<string, string>(){
@@ -103,24 +106,24 @@ public class JapaneseInputHandler
     /// <param name="key"></param>
     private void OnKeyInput(char key)
     {
-        string original = result;
-        result += key.ToString().ToLower();
+        string original = result.Value;
+        result.Value += key.ToString().ToLower();
 
         // 変換できるローマ字があるか確認(リファクタリングが必要？)
         foreach (var entry in romajiToHiragana)
         {
-            if (result.EndsWith(entry.Key))
+            if (result.Value.EndsWith(entry.Key))
             {
                 // 変換前のアルファベット文字を削除
-                result = result.Substring(0, result.Length - entry.Key.Length);
+                result.Value = result.Value.Substring(0, result.Value.Length - entry.Key.Length);
                 // 変換後のひらがなに置き換える
-                result += entry.Value;
+                result.Value += entry.Value;
                 break;
             }
         }
 
         //最大文字数超えで元の文字に戻す
-        if (result.Length >= MAX_ANSWER_LENGTH) { result = original; }
+        if (result.Value.Length >= MAX_ANSWER_LENGTH) { result.Value = original; }
     }
 
     /// <summary>
@@ -150,13 +153,13 @@ public class JapaneseInputHandler
     // 確定した読みを返す
     public string GetResult()
     {
-        return result;
+        return result.Value;
     }
 
     // リセット用
     public void Clear()
     {
-        result = "";
+        result.Value = "";
     }
 
     /// <summary>
@@ -164,8 +167,8 @@ public class JapaneseInputHandler
     /// </summary>
     public bool BackSpace()
     {
-        if(result.Length <= 0) { return false; }
-        result = result.Substring(0, result.Length - 1);
+        if(result.Value.Length <= 0) { return false; }
+        result.Value = result.Value.Substring(0, result.Value.Length - 1);
 
         return true;
     }

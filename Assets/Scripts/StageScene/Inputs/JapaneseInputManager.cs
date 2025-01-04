@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UniRx;
 
 public class JapaneseInputManager : MonoBehaviour, IJapaneseInputHolder
 {
@@ -12,6 +13,7 @@ public class JapaneseInputManager : MonoBehaviour, IJapaneseInputHolder
     [SerializeField] AudioClip backSpaceSE;
 
     JapaneseInputHandler japaneseInputHandler = new JapaneseInputHandler();
+    public IReadOnlyReactiveProperty<string> AnswerReactiveProperty { get { return japaneseInputHandler.AnswerReactiveProperty; } }
 
     private void Update()
     {
@@ -89,4 +91,6 @@ public interface IJapaneseInputHolder
     /// </summary>
     /// <returns></returns>
     public string GetAnswer();
+
+    public IReadOnlyReactiveProperty<string> AnswerReactiveProperty { get; }
 }

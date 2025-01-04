@@ -37,7 +37,15 @@ public abstract class BulletController : MonoBehaviour, IDamager
 
         // 正答チェック
         if (!isCollect)
-        { AfterBouncedBack(); return; }
+        {
+            Sound.SoundManager.Instance.PlaySE(Sound.SE_Type.Incorrect);
+            AfterBouncedBack();
+            return;
+        }
+        else
+        {
+            Sound.SoundManager.Instance.PlaySE(Sound.SE_Type.Correct);
+        }
 
         // 記録
         StageManager.Instance.AddAnswerStatus(new AnswerStatus { questionData = enemyStatus.Question.Value, state = AnswerState.Corrected });
