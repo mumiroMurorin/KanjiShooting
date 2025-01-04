@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class SkyBoxChanger : MonoBehaviour
 {
-    [Header("変更前のSkyBoxMaterial")]
+    [Header("変更前のSkyBox")]
     [SerializeField] Material previousSky;
-    [Header("変更後のSkyBoxMaterial")]
+    [SerializeField] Cubemap previousCubemap;
+    [Header("変更後のSkyBox")]
     [SerializeField] Material nextSky;
+    [SerializeField] Cubemap nextCubemap;
 
     [Header("完全遷移までの時間")]
     [SerializeField] float changeDuration;
@@ -31,7 +33,11 @@ public class SkyBoxChanger : MonoBehaviour
 
             changeCount += Time.deltaTime;
 
-            if (!isChangedMaterial && ChangingRatio >= changeMaterialTime) { RenderSettings.skybox = nextSky; }
+            if (!isChangedMaterial && ChangingRatio >= changeMaterialTime) { 
+                RenderSettings.skybox = nextSky;
+                RenderSettings.defaultReflectionMode = UnityEngine.Rendering.DefaultReflectionMode.Custom;
+                RenderSettings.customReflection = nextCubemap;
+            }
             if(ChangingRatio >= 1f) { isChanging = false; }
         }
     }
