@@ -23,6 +23,8 @@ class WaveStatusProbabilistic : IWaveStatus
     {
         questionSelector = qSelector;
         kanjiSpawner = kSpawner;
+        intervalCount = float.MaxValue;
+
 
         spawner.Initialize();
     }
@@ -34,6 +36,11 @@ class WaveStatusProbabilistic : IWaveStatus
 
     public void SpawnEnemy(float timeRatio, EnemyInitializationData enemyInitializationData)
     {
+        // カウントがたまってないとき戻す
+        if (intervalCount < interval) { return; }
+
+        intervalCount = 0;
+
         for (int spawnNum = 0; spawnNum < amountCurve.Evaluate(timeRatio); spawnNum++)
         {
             // 抽選

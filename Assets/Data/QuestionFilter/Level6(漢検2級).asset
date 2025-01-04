@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee1ab408350775043ac27d2715eb7e42, type: 3}
-  m_Name: Wave5_Easy
+  m_Name: "Level6(\u6F22\u691C2\u7D1A)"
   m_EditorClassIdentifier: 
-  kanjiLevel: 4
+  kanjiLevel: 32
   kanjiRadical: -1
-  kanjiOtherTag: 4
+  kanjiOtherTag: -1

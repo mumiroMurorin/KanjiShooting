@@ -20,6 +20,7 @@ namespace Kanji
         Level5 = 1 << 4,
         Level6 = 1 << 5,
         Level7 = 1 << 6,
+        Level8 = 1 << 7,
     }
 
     //•”Žñ

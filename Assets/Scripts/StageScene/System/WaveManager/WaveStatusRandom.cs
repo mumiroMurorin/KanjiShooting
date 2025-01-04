@@ -32,8 +32,9 @@ class WaveStatusRandom : IWaveStatus
     {
         questionSelector = qSelector;
         kanjiSpawner = kSpawner;
+        intervalCount = float.MaxValue;
 
-        foreach(EnemyProbability e in enemyPlobabilities)
+        foreach (EnemyProbability e in enemyPlobabilities)
         {
             // d‚İ‚Ì‡Œv‚ğZo
             weightSum += e.Weight;
