@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1748170514027361552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1748170514027361554}
+  - component: {fileID: 1748170514027361581}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1748170514027361554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748170514027361552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1748170514027361581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748170514027361552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f89c36a2e7e2454bb3cfadcd5b905a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BGMFadeInDuration: 0
+  BGMFadeOutDuration: 2
+  BGMCrossFadeDuration: 2
+  Mute: 0
+  bgmClips:
+  - type: 10
+    clip: {fileID: 8300000, guid: 8a6b4b481b9c25f4f86ef77a8bcdf96d, type: 3}
+  - type: 800
+    clip: {fileID: 8300000, guid: cee2c6218abc54e4fb20ec77be2b1cce, type: 3}
+  seClips:
+  - type: 10
+    clip: {fileID: 8300000, guid: 98856c6c17b8cf549ba4d94fe3c60379, type: 3}
+  - type: 100
+    clip: {fileID: 8300000, guid: 450dc83b054832c429f1528b78c5ed4b, type: 3}
+  - type: 110
+    clip: {fileID: 8300000, guid: 4d47e64f89d2e7241a7bc48995e3db28, type: 3}
+  - type: 21
+    clip: {fileID: 8300000, guid: 78a28280fa5230b4aa97a52e7035fe28, type: 3}
+  - type: 22
+    clip: {fileID: 8300000, guid: 4b2e0a615b629b14e81cfb11e54a860e, type: 3}
+  - type: 23
+    clip: {fileID: 8300000, guid: fd5d1be5ae03e4c47a43f3a2c3b5c8d9, type: 3}
+  - type: 31
+    clip: {fileID: 8300000, guid: 92e9c2b3bc484d249b168ad37a0792ec, type: 3}
+  audioMixerGroupSE: {fileID: -59416016782203603, guid: 7a5d34a712bac5a4fa3d9c26eaf33bf0, type: 2}
+  audioMixerGroupBGM: {fileID: -2204507439614916650, guid: 7a5d34a712bac5a4fa3d9c26eaf33bf0, type: 2}
